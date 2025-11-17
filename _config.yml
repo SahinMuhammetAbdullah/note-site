@@ -21,7 +21,7 @@ kramdown:
 
 
 image:
-  path: /assets/imgages/rich-preview.png
+  path: /assets/images/rich-preview.png
   width: 1200
   height: 630
 # ----------------------------------------------------
