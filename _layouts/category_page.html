@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+{% assign target_category = page.category %}
+
+<div class="container main-content">
+    <h1 class="section-title">🗂️ {{ target_category }} Notları</h1>
+    <p class="hero-p">"{{ target_category }}" ana başlığı altındaki konular alt kategorilere ayrılmıştır.</p>
+
+    {% comment %}
+    1) Bu ana kategori altındaki tüm yazıları topla
+    {% endcomment %}
+    {% assign posts_in_category = site.posts | where_exp: "p", "p.categories[0] == target_category" %}
+
+    {% comment %}
+    2) Bu yazıların alt kategorilerini çıkar (2. kategori)
+    {% endcomment %}
+    {% assign child_categories = "" | split: "," %}
+
+    {% for post in posts_in_category %}
+        {% if post.categories.size > 1 %}
+            {% assign child = post.categories[1] %}
+            {% unless child_categories contains child %}
+                {% assign child_categories = child_categories | push: child %}
+            {% endunless %}
+        {% endif %}
+    {% endfor %}
+
+    {% assign child_categories = child_categories | sort %}
+
+    <div class="notes-journal">
+
+        {% comment %}
+        3) Alt kategorileri tek tek başlık halinde yaz
+        {% endcomment %}
+        {% for child in child_categories %}
+            <h2 class="subcategory-title" style="margin-top:30px;">
+                ➤ {{ child }}
+            </h2>
+
+            {% assign posts_in_child = posts_in_category | where_exp: "p", "p.categories[1] == child" %}
+
+            {% for post in posts_in_child %}
+                {% include post_list_item.html post=post %}
+            {% endfor %}
+        {% endfor %}
+
+        {% comment %}
+        4) Alt kategorisi olmayan postlar (sadece ana kategori ile)
+        {% endcomment %}
+        {% assign no_child_posts = posts_in_category | where_exp: "p", "p.categories.size == 1" %}
+
+        {% if no_child_posts.size > 0 %}
+            <h2 class="subcategory-title" style="margin-top:30px;">
+                ➤ Genel
+            </h2>
+
+            {% for post in no_child_posts %}
+                {% include post_list_item.html post=post %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

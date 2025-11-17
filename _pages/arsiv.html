@@ -1,0 +1,37 @@
+---
+layout: default
+title: Tüm Arşivler
+permalink: /arsiv/
+---
+
+{% comment %} 
+    Arşiv içeriğini göstermek için home layout'undaki gibi bir Liquid döngüsü kullanacağız. 
+    Ancak bu sayfa sade kalmalı, bu yüzden content'i doğrudan buraya yazıyoruz.
+{% endcomment %}
+
+<div class="container main-content">
+    <h1 class="section-title">📆 ARŞİV</h1>
+    <p class="hero-p">Yayınlanma tarihine göre tüm notlar.</p>
+    
+    {% assign year = 0 %}
+    {% for post in site.posts reversed %}
+        {% assign current_year = post.date | date: "%Y" %}
+        
+        {% if current_year != year %}
+            {% if year != 0 %} 
+                </ul>
+            {% endif %}
+            <h2 class="archive-year-title">{{ current_year }}</h2>
+            <ul class="archive-list">
+            {% assign year = current_year %}
+        {% endif %}
+        
+        <li class="archive-item">
+            <a href="{{ post.url | relative_url }}" class="archive-link">
+                <span class="archive-date">{{ post.date | date: "%d %b" }}</span>
+                <span class="archive-title">{{ post.title }}</span>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,108 @@
+{% comment %} 
+    _includes/categories_sidebar.html dosyasını bu kodla değiştirin.
+    Bu kod, tüm postları döner, Ana Kategorileri (Birinci Eleman) bulur ve 
+    onların altındaki Alt Kategorileri (İkinci Eleman) listeler.
+{% endcomment %}
+
+{% assign all_categories = site.categories %}
+{% assign primary_categories = site.categories | map: 'first' | uniq %}
+{% assign final_category_map = {} %}
+
+{% for cat_name in primary_categories %}
+    {% comment %} Sadece ilk seviyedeki (Ana) kategorileri topla {% endcomment %}
+    {% if cat_name %}
+        {% assign is_primary = true %}
+        {% for post in site.posts %}
+            {% comment %} 
+                Eğer kategorilerin ilk elemanı Ana Kategori ise bu geçerli bir Ana Kategori'dir.
+            {% endcomment %}
+            {% if post.categories[0] == cat_name %}
+                {% break %}
+            {% else %}
+                {% assign is_primary = false %}
+            {% endif %}
+        {% endfor %}
+
+        {% if is_primary %}
+            {% assign sub_categories = "" | split: "," %}
+            {% assign primary_post_count = 0 %}
+            
+            {% comment %} Bu ana kategoriye ait tüm alt kategorileri (ikinci elemanları) ve post sayısını bul {% endcomment %}
+            {% for post in site.posts %}
+                {% if post.categories[0] == cat_name %}
+                    {% assign primary_post_count = primary_post_count | plus: 1 %}
+                    {% if post.categories[1] %}
+                        {% assign sub_cat_name = post.categories[1] %}
+                        {% assign sub_categories = sub_categories | push: sub_cat_name %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {% comment %} Alt kategorileri tekilleştir ve posta sayısını ekle {% endcomment %}
+            {% assign unique_sub_categories = sub_categories | uniq %}
+            
+            {% assign sub_cat_list = "" | split: "," %}
+            {% for sub_cat in unique_sub_categories %}
+                {% assign sub_cat_post_count = 0 %}
+                {% for post in site.posts %}
+                    {% if post.categories[1] == sub_cat %}
+                        {% assign sub_cat_post_count = sub_cat_post_count | plus: 1 %}
+                    {% endif %}
+                {% endfor %}
+                {% assign sub_cat_list = sub_cat_list | push: sub_cat | push: sub_cat_post_count %}
+            {% endfor %}
+            
+            {% comment %} Ana kategori ve alt kategorileri map'e ekle {% endcomment %}
+            {% assign final_category_map = final_category_map | merge: 
+                'temp_key', 
+                cat_name 
+            %}
+            {% assign final_category_map = final_category_map | merge: 
+                cat_name, 
+                'count', primary_post_count,
+                'sub', sub_cat_list
+            %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+
+<div class="categories-sidebar">
+    <div class="category-list">
+        {% comment %} Bütün postları dolaşarak sadece ilk seviye (Ana Kategori) isimlerini al {% endcomment %}
+        {% assign primary_cats = "" | split: "," %}
+        {% for post in site.posts %}
+            {% assign primary_cat_name = post.categories | first %}
+            {% assign primary_cats = primary_cats | push: primary_cat_name %}
+        {% endfor %}
+        
+        {% assign primary_cats = primary_cats | uniq | sort %}
+
+        {% for category_name in primary_cats %}
+            {% assign total_count = 0 %}
+            {% assign cat_icon = "fas fa-folder-open" %}
+
+            {% comment %} Toplam gönderi sayısını ve ikonu belirle {% endcomment %}
+            {% for post in site.posts %}
+                {% if post.categories[0] == category_name %}
+                    {% assign total_count = total_count | plus: 1 %}
+                {% endif %}
+            {% endfor %}
+
+            {% comment %} İkon Eşleştirme (Eğer özel ikon istiyorsanız) {% endcomment %}
+            {% if category_name == "Veritabanları" %}{% assign cat_icon = "fas fa-database" %}
+            {% elsif category_name == "Programlama Dilleri" %}{% assign cat_icon = "fas fa-code" %}
+            {% elsif category_name == "Web Geliştirme" %}{% assign cat_icon = "fab fa-js-square" %}{% endif %}
+
+            {% if total_count > 0 %}
+                <a href="{{ site.baseurl }}/kategori/{{ category_name | slugify }}" class="category-item category-main">
+                    <i class="{{ cat_icon }}"></i>
+                    <div class="category-info">
+                        <h3>{{ category_name }}</h3>
+                        <span class="count">{{ total_count }} kayıt</span>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+---
+layout: default
+title: Yazılım Günlüğü
+permalink: /gunluk/
+---
+
+<div class="container main-content">
+    <section class="hero-page-header">
+        <h1 class="section-title">✍️ TÜM NOTLAR</h1>
+        <p class="hero-p">Yayınlanma tarihine göre tüm yazılım notlarım.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="notes-journal">
+        {% comment %} 
+            Tüm gönderileri en yeniden en eskiye (varsayılan) doğru sıralar.
+            Burada ana sayfadaki post listeleme include dosyasını kullanıyoruz.
+        {% endcomment %}
+        {% for post in site.posts %}
+            {% include post_list_item.html post=post %}
+        {% endfor %}
+    </div>
+    
+</div>

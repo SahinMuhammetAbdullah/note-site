@@ -1,0 +1,94 @@
+# ----------------------------------------------------
+# SİTE AYARLARI (CORE CONFIG)
+# ----------------------------------------------------
+title: Yazılım Notlarım
+description: Ruby, Python ve diğer diller üzerine kişisel notlar.
+url: "https://note.masahin.dev"
+baseurl: ""
+permalink: /:categories/:title/
+timezone: Europe/Istanbul
+
+# ----------------------------------------------------
+# YORUMLAYICI AYARLARI (MARKDOWN/ROUGE)
+# ----------------------------------------------------
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  enable_options: true 
+  input: GFM 
+  auto_ids: true # Otomatik ID (anchor) oluşturmayı etkinleştirir
+  toc_levels: 1..6 # Sadece H2 ve H3'ü TOC için kullan (isteğe bağlı)
+
+
+image:
+  path: /assets/imgages/rich-preview.png
+  width: 1200
+  height: 630
+# ----------------------------------------------------
+# SABİT LİSTELER VE META BİLGİLER
+# ----------------------------------------------------
+
+# Yazar Bilgisi (Sidebar ve Gönderi Metası için merkezi tanım)
+author_info:
+  name: "Abdullah Şahin"
+  email: "ornek@mail.com"   # istersen
+  role: "Yazar"              # istersen
+  # default_level kaldırıldı.
+
+# Sosyal Medya Linkleri (Footer için)
+social_links:
+  github: https://github.com/SahinMuhammetAbdullah
+  linkedin: https://linkedin.com/in/muhammet-abdullah-sahin
+
+# Kategorilerin sabit listesi (Navigasyon için)
+categories_list:
+  - title: Ruby
+    icon: fas fa-gem
+    url: /kategori/ruby/
+  - title: Python
+    icon: fab fa-python
+    url: /kategori/python/
+  - title: Veritabanı
+    icon: fas fa-database
+    url: /kategori/veritabani/
+
+# ----------------------------------------------------
+# DEFAULT (VARSAYILAN) DEĞERLERİ
+# ----------------------------------------------------
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      # Yazar bilgisi artık config dosyasındaki author_info'dan geliyor:
+      author: "{{ site.author_info.name }}" 
+      # read_time, MD'den veya dinamik hesaplamadan gelir.
+  - scope:
+      path: "_pages" 
+    values:
+      is_page: true # İsteğe bağlı, ancak netlik sağlar
+
+plugins:
+  - jekyll-sitemap
+
+# ----------------------------------------------------
+# TEMA STİL DEĞİŞKENLERİ
+# ----------------------------------------------------
+style_vars:
+  primary: "#d4a574"
+  primary-dark: "#b8925f"
+  bg-dark: "#2c2416"
+  bg-paper: "#f4ebe0"
+  bg-card: "#3d3326"
+  text-light: "#f4ebe0"
+  text-dark: "#2c2416"
+  accent: "#8b6f47"
+  border: "#5a4a3a"
+
+# ----------------------------------------------------
+# PAGES İŞLEME AYARI (HATA ÇÖZÜMÜ)
+# ----------------------------------------------------
+collections:
+  pages:
+    output: true # Koleksiyonun çıktı üretmesini sağlar

@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{% comment %} 
+    Generator'dan gelen küçük harfli etiket adı: page.tag (örn: "temel")
+    Görüntüde kullanılacak büyük harfli başlık: page.title (örn: "Temel")
+{% endcomment %}
+
+<div class="container main-content">
+    <h1 class="section-title">🏷️ Etiket: {{ page.title }} ({{ page.posts | size }})</h1>
+    <p class="hero-p">"{{ page.title }}" etiketiyle etiketlenmiş tüm gönderiler.</p>
+
+    <div class="notes-journal">
+        {% for post in page.posts %}
+            {% comment %} 
+                Bu, postlarınızı listeler. Postun içindeki etiketleri listelemez.
+                Post başlıkları (title) ve meta verileri (date) doğru gelmelidir.
+            {% endcomment %}
+            {% include post_list_item.html post=post %}
+        {% endfor %}
+    </div>
+</div>

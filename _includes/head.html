@@ -1,0 +1,50 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }} - {{ site.title }}</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<style>
+    /* CSS değişkenleri config dosyasından alınır */
+    :root {
+        --primary: {{ site.style_vars.primary }};
+        --primary-dark: {{ site.style_vars.primary-dark }};
+        --bg-dark: {{ site.style_vars.bg-dark }};
+        --bg-paper: {{ site.style_vars.bg-paper }};
+        --bg-card: {{ site.style_vars.bg-card }};
+        --text-light: {{ site.style_vars.text-light }};
+        --text-dark: {{ site.style_vars.text-dark }};
+        --accent: {{ site.style_vars.accent }};
+        --border: {{ site.style_vars.border }};
+    }
+</style>
+
+{% comment %} Sayfanın Kanonik URL'si {% endcomment %}
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+{% comment %} Postun özetini veya site açıklamasını kullan {% endcomment %}
+<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+
+{% comment %} Görsel öncelik sırası: 1. page.image, 2. site.image {% endcomment %}
+{% assign share_image = page.image | default: site.image %}
+
+{% if share_image %}
+    <meta property="og:image" content="{{ share_image.path | absolute_url }}">
+    <meta name="twitter:image" content="{{ share_image.path | absolute_url }}">
+{% endif %}
+
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="article">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ site.social_links.twitter }}">
+
+<link rel="icon" type="image/png" href="/assets/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+<link rel="shortcut icon" href="/assets/icons/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+<link rel="manifest" href="/assets/icons/site.webmanifest" />

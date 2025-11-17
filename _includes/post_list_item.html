@@ -1,0 +1,12 @@
+{% assign post = include.post %}
+<a href="{{ post.url | relative_url }}" class="journal-entry">
+    <div class="entry-date">{{ post.date | date: "%d %B %Y" | upcase }}</div>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.description_preview }}</p>
+    <div class="entry-footer">
+        {% for tag in post.tags %}
+        {% comment %} Etiketi gösterirken daima küçük harfe çevir {% endcomment %}
+        <span class="entry-tag">{{ tag | downcase }}</span>
+        {% endfor %}
+    </div>
+</a>

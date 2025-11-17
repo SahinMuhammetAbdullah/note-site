@@ -1,0 +1,51 @@
+---
+layout: default
+title: Etiketler
+permalink: /etiketler/
+---
+<div class="container main-content">
+    <h1 class="section-title">🏷️ ETİKET BULUTU</h1>
+    <p class="hero-p">Tüm etiketlere buradan ulaşabilir ve ilgili notları görebilirsiniz.</p>
+    <div class="tags-cloud sidebar-section">
+        <div class="tags"> 
+            {% assign all_tags = "" | split: "," %}
+            {% for post in site.posts %}
+                {% if post.tags %}
+                    {% for tag_name in post.tags %}
+                    {% assign t_norm = tag_name | downcase | strip %}
+                        {% unless all_tags contains t_norm %}
+                        {% assign all_tags = all_tags | push: t_norm %}
+                        {% endunless %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+
+            {% assign sorted_tags = all_tags | sort %}
+
+            {% for tag in sorted_tags %}
+                {% assign count = 0 %}
+                {% for p in site.posts %}
+                    {% if p.tags %}
+                    {% assign matched = false %}
+                        {% for p_tag in p.tags %}
+                        {% assign p_tag_lower = p_tag | downcase | strip %}
+                            {% if p_tag_lower == tag %}
+                            {% assign matched = true %}
+                            {% break %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if matched %}
+                        {% assign count = count | plus: 1 %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if count > 0 %}
+                <a href="{{ site.baseurl }}/etiket/{{ tag | slugify }}" class="tag-link">
+                    {{ tag | replace: "-", " " | capitalize }} ({{ count }})
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

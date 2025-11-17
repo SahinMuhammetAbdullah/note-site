@@ -1,0 +1,31 @@
+---
+layout: default
+title: Yazılım Dersleri
+---
+
+<div class="container">
+    <section class="hero" id="anasayfa">
+        <h1>YAZILIM DERSLERİ</h1>
+        <p>{{ site.description }}</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="kategoriler">
+        <h2 class="section-title">KATEGORİLER</h2>
+        {% include categories_sidebar.html %}
+    </section>
+
+    <section id="notlar">
+        <h2 class="section-title">SON YAZILAR</h2>
+        <div class="notes-journal">
+            {% for post in site.posts limit:4 %}
+                {% include post_list_item.html post=post %}
+            {% endfor %}
+        </div>
+        
+        <div class="btn-center">
+            <a href="{{ '/gunluk' | relative_url }}" class="btn-vintage">TÜM NOTLARA GÖZ AT</a>
+        </div>
+    </section>
+</div>

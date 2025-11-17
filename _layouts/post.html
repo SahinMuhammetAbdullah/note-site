@@ -1,0 +1,79 @@
+---
+layout: default
+---
+{% comment %} ... (Liquid Hesaplamalarınız buraya taşınır: word_count, read_time vb.) ... {% endcomment %}
+{% comment %} Okuma süresi hesaplama {% endcomment %}
+{% if page.read_time %}
+{% assign current_read_time = page.read_time %}
+{% else %}
+{% assign word_count = page.content | strip_html | number_of_words %}
+{% assign current_read_time = word_count | divided_by: 200.0 | ceil %}
+{% endif %}
+
+<div class="main-container-3-col">
+
+    <aside class="sidebar-left">
+        {% include sidebar_toc.html %}
+
+        {% comment %}
+        NOT: Yeni bir include dosyası oluşturacağız: _includes/sidebar_toc.html
+        {% endcomment %}
+    </aside>
+
+    <div class="note-content-wrapper">
+        <a href="{{ site.baseurl }}/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Notlara Geri Dön
+        </a>
+
+        <article class="note-article">
+            {% comment %} ... Header ve Meta Alanları Burada Kalır ... {% endcomment %}
+
+            <header class="note-header">
+                <h1 class="note-title">{{ page.title }}</h1>
+                {% if page.subtitle %}
+                <p class="post-subtitle">{{ page.subtitle }}</p>
+                {% endif %}
+                {% assign clean_excerpt = page.excerpt | strip_html %}
+                {% assign clean_excerpt = clean_excerpt | replace_first: '#','' | strip %}
+                {% if clean_excerpt != "" %}
+                <p class="post-excerpt">{{ clean_excerpt }}</p>
+                {% endif %}
+            </header>
+            <div class="note-meta">
+                <span class="note-date">
+                    <i class="fas fa-calendar"></i> {{ page.date | date: "%d %B %Y" | upcase }}
+                </span>
+                <span class="note-info">
+                    <i class="fas fa-clock"></i> {{ current_read_time }} dk
+                </span>
+                <span class="note-info">
+                    <i class="fas fa-user"></i> {{ site.author_info.name }}
+                </span>
+            </div>
+
+            <div class="note-tags">
+                <span class="tag tag-category">
+                    {% if post_category %}<i class="{{ post_category.icon }}"></i>{% else %}<i
+                        class="fas fa-code"></i>{% endif %}
+                    {{ page.categories | first }}
+                </span>
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            <div class="note-content">
+                {{ content }}
+            </div>
+
+            {% include post_navigation.html %}
+        </article>
+    </div>
+
+    <aside class="sidebar-right">
+        {% include sidebar_info.html %}
+
+        {% comment %}
+        NOT: Yeni bir include dosyası oluşturacağız: _includes/sidebar_info.html
+        {% endcomment %}
+    </aside>
+</div>

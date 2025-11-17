@@ -1,0 +1,1979 @@
+/*
+    JEKYLL NOTES PAGES - MAIN CSS (ONE FILE)
+    Tüm tema, layout, bileşen ve dinamik sayfa stilleri bu dosyada toplanmıştır.
+*/
+
+:root {
+    /* Bu değişkenler _includes/head.html içinde Liquid ile doldurulur. */
+    /* Örnek varsayılan değerler: */
+    --primary: #d4a578; /* Altın kahve */
+    --primary-dark: #b3865b;
+    --accent: #a58e6e; /* Hafif soluk kahve */
+    --text-light: #e8dcc8; /* Açık krem */
+    --text-dark: #3a3227; /* Koyu kahve metin */
+    --bg-dark: #1f1a15; /* Koyu arka plan */
+    --bg-card: #2c2416; /* Koyu kart arka planı */
+    --bg-paper: #fffefb; /* Kağıt benzeri açık arka plan */
+    --border: #5a4b3f; /* Koyu kahve kenarlık */
+    --border-color: #4a3f2f; /* Biraz daha koyu kenarlık */
+    --text-muted: #bbb; /* Daha soluk metin */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* HTML ve body'nin tüm viewport'u kaplamasını sağlar */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.8;
+    color: var(--text-light);
+    background: var(--bg-dark);
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .1) 2px, rgba(0, 0, 0, .1) 4px);
+}
+
+main {
+    flex: 1 0 auto; /* Main içeriğin esnemesini sağlar ve footer'ı aşağı iter */
+}
+
+/* Container & Layouts */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(180deg, #1a1410 0%, #2c2416 100%);
+    border-bottom: 3px double var(--border);
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.logo {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-menu a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1rem;
+    position: relative;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 0.7rem 2.5rem 0.7rem 1.2rem;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    width: 280px;
+    font-size: 0.95rem;
+    background: rgba(61, 51, 38, 0.6);
+    color: var(--text-light);
+    font-family: 'Courier Prime', monospace;
+}
+
+.search-box input::placeholder {
+    color: var(--accent);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(61, 51, 38, 0.9);
+}
+
+.search-box i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 5rem 0 4rem;
+    position: relative;
+}
+
+.hero::before {
+    content: '📖';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    opacity: 0.3;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 300;
+}
+
+.divider {
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin: 3rem auto;
+}
+
+/* Section Titles (Genel) */
+.section-title {
+    font-size: 2.2rem;
+    margin: 3rem 0 2rem 0;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary);
+    margin: 1rem auto;
+}
+
+/* Categories Sidebar */
+.categories-sidebar {
+    background: var(--bg-card);
+    border: 3px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.category-item {
+    background: rgba(44, 36, 22, 0.6);
+    border-left: 4px solid var(--primary);
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.category-item:hover {
+    background: rgba(139, 111, 71, 0.3);
+    border-left-width: 8px;
+    transform: translateX(5px);
+}
+
+.category-item i {
+    font-size: 1.8rem;
+    color: var(--primary);
+    width: 40px;
+    text-align: center;
+}
+
+.category-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+.category-info .count {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-family: 'Courier Prime', monospace;
+}
+
+/* Notes as Journal Entries (Ana Sayfa Listesi) */
+.notes-journal {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.journal-entry {
+    background: var(--bg-paper);
+    color: var(--text-dark);
+    border: 1px solid #d4c4b0;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: all 0.3s;
+    cursor: pointer;
+    background-image: repeating-linear-gradient(transparent, transparent 31px, #e8dcc8 31px, #e8dcc8 32px);
+    text-decoration: none;
+}
+
+.journal-entry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 2px;
+    height: 100%;
+    background: #f4c4a5;
+}
+
+.journal-entry:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.entry-date {
+    position: absolute;
+    top: 2rem;
+    left: -10px;
+    background: var(--bg-card);
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--border);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.journal-entry h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-left: 50px;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.journal-entry p {
+    color: #4a3f2f;
+    font-size: 1rem;
+    line-height: 2;
+    margin-bottom: 1.5rem;
+    margin-left: 50px;
+}
+
+.entry-footer {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: 50px;
+    flex-wrap: wrap;
+}
+
+.entry-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-dark);
+    color: var(--primary);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: 'Courier Prime', monospace;
+}
+
+.entry-tag {
+    background: var(--accent);
+    color: var(--text-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: 'Courier Prime', monospace;
+}
+
+/* Button */
+.btn-vintage {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: var(--bg-card);
+    color: var(--primary);
+    text-decoration: none;
+    border: 3px solid var(--primary);
+    border-radius: 4px;
+    transition: all 0.3s;
+    font-weight: 700;
+    font-family: 'Courier Prime', monospace;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-vintage:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.btn-center {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(180deg, #2c2416 0%, #1a1410 100%);
+    padding: 3rem 0;
+    margin-top: 5rem;
+    border-top: 3px double var(--border);
+    flex-shrink: 0; /* Footer'ın küçülmesini engeller */
+}
+
+.footer .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer p {
+    color: var(--accent);
+    font-family: 'Courier Prime', monospace;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--accent);
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* TEK GÖNDERİ SAYFASI STİLLERİ */
+
+.back-btn {
+    background: var(--bg-card);
+    color: var(--primary);
+    border: 2px solid var(--border);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    transform: translateX(-5px);
+}
+
+/* Article (Makale İçeriği) */
+.note-article {
+    background: var(--bg-paper);
+    color: var(--text-dark);
+    padding: 4rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid #d4c4b0;
+}
+
+.note-header {
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+}
+
+.note-title {
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+/* Meta Data */
+.note-date, .note-info {
+    display: inline-block;
+    background: var(--bg-dark);
+    color: var(--primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--border);
+    margin-right: 0.5rem;
+}
+
+.note-tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.tag {
+    background: var(--accent);
+    color: var(--text-light);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: 'Courier Prime', monospace;
+}
+
+/* İçerik Temelleri */
+.note-content {
+    font-size: 1.1rem;
+    line-height: 2;
+}
+
+.note-content h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+.note-content h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.note-content p {
+    margin-bottom: 1.5rem;
+    color: #4a3f2f;
+}
+
+.note-content ul,
+.note-content ol {
+    margin: 1.5rem 0 1.5rem 2rem;
+    line-height: 2;
+}
+
+.note-content li {
+    margin-bottom: 0.8rem;
+    color: #4a3f2f;
+}
+
+.note-content strong {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+/* Metin İçi Kod */
+.note-content code {
+    /* Görünürlüğü ve akışı zorla (Normal metin akışında kalır) */
+    display: inline;
+    visibility: visible;
+
+    font-family: 'Courier Prime', monospace;
+    background: rgba(139, 111, 71, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    border: 1px solid rgba(139, 111, 71, 0.3);
+    color: var(--accent);
+    cursor: copy; /* Tıklanabilir olduğunu göster */
+
+    /* Fazlalıkları sıfırla */
+    margin: 0;
+    line-height: normal;
+}
+
+/* --------------------------------------------------------------------------
+   ADMONITIONS (UYARI BLOKLARI) - KOYU TEMA / İKON TEMİZLİĞİ
+   -------------------------------------------------------------------------- */
+
+/* Temel Ayarlar: Koyu Tema Kontrastı */
+.note-content blockquote {
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-left: 6px solid;
+    background: var(--bg-card); /* KOYU ARKA PLAN */
+}
+
+/* Kutu İçindeki Tüm Metin (İçerik) Stili */
+.note-content blockquote > p {
+    margin-top: 1rem; /* Başlık ile metin arasına boşluk ekler */
+    margin-bottom: 0;
+    color: var(--text-light); /* Metin rengi BEYAZ/AÇIK olur */
+}
+
+/* Başlık Çubuğu Stili (İkon ve Kutu Adı) */
+.note-content blockquote strong:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Başlık altı çizgisi */
+}
+.note-content blockquote.admonition-data-quote {
+    --color: #fff;
+    border-left-color: var(--color);
+}
+.note-content blockquote.admonition-data-quote strong:first-child {
+    color: var(--color);
+}
+
+/* İkon Stili */
+.note-content blockquote strong:first-child i {
+    font-size: 1.3rem;
+    width: 25px; /* İkonun sabit durmasını sağlar */
+    text-align: center;
+}
+
+/* 1. KIRMIZI TEMİZ: DİKKAT! (Kırmızı) */
+.note-content blockquote.admonition-warning {
+    --color: #ff5e5e;
+    border-left-color: var(--color);
+}
+.note-content blockquote.admonition-warning strong:first-child {
+    color: var(--color);
+}
+
+/* 2. YEŞİL TEMİZ: İPUCU! (Yeşil) */
+.note-content blockquote.admonition-tip {
+    --color: #38c172;
+    border-left-color: var(--color);
+}
+.note-content blockquote.admonition-tip strong:first-child {
+    color: var(--color);
+}
+
+/* 3. MAVİ TEMİZ: BİLGİ! (Mavi) */
+.note-content blockquote.admonition-bilgi {
+    --color: #3490dc;
+    border-left-color: var(--color);
+}
+.note-content blockquote.admonition-bilgi strong:first-child {
+    color: var(--color);
+}
+
+/* 4. SARI TEMİZ: ÖNEMLİ! (Amber) */
+.note-content blockquote.admonition-onemli {
+    --color: #f6993f;
+    border-left-color: var(--color);
+}
+.note-content blockquote.admonition-onemli strong:first-child {
+    color: var(--color);
+}
+
+/* --------------------------------------------------------------------------
+   PLAINTEXT BAŞLIKLARINI VE GEREKSİZ BUTONLARI GİZLEME
+   -------------------------------------------------------------------------- */
+
+/* 1. Hatalı Plaintext Kutusunun Başlıklarını Gizle */
+/* Rouge/Kramdown tarafından eklenen başlık çubuklarını kesin olarak yok say */
+.highlighter-rouge.language-plaintext::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* 2. Statik Başlık Elementlerini Gizle (Farklı tarayıcılarda farklı olabilir) */
+.highlighter-rouge.language-plaintext figcaption,
+.highlighter-rouge.language-plaintext .highlight > span {
+    display: none !important;
+}
+
+/* 3. Plaintext Kutusunun İçindeki Gömülü Kopyala Butonunu Gizle */
+/* Metin akışına karışan, JS ile eklenmeyen butonları gizler */
+.highlighter-rouge.language-plaintext .copy-btn {
+    display: none !important;
+}
+
+/* 4. Metin elementlerini zorla akışa geri getirme (Önceki çözümden) */
+.highlighter-rouge.language-plaintext {
+    /* Bu, metin akışını bozan kutunun kendisini görsel olarak sıfırlar */
+    display: inline !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+/* Ancak, metin akışına gömülü olan inline <code> etiketini görünür tutarız */
+
+/* --------------------------------------------------------------------------
+   DİNAMİK KATEGORİ LİSTESİ STİLLERİ
+   -------------------------------------------------------------------------- */
+
+.category-group {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color); /* Grubu görsel olarak ayırır */
+    border-radius: 8px;
+    background: var(--bg-card); /* Koyu kart arka planı */
+}
+
+.category-main {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: var(--text-light); /* Metin rengi koyu arka planda açık olmalı */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-main i {
+    font-size: 1.5rem;
+    color: var(--accent); /* Ana renk vurgusu */
+    margin-right: 1rem;
+}
+
+.category-main h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.category-main .count {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Alt Kategoriler (Hiyerarşi) */
+.sub-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-category-item a {
+    display: block;
+    padding: 0.75rem 1rem 0.75rem 3.5rem; /* Ana kategori ikonu kadar boşluk */
+    text-decoration: none;
+    color: var(--text-muted); /* Daha yumuşak metin rengi */
+    transition: background 0.2s;
+}
+
+.sub-category-item a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+}
+
+.sub-category-item a i {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-right: 0.5rem;
+}
+
+.sub-category-item .sub-count {
+    float: right;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   KATEGORİ SAYFASI İÇİ HİYERARŞİ STİLLERİ
+   -------------------------------------------------------------------------- */
+
+.category-post-list {
+    padding: 0 1rem 1rem 1rem; /* Dış liste padding'i */
+    list-style: none;
+    margin: 0;
+}
+
+.category-sub-group {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    border: 1px solid var(--accent); /* Alt grubu görsel olarak ayırır */
+    border-radius: 4px;
+    background: rgba(139, 111, 71, 0.05); /* Çok hafif arka plan */
+}
+
+.sub-category-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border);
+}
+
+.sub-category-name i {
+    margin-right: 0.5rem;
+}
+
+.sub-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.sub-post-item a {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.sub-post-date {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   HAKKIMDA SAYFASI (DEFTER GÖRÜNÜMÜ)
+   -------------------------------------------------------------------------- */
+
+.notebook-page-wrapper {
+    position: relative;
+    margin: 3rem auto;
+    max-width: 800px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    background-color: #e6e0d4; /* DIŞ KAĞIT: Daha sarımsı ton */
+    padding: 20px;
+    overflow: hidden;
+}
+
+.notebook-page {
+    position: relative;
+    padding: 1rem 2rem 1rem 3rem;
+    background-color: #fffffa; /* İÇ KAĞIT: Yumuşak beyaz/krem */
+    border: 1px solid #d4c4b0; /* Yumuşak kenarlık */
+    border-radius: 4px;
+    min-height: 400px;
+}
+
+/* Kırmızı sol kenar çizgisi (daha az belirgin) */
+.notebook-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2.5rem;
+    width: 2px;
+    height: 100%;
+    background-color: #c90000; /* Ana tema rengine yakın yumuşak kahve tonu */
+    opacity: 0.4; /* Opaklığı azaltıldı */
+}
+
+/* Yatay defter çizgileri (daha az belirgin) */
+.notebook-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent,
+            transparent 28px,
+            #d4c4b0 29px, /* Çizgi rengi: Daha açık ve yumuşak kahve */
+            #d4c4b0 30px
+        );
+    background-size: 100% 30px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.7; /* Çizgi opaklığı azaltıldı */
+}
+
+.notebook-page .note-content {
+    position: relative;
+    z-index: 2;
+    line-height: 30px;
+    padding-bottom: 20px;
+}
+
+/* Sosyal linklerin hizalamasını düzelt (defter görünümü için) */
+.notebook-page .social-links {
+    margin-top: 2rem !important;
+    justify-content: flex-start !important;
+    gap: 1.5rem !important;
+}
+
+/* Başlık ve paragraf stillerini ayarla (isteğe bağlı) */
+.notebook-page .note-content p {
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.notebook-page .note-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   DİNAMİK KOD BLOKLARI STİLİ (HIGHLIGHTER ROUGE)
+   -------------------------------------------------------------------------- */
+
+.highlighter-rouge {
+    /* Dış Kapsayıcı: Gölge, Kenarlık, Yuvarlak Köşeler */
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden; /* İçeriğin köşeleri aşmamasını sağlar */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--border);
+    position: relative;
+    background: var(--bg-dark); /* Varsayılan koyu arka plan */
+}
+
+/* Başlık Çubuğu: Dil Adını Gösterir (JS'in eklediği data-lang niteliği kullanılır) */
+.highlighter-rouge::before {
+    content: attr(data-lang); /* JS tarafından atanan dil adını alır */
+    display: block;
+    background: rgba(44, 36, 22, 0.8); /* Başlık çubuğu arka planı */
+    padding: 0.8rem 1.5rem;
+    color: var(--primary); /* Başlık metin rengi */
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border); /* Alt kenarlık */
+}
+
+/* Kopyalama Butonu Stili */
+.copy-btn {
+    position: absolute;
+    top: 0.5rem; /* Başlık çubuğunun dikey ortasına yakın */
+    right: 1rem; /* Sağdan boşluk */
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-light);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    z-index: 10; /* Diğer elementlerin üzerinde olmasını sağlar */
+}
+
+.copy-btn:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    border-color: var(--primary);
+}
+
+/* Kod içeriği (pre ve code etiketleri) */
+.highlight pre {
+    padding: 1.5rem;
+    margin: 0; /* Tarayıcı varsayılan margin'i sıfırlar */
+    overflow-x: auto; /* Yatay kaydırma çubuğu gerekiyorsa */
+    background: none; /* Arka planı dış kapsayıcıdan alır */
+}
+
+.highlight code {
+    font-family: 'Courier Prime', monospace; /* Monospace yazı tipi */
+    color: #e8dcc8; /* Açık terminal metin rengi */
+    font-size: 0.95rem;
+    line-height: 1.8; /* Satır aralığı */
+}
+
+/* Dil Bazlı Özelleştirme (Örn: Ruby, Python için farklı arka plan) */
+.highlighter-rouge[data-lang="Ruby"] pre {
+    background: #1a1a1a;
+}
+.highlighter-rouge[data-lang="Python"] pre {
+    background: #252e33;
+}
+
+/* --------------------------------------------------------------------------
+   ROUGE SYNTAX HIGHLIGHTING TEMASI (Renklendirme)
+   -------------------------------------------------------------------------- */
+.highlight pre [class*="s"],   /* Stringler (s, s1, s2, sc vb.) */
+.highlight pre [class*="n"],   /* İsimler (n, nb, nf, nv vb.) */
+.highlight pre [class*="m"],   /* Sayılar */
+.highlight pre .k,            /* Anahtar kelimeler */
+.highlight pre .o,            /* Operatörler */
+.highlight pre .p,            /* Noktalama işaretleri */
+.highlight pre .c,            /* Yorumlar */
+.highlight pre .w             /* Boşluklar */
+{
+    background-color: transparent !important; /* Tüm arka plan vurgularını sıfırla */
+    box-shadow: none !important;
+}
+
+/* Yorumlar: Yorum satırının tamamını kapsayan bir arka planı varsa kaldır */
+.highlight .c { background-color: transparent !important; }
+.highlight .cm { background-color: transparent !important; }
+.highlight .c1 { background-color: transparent !important; }
+
+/* Vurgulanmış satırların rengi hafif kalabilir (isteğe bağlı) */
+.highlight .hll { background-color: rgba(255, 255, 204, 0.1); }
+.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #888888 }
+.highlight .err { color: #f67280; background-color: #aa0000 }
+.highlight .k { color: #ff8c00; font-weight: bold }
+.highlight .o { color: #66ccff }
+.highlight .p { color: #dddddd }
+.highlight .cm { color: #888888 }
+.highlight .cp { color: #ff8c00 }
+.highlight .c1 { color: #888888 }
+.highlight .cs { color: #cc0000; font-weight: bold }
+.highlight .gd { color: #000000; background-color: #ffdddd }
+.highlight .ge { font-style: italic }
+.highlight .gr { color: #ff0000 }
+.highlight .gh { color: #000080; font-weight: bold }
+.highlight .gi { color: #000000; background-color: #ddffdd }
+.highlight .go { color: #888888 }
+.highlight .gp { color: #555555 }
+.highlight .gs { font-weight: bold }
+.highlight .gt { color: #ff0000 }
+.highlight .gu { color: #800080; font-weight: bold }
+.highlight .kc { color: #ff8c00; font-weight: bold }
+.highlight .kd { color: #ff8c00; font-weight: bold }
+.highlight .kn { color: #ff8c00; font-weight: bold }
+.highlight .kp { color: #ff8c00 }
+.highlight .kr { color: #ff8c00; font-weight: bold }
+.highlight .kt { color: #3cb371; font-weight: bold }
+.highlight .m { color: #66ccff }
+.highlight .s { color: #ffd700 }
+.highlight .na { color: #7fffd4 }
+.highlight .nb { color: #66ccff }
+.highlight .nc { color: #7fffd4; font-weight: bold }
+.highlight .no { color: #ff8c00 }
+.highlight .nd { color: #7fffd4 }
+.highlight .ni { color: #ff8c00 }
+.highlight .ne { color: #cc0000; font-weight: bold }
+.highlight .nf { color: #7fffd4 }
+.highlight .nl { color: #7fffd4 }
+.highlight .nn { color: #7fffd4 }
+.highlight .nt { color: #66ccff; font-weight: bold }
+.highlight .nv { color: #66ccff }
+.highlight .sa { color: #ffd700 }
+.highlight .sb { color: #ffd700 }
+.highlight .sc { color: #ffd700 }
+.highlight .dl { color: #ffd700 }
+.highlight .sd { color: #ffd700 }
+.highlight .s2 { color: #ffd700 }
+.highlight .se { color: #ffd700 }
+.highlight .sh { color: #ffd700 }
+.highlight .si { color: #ffd700 }
+.highlight .sx { color: #ffd700 }
+.highlight .sr { color: #ffd700 }
+.highlight .s1 { color: #ffd700 }
+.highlight .ss { color: #ffd700 }
+.highlight .bp { color: #66ccff }
+.highlight .vc { color: #66ccff }
+.highlight .vg { color: #66ccff }
+.highlight .vi { color: #66ccff }
+.highlight .il { color: #66ccff }
+
+
+/* --------------------------------------------------------------------------
+   DİNAMİK SAYFA STİLLERİ ve RESPONSIVE KURALLAR
+   -------------------------------------------------------------------------- */
+
+/* Post Navigation (önceki cevaptan eklendi) */
+.note-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 3px double var(--accent);
+}
+
+.nav-note {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(139, 111, 71, 0.15);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.nav-note:hover {
+    background: rgba(139, 111, 71, 0.25);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.nav-note i {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.nav-note .nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-family: 'Courier Prime', monospace;
+}
+
+.nav-title {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.next-note {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.next-note .nav-content {
+    align-items: flex-end;
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 120px; /* Navbar'ın altından başlar */
+    height: fit-content;
+    padding: 0; /* İçerik padding'i section'larda olmalı */
+}
+
+/* Her Bir Widget/Bölüm (İçindekiler, Etiketler, Bilgiler) */
+.sidebar-section {
+    background: var(--bg-card); /* Koyu kart arka planı */
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Bölüm Başlıkları (İçindekiler, Etiketler, Not Bilgileri) */
+.sidebar-section h3 {
+    color: var(--primary); /* Ana tema rengi */
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-family: 'Courier Prime', monospace;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+}
+
+.sidebar-section h3 i {
+    font-size: 1.1rem;
+}
+
+/* İçindekiler (TOC) ve İlgili Notlar Listesi */
+/* --------------------------------------------------------------------------
+   DİNAMİK TOC (İÇİNDEKİLER) ESTETİK VE HİYERARŞİ DÜZENLEMESİ
+   -------------------------------------------------------------------------- */
+
+/* TOC Kök Listesi ve Tüm Alt Listeleri */
+#dynamic-toc-target ul {
+    list-style: none; /* Noktaları Kaldırır */
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.5; /* Satır aralığını ayarla */
+}
+
+/* Tüm liste elemanlarının temel stili */
+#dynamic-toc-target li {
+    margin-bottom: 0; /* Alt boşlukları kaldır */
+    position: relative;
+    list-style-type: none; /* Yine de emin olmak için kaldır */
+}
+
+/* Tüm seviyelerdeki linklerin stilini temizle ve blok yap */
+#dynamic-toc-target li a {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.5rem;
+    display: block; /* Tümüyle tıklanabilir alan */
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+/* 1. HİYERARŞİ DİKEY ÇİZGİSİ VE GİRİNTİ */
+
+/* Alt seviye listelerini ayarla (İç içe geçmiş UL'ler) */
+#dynamic-toc-target li ul {
+    /* HİYERARŞİ ÇİZGİSİ (Daha belirgin ve göze hoş gelen) */
+    border-left: 1px dashed rgba(212, 165, 116, 0.4); /* Kesikli çizgi yap */
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.75rem; /* Ana girinti */
+}
+
+/* Alt seviye linklerinin içeri kaydırılması */
+#dynamic-toc-target li ul li a {
+    padding-left: 0.75rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* 3. Seviyeden itibaren ekstra girinti ve solukluk */
+#dynamic-toc-target li ul li ul {
+    border-left: 1px dashed rgba(212, 165, 116, 0.2); /* Çizgiyi yumuşat */
+    padding-left: 0.5rem;
+}
+
+#dynamic-toc-target li ul li ul a {
+    padding-left: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* 2. HOVER VE VURGU STİLİ */
+#dynamic-toc-target li a:hover {
+    background: rgba(212, 165, 116, 0.2);
+    color: var(--primary);
+}
+
+/* 3. LİSTE İŞARETİ DEĞİŞİKLİĞİ (Yuvarlaklık) */
+/* Her linkin önüne küçük bir yuvarlak nokta ekler (CSS ile) */
+#dynamic-toc-target li a::before {
+    content: "•"; /* Veya '—' (tire) */
+    color: var(--accent);
+    display: inline-block;
+    width: 1em; /* Alan ayır */
+    margin-left: -1em; /* İçeri kaydır */
+    opacity: 0.7;
+}
+
+/* En üst seviye linkler için yuvarlaklığı kaldır (daha temiz görünüm) */
+#dynamic-toc-target .toc-root > li > a::before {
+    content: "";
+    width: 0;
+    margin-left: 0;
+}
+.toc-list,
+.related-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.toc-list li,
+.related-list li {
+    margin-bottom: 0.8rem;
+    list-style: none;
+}
+
+.toc-list a,
+.related-list a {
+    color: var(--text-light); /* Açık renkli link metni */
+    text-decoration: none;
+    transition: all 0.3s;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.toc-list a:hover,
+.related-list a:hover {
+    background: rgba(212, 165, 116, 0.2); /* Hafif vurgu */
+    color: var(--primary);
+    padding-left: 1rem; /* Hafif kaydırma efekti */
+}
+
+/* Etiket Bulutu Stili (İlgili Notlar İçindeki Etiketler) */
+.tags-cloud .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tags-cloud .tags a {
+    background: rgba(139, 111, 71, 0.3);
+    color: var(--text-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-family: 'Courier Prime', monospace;
+    transition: all 0.3s;
+}
+
+.tags-cloud .tags a:hover {
+    background: var(--accent);
+}
+
+/* Not Bilgileri Bölümü */
+.note-info-details p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.note-info-details strong {
+    color: var(--primary); /* Başlıkları vurgulamak için */
+    margin-right: 0.5rem;
+}
+
+/* Görüntüdeki küçük 'Etiketler' başlığı için (Eski bir widget adı olabilir) */
+/* --------------------------------------------------------------------------
+   3 SÜTUNLU ANA YAPI (Genişlik Artışı)
+   -------------------------------------------------------------------------- */
+
+.main-container-3-col {
+    /* MAKSİMUM GENİŞLİĞİ 1400px'ten 1600px'e çıkarıyoruz */
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    /* Yapı: [Sol TOC] [Makale] [Sağ Bilgi] */
+    /* Sütun oranlarını değiştiriyoruz: 1fr (200px) | 3fr (Makale Ağırlığı) | 1fr (250px) */
+    grid-template-columns: minmax(180px, 250px) 3fr minmax(200px, 300px);
+    gap: 4rem; /* Sütunlar arası boşluğu biraz artırarak nefes aldırıyoruz */
+}
+.sidebar-left,
+.sidebar-right {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    align-self: start;
+    z-index: 50;
+}
+/* -------------------------------------------------------------------------- */
+/* Mobil Uyum (1200px altındaki kuralı da güncelleyelim) */
+@media (max-width: 1200px) {
+    .main-container-3-col {
+        /* Sol TOC'yi gizleyerek makaleye alan açmıştık, bu kural aynı kalır. */
+        grid-template-columns: 1fr minmax(200px, 280px);
+        gap: 2rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ÖZEL ALINTI (QUOTE BLOCK) STİLİ
+   -------------------------------------------------------------------------- */
+
+/* Alıntı kutusunu hedefle (QUOTE anahtar kelimesiyle başlayan) */
+.note-content blockquote:has(strong:first-child:is([data-quote="true"])) {
+    border-left: 4px solid var(--primary); /* Temel renk kenarlığı */
+    background: rgba(244, 235, 224, 1); /* Çok açık kağıt benzeri arka plan */
+    color: var(--text-dark); /* Koyu metin */
+    font-style: italic; /* İtalik metin */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* İkonu ve Tırnak İşaretini Ekleyen CSS */
+.note-content blockquote:has(strong:first-child:is([data-quote="true"])) > p::before {
+    /* Font Awesome Tırnak İşareti */
+    content: "\f10d";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
+
+/* Başlık metnini (QUOTE) gizle (Sadece ikon ve içerik kalsın) */
+.note-content blockquote:has(strong:first-child:is([data-quote="true"])) strong:first-child {
+    display: none;
+}
+/* -------------------------------------------------------------------------- */
+.sidebar-section h4 {
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+/* Dinamik Sayfalar (Arşiv, Etiketler) */
+.archive-year-title {
+    font-size: 2rem;
+    color: var(--primary);
+    margin: 3rem 0 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+/* Etiketler Sayfası */
+.tags-cloud {
+    padding: 2rem;
+    text-align: center;
+    background: var(--bg-card); /* Arka plan rengi ekleyelim */
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tags-cloud .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Etiketleri ortalar */
+    gap: 0.75rem;
+    list-style: none; /* List stilini kaldırır */
+    padding: 0;
+    margin: 0;
+}
+
+/* Her Bir Etiket Bağlantısının Stili (Önceki Şık Görünüm) */
+.tag-link {
+    background: var(--accent); /* Koyu Arka Plan */
+    color: var(--text-light) !important; /* Beyaz Yazı */
+    padding: 0.5rem 1rem;
+    border-radius: 20px; /* Yuvarlak Kenarlar */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: 'Courier Prime', monospace;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block; /* Margin ve padding için */
+}
+
+.tag-link:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+/* --------------------------------------------------------------------------
+   DİNAMİK SAYFA STİLLERİ (ARŞİV, ETİKET, KATEGORİ)
+   -------------------------------------------------------------------------- */
+
+/* Genel Arşiv ve Etiket Bölüm Kapsayıcısı */
+.category-dropdown,
+.tag-section {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Arşiv Sayfası Stil Kuralı */
+.archive-year-title {
+    font-size: 2rem;
+    color: var(--primary);
+    margin: 3rem 0 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+.archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4rem 0;
+}
+
+.archive-item {
+    padding: 0.8rem 0;
+    border-bottom: 1px dotted var(--border);
+}
+
+.archive-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.archive-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.archive-date {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* Kategori Sayfası (Dropdown Stili) */
+.category-summary {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+.category-summary i {
+    margin-right: 0.8rem;
+}
+.category-summary .category-count {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-left: 1rem;
+}
+
+/* Dropdown Simgesi */
+.category-summary::before {
+    content: "▼";
+    margin-right: 1rem;
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+.category-dropdown[open] .category-summary::before {
+    content: "▲";
+}
+
+.category-post-list {
+    list-style: none;
+    padding: 0 1.5rem 1.5rem;
+    margin: 0;
+}
+
+.category-post-item {
+    border-top: 1px solid var(--border);
+}
+
+.category-post-link {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.category-post-link:hover .post-title-small {
+    color: var(--primary);
+}
+
+.post-date-small {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+/* Etiketler Sayfası Listeleme Stili */
+
+/* Her Bir Etiket Bölümünün Başlığı */
+.tag-section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tag-section .section-title-small {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    text-align: left;
+}
+
+.tag-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tag-post-item {
+    padding: 0.8rem 0;
+    border-bottom: 1px dotted var(--border);
+}
+
+.tag-post-link {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.tag-post-link:hover .post-title-small {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.back-to-top {
+    display: block;
+    margin-top: 2rem;
+    width: fit-content;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* RESPONSIVE DÜZENLEMELER */
+
+/* Genel tablet ve büyük mobil cihazlar için */
+@media (max-width: 1024px) {
+    .main-container {
+        grid-template-columns: 1fr; /* Sidebar'ı ana içeriğin altına alır */
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .main-container-3-col {
+        grid-template-columns: 1fr; /* Tüm sütunları tek sütuna indirir */
+        gap: 2rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .sidebar {
+        position: static; /* Sticky özelliğini kaldırır */
+        margin-top: 2rem; /* Ana içerikten ayırır */
+    }
+
+    .sidebar-left,
+    .sidebar-right {
+        position: static;
+        margin-top: 2rem;
+    }
+
+    .note-article {
+        padding: 2.5rem;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: space-around; /* Menü öğelerini eşit dağıtır */
+        flex-wrap: wrap; /* Gerekirse alt satıra geçmelerini sağlar */
+        gap: 1rem;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+    .search-box input {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .categories-sidebar .category-list {
+        grid-template-columns: 1fr; /* Kategorileri tek sütun yapar */
+    }
+}
+
+/* Küçük tablet ve büyük telefonlar için */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 0;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-menu {
+        display: none; /* Navbar menüsünü gizleyebilir veya hamburger menüye çevrilebilir */
+    }
+
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin: 2.5rem 0 1.5rem;
+    }
+
+    .note-article {
+        padding: 1.5rem;
+    }
+
+    .note-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .note-content {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .note-content h2 {
+        font-size: 1.6rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .note-content h3 {
+        font-size: 1.3rem;
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .journal-entry {
+        padding: 1.5rem;
+    }
+
+    .journal-entry::before {
+        left: 30px; /* Kırmızı çizginin pozisyonunu ayarla */
+    }
+
+    .journal-entry h3,
+    .journal-entry p,
+    .entry-footer {
+        margin-left: 20px; /* İçerik sol boşluğunu ayarla */
+    }
+
+    .entry-date {
+        top: 1rem;
+        left: -5px;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .note-navigation {
+        grid-template-columns: 1fr; /* Navigasyon öğelerini tek sütuna indirir */
+        gap: 1rem;
+    }
+
+    .nav-note {
+        padding: 1rem;
+    }
+
+    .footer .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .notebook-page-wrapper {
+        margin: 2rem 1rem;
+        padding: 10px;
+    }
+
+    .notebook-page {
+        padding: 0.8rem 1rem 0.8rem 1.8rem;
+    }
+
+    .notebook-page::before {
+        left: 1.5rem; /* Kırmızı çizgiyi küçült */
+    }
+
+    .highlighter-rouge {
+        margin: 1.5rem 0;
+    }
+
+    .highlighter-rouge::before {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .copy-btn {
+        top: 0.4rem;
+        right: 0.8rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .highlight pre {
+        padding: 1rem;
+    }
+
+    .highlight code {
+        font-size: 0.85rem;
+    }
+
+    .archive-year-title,
+    .tag-section .section-title-small {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+    }
+}
+
+/* Küçük telefonlar için */
+@media (max-width: 480px) {
+    .container,
+    .navbar .container,
+    .footer .container {
+        padding: 0 1rem;
+    }
+
+    .main-container,
+    .main-container-3-col {
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        gap: 0.5rem;
+    }
+
+    .logo i {
+        font-size: 1.2rem;
+    }
+
+    .search-box input {
+        padding: 0.6rem 2rem 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .search-box i {
+        right: 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .divider {
+        width: 150px;
+        margin: 2rem auto;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin: 2rem 0 1.2rem;
+    }
+
+    .note-article {
+        padding: 1rem;
+    }
+
+    .note-title {
+        font-size: 1.6rem;
+    }
+
+    .note-date, .note-info {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .note-tags .tag {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    .note-content ul,
+    .note-content ol {
+        margin: 1rem 0 1rem 1.5rem;
+    }
+
+    .journal-entry {
+        padding: 1rem;
+    }
+
+    .journal-entry::before {
+        left: 20px;
+    }
+
+    .journal-entry h3 {
+        font-size: 1.5rem;
+        margin-left: 10px;
+    }
+
+    .journal-entry p {
+        font-size: 0.9rem;
+        margin-left: 10px;
+    }
+
+    .entry-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        margin-left: 10px;
+    }
+
+    .btn-vintage {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links a {
+        font-size: 1.3rem;
+    }
+
+    .back-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .note-navigation .nav-note {
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+
+    .note-navigation .nav-note i {
+        font-size: 1.2rem;
+    }
+
+    .nav-label {
+        font-size: 0.75rem;
+    }
+
+    .nav-title {
+        font-size: 0.9rem;
+    }
+
+    .category-summary {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .category-summary .category-count {
+        font-size: 0.9rem;
+    }
+
+    .category-post-list {
+        padding: 0 1rem 1rem;
+    }
+
+    .tag-section {
+        padding: 1.5rem;
+    }
+
+    .tags-cloud .tags a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}

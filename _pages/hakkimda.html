@@ -1,0 +1,25 @@
+---
+layout: default
+title: Hakkımda
+permalink: /hakkimda/
+---
+<div class="container main-content">
+    <h2 class="section-title"><i class="fas fa-user-alt"></i> HAKKIMDA</h2>
+
+    <div class="notebook-page-wrapper">
+        <div class="notebook-page">
+            <div class="note-content">
+                <p>Merhaba, ben {{ site.author_info.name }}!</p>
+                <p>Bu site, yazılım öğrenme yolculuğumda edindiğim bilgileri, notlarımı ve deneyimlerimi paylaştığım kişisel bir platformdur. Amacım, öğrendiklerimi düzenli bir şekilde kaydetmek ve belki de bu yolda olan diğer insanlara küçük de olsa bir katkı sağlamaktır.</p>
+                <p>Genellikle Python, JavaScript, React gibi teknolojilerle ilgileniyorum. Veri bilimi, web geliştirme ve otomasyon konularında kendimi geliştirmeye çalışıyorum. Her yeni öğrendiğim şeyi burada not alarak, hem kendi bilgilerimi pekiştiriyor hem de gelecekte başvurabileceğim bir kaynak oluşturuyorum.</p>
+                <p>Eğer benimle iletişime geçmek istersen, aşağıdaki sosyal medya linklerimden ulaşabilirsin:</p>
+                <div class="social-links" style="margin-top: 2rem; font-size: 1.8rem; justify-content: flex-start; gap: 2rem;">
+                    {% if site.social_links.github %}<a href="{{ site.social_links.github }}" target="_blank"><i class="fab fa-github"></i></a>{% endif %}
+                    {% if site.social_links.linkedin %}<a href="{{ site.social_links.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>{% endif %}
+                    {% if site.social_links.twitter %}<a href="{{ site.social_links.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>{% endif %}
+                </div>
+                <p style="margin-top: 2rem;">Keyifli okumalar dilerim!</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="sidebar-section">
+    <h3><i class="fas fa-book"></i> İlgili Notlar</h3>
+    <ul class="related-list">
+        {% for item in page.related_posts %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="sidebar-section tags-cloud">
+    <h3><i class="fas fa-tags"></i> Etiketler</h3>
+    <div class="tags">
+        {% for tag in page.tags %}
+        <a href="{{ site.baseurl }}/etiket/{{ tag | slugify }}" class="tag-link">{{ tag | downcase }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="sidebar-section">
+    <h3><i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+    {% comment %} Okuma süresi hesaplama {% endcomment %}
+    {% if page.read_time %}
+        {% assign current_read_time = page.read_time %}
+    {% else %}
+        {% assign word_count = page.content | strip_html | number_of_words %}
+        {% assign current_read_time = word_count | divided_by: 200.0 | ceil %}
+    {% endif %}
+
+    <div style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8;">
+        <p><strong>Yazar:</strong> {{ site.author_info.name }}</p>
+        <p><strong>Tarih:</strong> {{ page.date | date: "%d %B %Y" }}</p>
+        <p><strong>Kategori:</strong> {{ page.categories | first }}</p>
+        <p><strong>Okuma Süresi:</strong> {{ current_read_time }} dk</p>
+        <p><strong>Seviye:</strong> {{ page.level }}</p>
+    </div>
+</div>
