@@ -425,8 +425,6 @@ main {
     margin-top: 5rem;
     border-top: 3px double var(--border);
     flex-shrink: 0;
-    margin-top: auto; /* İçerik kısaysa bile en alta yapış */
-    width: 100%;
     /* Footer'ın küçülmesini engeller */
 }
 
