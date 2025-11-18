@@ -6,6 +6,7 @@ excerpt: "Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Mat
 date: 2025-11-17 13:00:00 +0300
 categories: [Sistem, Kılavuz]
 tags: [markdown, rehber, seo, yapilandirma]
+level: Talimatlar
 ---
 
 ## 1. Merkezi Yapılandırma ve Meta Veriler
