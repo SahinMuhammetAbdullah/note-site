@@ -2234,77 +2234,99 @@ main {
     text-align: center;
 }
 
-/* --------------------------------------------------------------------------
-   RESPONSIVE DÜZENLEME (GÜÇLENDİRİLMİŞ VE TEMİZLENMİŞ)
-   -------------------------------------------------------------------------- */
+/* --- RESPONSIVE MEDYA SORGULARI --- */
 
-/* 1. Viewport Meta Etiketi Kontrolü: Bu, CSS'te çözülmez, ancak kontrol edilmeli! */
-/* Lütfen _includes/head.html dosyanızda şunun olduğundan emin olun:
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-*/
-
-/* 2. TABLET VE ORTA EKRAN (Max-width: 1024px) */
+/* Tablet ve Altı (1024px ve altı) */
 @media (max-width: 1024px) {
 
-    /* Navbar/Hamburger Yönetimi */
-    .desktop-only,
-    .navbar .nav-menu,
-    .navbar .search-box {
-        display: none !important; 
-    }
-    
-    .hamburger-btn {
-        display: flex !important; /* Hamburger butonunu zorla göster */
+    /* Navbar Düzeni */
+    .desktop-only {
+        display: none !important;
+        /* Masaüstü elemanları gizle */
     }
 
-    /* Ana Layout Grid'den Flex'e Geçiş */
+    .hamburger-btn {
+        display: flex;
+        /* Hamburgeri göster */
+    }
+
+    .navbar .container {
+        justify-content: space-between;
+        /* Logo sol, Hamburger sağ */
+    }
+
+    /* Grid Sistemini Tek Sütuna Çevir (Footer Sorununu da Çözer) */
     .main-container,
     .main-container-3-col,
     .page-container {
-        display: flex !important;
+        display: flex;
+        /* Grid yerine Flex kullan */
         flex-direction: column;
-        
-        /* Padding'i makale ve sidebar'lara bırak, ana kapsayıcıyı serbest bırak */
+        /* Alt alta diz */
+        padding: 2rem 1.5rem;
+        gap: 3rem;
         max-width: 100%;
-        padding: 0; 
-        gap: 2rem;
     }
 
-    /* Sidebar Akışı (Sticky'yi devre dışı bırakıp içeriğin altına sırala) */
+    /* Sidebarları İçeriğin Altına Al */
+    .sidebar,
     .sidebar-left,
-    .sidebar-right,
-    .sidebar {
+    .sidebar-right {
         width: 100%;
-        position: static !important; /* Sticky'yi zorla kapat */
-        order: 2; /* İçeriğin altına gitsin */
+        position: static;
+        /* Sticky özelliğini kapat */
+        order: 2;
+        /* İçerikten sonra gelsin */
     }
-    
-    /* İçerik Alanı */
-    .note-content-wrapper {
-        width: 100%;
+
+    main,
+    .content-area {
         order: 1;
-        padding: 0 1.5rem; /* Yan boşlukları ekle */
+        /* İçerik en üstte */
+        width: 100%;
     }
 }
 
-/* 3. MOBİL TELEFONLAR (Max-width: 768px) */
+/* Mobil Telefonlar (768px ve altı) */
 @media (max-width: 768px) {
-    
-    /* Çerçeveli Makale İçeriğinin Yan Boşluklarını Kaldır (Tamamen köşeye yasla) */
-    .note-article {
-        padding: 1rem !important; /* Mobil iç boşluğu azalt */
+
+    /* Font boyutlarını dengele */
+    .hero h1 {
+        font-size: 2.2rem;
     }
 
-    /* Kod Blokları Taşma Düzeltmesi (Ekran Kenarlarına Yaslama) */
-    .highlighter-rouge {
-        /* Kod bloğunu tam ekran genişliğine yay */
-        margin-left: -1.5rem !important; 
-        margin-right: -1.5rem !important;
-        width: calc(100% + 3rem) !important; /* Kapsayıcı paddingini telafi et */
-        
-        /* Görsel temizlik */
-        border-radius: 0 !important;
-        border-left: none !important;
-        border-right: none !important;
+    .note-title {
+        font-size: 2rem;
     }
+
+    /* Kartların iç boşluğunu azalt */
+    .journal-entry,
+    .note-article {
+        padding: 1.5rem;
+    }
+
+    /* Tablo Taşmasını Engelle */
+    .note-content table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Kod Blokları Taşmasını Engelle */
+    .highlighter-rouge {
+        /* Ekran kenarlarına yaslamak isterseniz marginleri negatif verin */
+        margin-left: -1rem;
+        margin-right: -1rem;
+        width: calc(100% + 2rem);
+        border-radius: 0;
+        /* Kenar yuvarlaklığını kaldır */
+        border-left: none;
+        border-right: none;
+    }
+
+    .highlighter-rouge .highlight {
+        padding-bottom: 10px;
+        /* Scroll çubuğu için alan */
+    }
+
 }
