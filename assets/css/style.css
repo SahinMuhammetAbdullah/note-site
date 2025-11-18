@@ -58,15 +58,6 @@ main {
     /* Main içeriğin esnemesini sağlar ve footer'ı aşağı iter */
 }
 
-footer,
-.footer {
-    flex-shrink: 0;
-    /* Footer asla küçülmesin */
-    width: 100%;
-    margin-top: auto;
-    /* İçerik azsa bile en alta yapış */
-}
-
 /* Container & Layouts */
 .container {
     max-width: 1200px;
@@ -2175,31 +2166,38 @@ footer,
 
 /* 3. MOBİL MENÜ (Ekran Görüntüsündeki Sorunu Çözen Kısım) */
 .mobile-overlay {
-    position: fixed !important;
-    /* Ekrana çivile */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #1f1a15 !important;
-    /* Koyu arkaplan (kesin) */
-    z-index: 99999 !important;
-    /* Her şeyin üstünde */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    /* Başlangıç Animasyonu */
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 26, 21, 0.98); /* Koyu Tema Arkaplanı */
+    z-index: 9999;
+    
+    /* Başlangıçta Gizli */
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
-/* Menü Açıldığında */
+/* Kapatma Butonu (X) stili (Görselde kayıptı) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* Menü Aktif Olduğunda (JS Ekleyecek) */
 .mobile-overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 /* Menü Linkleri (Mavi rengi yok et) */
@@ -2226,24 +2224,6 @@ footer,
 .mobile-menu-links a:hover {
     color: #d4a578 !important;
     /* Hover rengi */
-}
-
-/* Kapatma Butonu */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: 2px solid #d4a578;
-    color: #d4a578;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Mobil Arama Kutusu */
@@ -2309,6 +2289,14 @@ footer,
         order: 1;
         /* İçerik en üstte */
         width: 100%;
+    }
+    .navbar .nav-menu,
+    .navbar .search-box {
+        display: none !important; 
+    }
+    
+    .hamburger-btn {
+        display: flex; /* Hamburger butonunu görünür yap */
     }
 }
 
