@@ -2234,99 +2234,77 @@ main {
     text-align: center;
 }
 
-/* --- RESPONSIVE MEDYA SORGULARI --- */
+/* --------------------------------------------------------------------------
+   RESPONSIVE DÜZENLEME (GÜÇLENDİRİLMİŞ VE TEMİZLENMİŞ)
+   -------------------------------------------------------------------------- */
 
-/* Tablet ve Altı (1024px ve altı) */
+/* 1. Viewport Meta Etiketi Kontrolü: Bu, CSS'te çözülmez, ancak kontrol edilmeli! */
+/* Lütfen _includes/head.html dosyanızda şunun olduğundan emin olun:
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+*/
+
+/* 2. TABLET VE ORTA EKRAN (Max-width: 1024px) */
 @media (max-width: 1024px) {
 
-    /* Navbar Düzeni */
-    .desktop-only {
-        display: none !important;
-        /* Masaüstü elemanları gizle */
+    /* Navbar/Hamburger Yönetimi */
+    .desktop-only,
+    .navbar .nav-menu,
+    .navbar .search-box {
+        display: none !important; 
     }
-
+    
     .hamburger-btn {
-        display: flex;
-        /* Hamburgeri göster */
+        display: flex !important; /* Hamburger butonunu zorla göster */
     }
 
-    .navbar .container {
-        justify-content: space-between;
-        /* Logo sol, Hamburger sağ */
-    }
-
-    /* Grid Sistemini Tek Sütuna Çevir (Footer Sorununu da Çözer) */
+    /* Ana Layout Grid'den Flex'e Geçiş */
     .main-container,
     .main-container-3-col,
     .page-container {
-        display: flex;
-        /* Grid yerine Flex kullan */
+        display: flex !important;
         flex-direction: column;
-        /* Alt alta diz */
-        padding: 2rem 1.5rem;
-        gap: 3rem;
+        
+        /* Padding'i makale ve sidebar'lara bırak, ana kapsayıcıyı serbest bırak */
         max-width: 100%;
+        padding: 0; 
+        gap: 2rem;
     }
 
-    /* Sidebarları İçeriğin Altına Al */
-    .sidebar,
+    /* Sidebar Akışı (Sticky'yi devre dışı bırakıp içeriğin altına sırala) */
     .sidebar-left,
-    .sidebar-right {
+    .sidebar-right,
+    .sidebar {
         width: 100%;
-        position: static;
-        /* Sticky özelliğini kapat */
-        order: 2;
-        /* İçerikten sonra gelsin */
+        position: static !important; /* Sticky'yi zorla kapat */
+        order: 2; /* İçeriğin altına gitsin */
     }
-
-    main,
-    .content-area {
-        order: 1;
-        /* İçerik en üstte */
+    
+    /* İçerik Alanı */
+    .note-content-wrapper {
         width: 100%;
+        order: 1;
+        padding: 0 1.5rem; /* Yan boşlukları ekle */
     }
 }
 
-/* Mobil Telefonlar (768px ve altı) */
+/* 3. MOBİL TELEFONLAR (Max-width: 768px) */
 @media (max-width: 768px) {
-
-    /* Font boyutlarını dengele */
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .note-title {
-        font-size: 2rem;
-    }
-
-    /* Kartların iç boşluğunu azalt */
-    .journal-entry,
+    
+    /* Çerçeveli Makale İçeriğinin Yan Boşluklarını Kaldır (Tamamen köşeye yasla) */
     .note-article {
-        padding: 1.5rem;
+        padding: 1rem !important; /* Mobil iç boşluğu azalt */
     }
 
-    /* Tablo Taşmasını Engelle */
-    .note-content table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    /* Kod Blokları Taşmasını Engelle */
+    /* Kod Blokları Taşma Düzeltmesi (Ekran Kenarlarına Yaslama) */
     .highlighter-rouge {
-        /* Ekran kenarlarına yaslamak isterseniz marginleri negatif verin */
-        margin-left: -1rem;
-        margin-right: -1rem;
-        width: calc(100% + 2rem);
-        border-radius: 0;
-        /* Kenar yuvarlaklığını kaldır */
-        border-left: none;
-        border-right: none;
+        /* Kod bloğunu tam ekran genişliğine yay */
+        margin-left: -1.5rem !important; 
+        margin-right: -1.5rem !important;
+        width: calc(100% + 3rem) !important; /* Kapsayıcı paddingini telafi et */
+        
+        /* Görsel temizlik */
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
     }
-
-    .highlighter-rouge .highlight {
-        padding-bottom: 10px;
-        /* Scroll çubuğu için alan */
-    }
-
 }
