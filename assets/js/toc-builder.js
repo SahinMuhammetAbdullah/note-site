@@ -80,4 +80,58 @@ document.addEventListener('DOMContentLoaded', function () {
             try { history.replaceState(null, null, '#' + id); } catch (err) { }
         });
     });
+    enableCollapsibleToc();
 });
+
+function enableCollapsibleToc() {
+    const mainContent = document.querySelector('.note-article .note-content');
+    const tocTarget = document.getElementById('dynamic-toc-target');
+    if (!mainContent || !tocTarget) return;
+
+    const observerOptions = {
+        // Başlıkların ekranın üst %15'lik kısmına girmesini bekler
+        rootMargin: '0px 0px -85% 0px',
+        threshold: 0
+    };
+
+    const allTocLinks = tocTarget.querySelectorAll('a');
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            const headingId = entry.target.id;
+            const tocLink = document.querySelector(`a[href="#${headingId}"]`);
+            if (!tocLink) return;
+
+            const listItem = tocLink.closest('li');
+
+            if (entry.isIntersecting) {
+                // 1. Yeni başlık ekrana girdi: Tüm alt/üst aktiflikleri temizle
+                allTocLinks.forEach(link => link.classList.remove('is-active'));
+                tocTarget.querySelectorAll('li').forEach(li => li.classList.remove('is-parent-active'));
+
+                // 2. Aktif linki işaretle
+                tocLink.classList.add('is-active');
+
+                // 3. Üst seviye listeleri aç (Collapsible Logic)
+                let parentList = listItem.closest('ul');
+                while (parentList && parentList.closest('li')) {
+                    parentList.closest('li').classList.add('is-parent-active');
+                    parentList = parentList.closest('li').closest('ul');
+                }
+            }
+        });
+
+        // Ekstra Mantık: En üstteki elemanı her zaman aktif tutmak için
+        if (window.scrollY < 100) {
+            tocTarget.querySelectorAll('li').forEach(li => li.classList.remove('is-parent-active'));
+            tocTarget.querySelector('li').classList.add('is-parent-active');
+        }
+    };
+
+    // Tüm başlıkları gözlemlemeye başla
+    const headings = mainContent.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    headings.forEach(heading => {
+        observer.observe(heading);
+    });
+}

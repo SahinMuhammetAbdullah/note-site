@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const codeBlocks = document.querySelectorAll('.highlighter-rouge');
 
     // 2. Metin İçi Kodları Hedefle (Tek tırnak ile yazılan küçük bloklar)
-    const inlineCodeElements = document.querySelectorAll('p code, li code, blockquote code');
+    const inlineCodeElements = document.querySelectorAll('p code, li code, blockquote code, td code, th code');
 
     // ===============================================
     // A. BÜYÜK KOD BLOKLARI İŞLEVİ (Kopyala Butonu Ekleme)
@@ -64,12 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
         codeEl.style.position = 'relative'; // Tooltip konumlandırması için gerekli
 
         codeEl.addEventListener('click', () => {
-            const textToCopy = codeEl.textContent.trim();
+            // Sadece code elementinin kendi metin içeriğini alıyoruz.
+            // Bu, çocuk elementlerin (yani tooltip'in kendisinin) metnini içermez.
+            const textToCopy = codeEl.firstChild.nodeValue ? codeEl.firstChild.nodeValue.trim() : codeEl.textContent.trim();
+
+            // Eğer codeEl içerisinde başka bir element varsa ve ilk çocuk text node değilse,
+            // daha güvenli bir yol bulmak gerekebilir. Ancak genellikle inline code
+            // sadece metin içerir. En kötü durumda textContent hala güvenli bir yedektir.
+
 
             navigator.clipboard.writeText(textToCopy).then(() => {
 
                 // --- Kopyalandı! Patlama Efekti (Tooltip) ---
-                const tooltip = document.createElement('span');
+                // Eğer zaten bir tooltip varsa onu kaldırmadan yeni bir tane oluşturmamak için kontrol
+                let tooltip = codeEl.querySelector('.copy-tooltip');
+                if (tooltip) {
+                    tooltip.remove(); // Mevcut tooltip'i kaldır
+                }
+
+                tooltip = document.createElement('span');
                 tooltip.textContent = 'KOPYALANDI!';
                 tooltip.className = 'copy-tooltip'; // CSS ile stil vereceğiz
 
@@ -122,8 +135,9 @@ function injectAdmonitionIcons() {
         'BİLGİ!': { icon: 'fas fa-info-circle', type: 'bilgi' },
         'ÖNEMLİ!': { icon: 'fas fa-star', type: 'onemli' },
         'BİLGİLENDİRME!': { icon: 'fas fa-info-circle', type: 'bilgi' },
-        'ALINTI': { icon: 'fas fa-quote-left', type: 'data-quote' }
-        
+        'ALINTI': { icon: 'fas fa-quote-left', type: 'data-quote' },
+        'CAPTION': { icon: 'fas fa-camera', type: 'caption' }
+
     };
 
     admonitionBlocks.forEach(block => {
@@ -131,15 +145,26 @@ function injectAdmonitionIcons() {
         if (strongElement) {
             const text = strongElement.textContent.trim().toUpperCase();
             const config = iconMap[text];
+            if (config.type === 'caption') {
+                // 1. Ana kutuya sadece caption sınıfını ekle (Örn: admonition-caption)
+                block.classList.add(`admonition-${config.type}`);
 
+                // 2. Başlık elementini tamamen gizle (Çünkü sadece metin istiyoruz)
+                strongElement.style.display = 'none';
+
+                // 3. Bu bloğa özel bir CSS kuralı atamak için flag ekle
+                block.setAttribute('data-is-caption', 'true');
+
+                return; // Diğer işlemleri atla
+            }
             if (config) {
                 // 1. Orijinal başlık metnini kaldır
                 strongElement.textContent = '';
-                
+
                 // 2. İkon elementini oluştur
                 const iconElement = document.createElement('i');
                 iconElement.className = config.icon;
-                
+
                 // 3. Başlığın yanına 'Kutu Adını' yeniden ekle (isteğe bağlı)
                 strongElement.appendChild(iconElement);
                 strongElement.appendChild(document.createTextNode(` ${text.replace('!', '')}`));

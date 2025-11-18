@@ -1,18 +1,50 @@
 <nav class="navbar">
     <div class="container">
-        <a href="{{ site.baseurl }}/" class="logo">
-            <i class="fas fa-book-open"></i> {{ site.title }}
+        <!-- LOGO -->
+        <a href="/" class="logo">
+            <i class="fa-solid fa-book-open"></i> Yazılım Notlarım
         </a>
-        <ul class="nav-menu">
-            <li><a href="{{ site.baseurl }}/">Ana Sayfa</a></li>
-            <li><a href="{{ site.baseurl }}/arsiv/">Arşiv</a></li>
-            <li><a href="{{ site.baseurl }}/kategoriler/">Kategoriler</a></li>
-            <li><a href="{{ site.baseurl }}/etiketler/">Etiketler</a></li>
-            <li><a href="{{ site.baseurl }}/hakkimda">Hakkımda</a></li>
+
+        <!-- MASAÜSTÜ MENÜ (Mobilde Gizlenecek) -->
+        <ul class="nav-menu desktop-only">
+            <li><a href="/">Ana Sayfa</a></li>
+            <li><a href="/gunluk/">Günlük</a></li>
+            <li><a href="/arsiv/">Arşiv</a></li>
+            <li><a href="/kategoriler/">Kategoriler</a></li>
+            <li><a href="/etiketler/">Etiketler</a></li>
+            <li><a href="/hakkimda/">Hakkımda</a></li>
         </ul>
-        <div class="search-box">
+
+        <!-- ARAMA (Mobilde Gizlenecek) -->
+        <div class="search-box desktop-only">
             <input type="text" placeholder="Notlarda Ara...">
-            <i class="fas fa-search"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <!-- HAMBURGER BUTONU (Sadece Mobilde Görünecek) -->
+        <div class="hamburger-btn" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 </nav>
+
+<!-- TAM EKRAN MOBİL MENÜ (Sayfa dışında gizli) -->
+<div class="mobile-overlay" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    
+    <div class="mobile-menu-links">
+        <a href="/">Ana Sayfa</a>
+        <a href="/gunluk">Günlük</a>
+        <a href="/arsiv">Arşiv</a>
+        <a href="/kategoriler">Kategoriler</a>
+        <a href="/etiketler">Etiketler</a>
+        <a href="/hakkimda">Hakkımda</a>
+        
+        <!-- Mobil Arama -->
+        <div class="mobile-search">
+            <input type="text" placeholder="Notlarda Ara...">
+        </div>
+    </div>
+</div>

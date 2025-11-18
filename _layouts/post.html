@@ -9,6 +9,26 @@ layout: default
 {% assign word_count = page.content | strip_html | number_of_words %}
 {% assign current_read_time = word_count | divided_by: 200.0 | ceil %}
 {% endif %}
+{% assign ay_adi = page.date | date: "%B" %}
+{% case ay_adi %}
+    {% when 'January' %} {% assign ay_adi_tr = 'Ocak' %}
+    {% when 'February' %} {% assign ay_adi_tr = 'Şubat' %}
+    {% when 'March' %} {% assign ay_adi_tr = 'Mart' %}
+    {% when 'April' %} {% assign ay_adi_tr = 'Nisan' %}
+    {% when 'May' %} {% assign ay_adi_tr = 'Mayıs' %}
+    {% when 'June' %} {% assign ay_adi_tr = 'Haziran' %}
+    {% when 'July' %} {% assign ay_adi_tr = 'Temmuz' %}
+    {% when 'August' %} {% assign ay_adi_tr = 'Ağustos' %}
+    {% when 'September' %} {% assign ay_adi_tr = 'Eylül' %}
+    {% when 'October' %} {% assign ay_adi_tr = 'Ekim' %}
+    {% when 'November' %} {% assign ay_adi_tr = 'Kasım' %}
+    {% when 'December' %} {% assign ay_adi_tr = 'Aralık' %}
+{% else %}
+    {% assign ay_adi_tr = ay_adi %}
+{% endcase %}
+{% assign gun = page.date | date: "%d" %}
+{% assign yil = page.date | date: "%Y" %}
+{% assign tr_tarih = gun | append: " " | append: ay_adi_tr | append: " " | append: yil %}
 
 <div class="main-container-3-col">
 
@@ -21,7 +41,7 @@ layout: default
     </aside>
 
     <div class="note-content-wrapper">
-        <a href="{{ site.baseurl }}/" class="back-btn">
+        <a href="{{ site.baseurl }}/gunluk/" class="back-btn">
             <i class="fas fa-arrow-left"></i> Notlara Geri Dön
         </a>
 
@@ -30,18 +50,20 @@ layout: default
 
             <header class="note-header">
                 <h1 class="note-title">{{ page.title }}</h1>
+                
+                {% comment %} YENİ: Subtitle Alanını Ekle {% endcomment %}
                 {% if page.subtitle %}
-                <p class="post-subtitle">{{ page.subtitle }}</p>
+                <h2 class="post-subtitle" style="color: var(--accent); margin-top: -1rem; font-size: 1.3rem;">{{ page.subtitle }}</h2>
                 {% endif %}
-                {% assign clean_excerpt = page.excerpt | strip_html %}
-                {% assign clean_excerpt = clean_excerpt | replace_first: '#','' | strip %}
-                {% if clean_excerpt != "" %}
-                <p class="post-excerpt">{{ clean_excerpt }}</p>
+                
+                {% comment %} YENİ: Excerpt Alanını Ekle {% endcomment %}
+                {% if page.excerpt %}
+                <p class="post-excerpt" style="font-style: italic; margin-top: 1rem; color: #4a3f2f;">{{ page.excerpt }}</p>
                 {% endif %}
             </header>
             <div class="note-meta">
                 <span class="note-date">
-                    <i class="fas fa-calendar"></i> {{ page.date | date: "%d %B %Y" | upcase }}
+                    <i class="fas fa-calendar"></i> {{ tr_tarih }}
                 </span>
                 <span class="note-info">
                     <i class="fas fa-clock"></i> {{ current_read_time }} dk

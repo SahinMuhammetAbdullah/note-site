@@ -34,7 +34,7 @@ image:
 
 Bu notumda Python'ın temellerini, değişken tanımlama yöntemlerini ve veri tiplerini detaylıca inceleyeceğim. Ayrıca pratik örneklerle konuyu pekiştireceğim.
 
-> **QUOTE** "Basit, karmaşıktan daha iyidir. Karmaşık, içice geçmişten daha iyidir." - Python Zen'i
+> **ALINTI** "Basit, karmaşıktan daha iyidir. Karmaşık, içice geçmişten daha iyidir." - Python Zen'i
 
 ## Python Neden Popüler? {#populer}
 Python'ın bu kadar yaygın kullanılmasının birçok nedeni var:
@@ -158,13 +158,8 @@ bosluklu = "   Python   "
 print(bosluklu.strip())      # "Python" (boşlukları temizler)
 ```
 
-<div class="info-block">
-    <i class="fas fa-info-circle"></i>
-    <div class="content">
-        <strong>Bilgi:</strong>
-        <p>Python'da string metodları orijinal string'i değiştirmez, yeni bir string döndürür. Bu yüzden sonucu bir değişkene atamanız gerekir.</p>
-    </div>
-</div>
+
+>**BİLGİ!**Python'da string metodları orijinal string'i değiştirmez, yeni bir string döndürür. Bu yüzden sonucu bir değişkene atamanız gerekir.
 
 ### String Slicing (Dilimleme)
 String'lerin belirli bölümlerini almak için slicing kullanırız:
@@ -191,13 +186,7 @@ print(kelime[::2])   # Pto (her 2 karakterden biri)
 print(kelime[::-1])  # nohtyP (ters çevirme)
 ```
 
-<div class="warning-block">
-    <i class="fas fa-exclamation-triangle"></i>
-    <div class="content">
-        <strong>Dikkat!</strong>
-        <p>Python'da string'ler immutable'dır (değiştirilemez). Bir string karakterini doğrudan değiştiremezsiniz. Örneğin `kelime[0] = "J"` hata verir. Yeni bir string oluşturmanız gerekir.</p>
-    </div>
-</div>
+>**DİKKAT!**Python'da string'ler immutable'dır (değiştirilemez). Bir string karakterini doğrudan değiştiremezsiniz. Örneğin `kelime[0] = "J"` hata verir. Yeni bir string oluşturmanız gerekir.
 
 ## F-String ile Gelişmiş Formatlaşdırma {#fstring}
 Python 3.6 ile gelen f-string özelliği, string formatlama için en modern ve okunabilir yöntemdir. Sadece değişken yerleştirmekle kalmaz, ifadeler de çalıştırabilirsiniz:
@@ -237,13 +226,7 @@ print(f"Hex: {sayi:x}")         # 2a
 print(f"Octal: {sayi:o}")       # 52
 ```
 
-<div class="tip-block">
-    <i class="fas fa-lightbulb"></i>
-    <div class="content">
-        <strong>Pro İpucu:</strong>
-        <p>F-string içinde debug yapmak için `={{'='}}` operatörünü kullanabilirsiniz: `print(f"{isim=}")` çıktısı `isim='Mehmet'` olur. Bu özellik Python 3.8'den itibaren vardır.</p>
-    </div>
-</div>
+>**İPUCU!**F-string içinde debug yapmak için `={{'='}}` operatörünü kullanabilirsiniz: `print(f"{isim=}")` çıktısı `isim='Mehmet'` olur. Bu özellik Python 3.8'den itibaren vardır.
 
 ## Kullanıcıdan Giriş Alma {#input}
 Python'da kullanıcıdan veri almak için `input()` fonksiyonunu kullanırız:
@@ -280,62 +263,62 @@ except ValueError:
 ### Örnek 1: Kişisel Bilgi Kartı
 ```python
 # Kullanıcıdan bilgi al
-#ad = input("Adınız: ")
-#soyad = input("Soyadınız: ")
-#yas = int(input("Yaşınız: "))
-#sehir = input("Şehir: ")
-#meslek = input("Meslek: ")
+ad = input("Adınız: ")
+soyad = input("Soyadınız: ")
+yas = int(input("Yaşınız: "))
+sehir = input("Şehir: ")
+meslek = input("Meslek: ")
 
 # Bilgi kartı oluştur
-#print("\n" + "="*40)
-#print("KİŞİSEL BİLGİ KARTI".center(40))
-#print("="*40)
-#print(f"Ad Soyad    : {ad.upper()} {soyad.upper()}")
-#print(f"Yaş         : {yas}")
-#print(f"Şehir       : {sehir.title()}")
-#print(f"Meslek      : {meslek.title()}")
-#print(f"Doğum Yılı  : {2024 - yas}")
-#print("="*40)
+print("\n" + "="*40)
+print("KİŞİSEL BİLGİ KARTI".center(40))
+print("="*40)
+print(f"Ad Soyad    : {ad.upper()} {soyad.upper()}")
+print(f"Yaş         : {yas}")
+print(f"Şehir       : {sehir.title()}")
+print(f"Meslek      : {meslek.title()}")
+print(f"Doğum Yılı  : {2024 - yas}")
+print("="*40)
 ```
 
 ### Örnek 2: Basit Hesap Makinesi
 ```python
-#print("BASIT HESAP MAKİNESİ")
-#print("-" * 30)
+print("BASIT HESAP MAKİNESİ")
+print("-" * 30)
 
-#sayi1 = float(input("Birinci sayı: "))
-#sayi2 = float(input("İkinci sayı: "))
+sayi1 = float(input("Birinci sayı: "))
+sayi2 = float(input("İkinci sayı: "))
 
-#print(f"\nSonuçlar:")
-#print(f"{sayi1} + {sayi2} = {sayi1 + sayi2}")
-#print(f"{sayi1} - {sayi2} = {sayi1 - sayi2}")
-#print(f"{sayi1} × {sayi2} = {sayi1 * sayi2}")
-#print(f"{sayi1} ÷ {sayi2} = {sayi1 / sayi2:.2f}")
+print(f"\nSonuçlar:")
+print(f"{sayi1} + {sayi2} = {sayi1 + sayi2}")
+print(f"{sayi1} - {sayi2} = {sayi1 - sayi2}")
+print(f"{sayi1} × {sayi2} = {sayi1 * sayi2}")
+print(f"{sayi1} ÷ {sayi2} = {sayi1 / sayi2:.2f}")
 ```
 
 ### Örnek 3: Metin Analizi
 ```python
-#metin = input("Bir metin girin: ")
+metin = input("Bir metin girin: ")
 
 # Analizler
-#karakter_sayisi = len(metin)
-#kelime_sayisi = len(metin.split())
-#bosluksuz = len(metin.replace(" ", ""))
-#buyuk_harf = sum(1 for c in metin if c.isupper())
-#kucuk_harf = sum(1 for c in metin if c.islower())
-#rakam = sum(1 for c in metin if c.isdigit())
+karakter_sayisi = len(metin)
+kelime_sayisi = len(metin.split())
+bosluksuz = len(metin.replace(" ", ""))
+buyuk_harf = sum(1 for c in metin if c.isupper())
+kucuk_harf = sum(1 for c in metin if c.islower())
+rakam = sum(1 for c in metin if c.isdigit())
 
 # Sonuçları göster
-#print("\nMETİN ANALİZİ")
-#print("="*50)
-#print(f"Toplam karakter   : {karakter_sayisi}")
-#print(f"Kelime sayısı     : {kelime_sayisi}")
-#print(f"Boşluksuz         : {bosluksuz}")
-#print(f"Büyük harf        : {buyuk_harf}")
-#print(f"Küçük harf        : {kucuk_harf}")
-#print(f"Rakam             : {rakam}")
-#print(f"Ters hali         : {metin[::-1]}")
-#print("="*50)
+print("\nMETİN ANALİZİ")
+print("="*50)
+print(f"Toplam karakter   : {karakter_sayisi}")
+print(f"Kelime sayısı     : {kelime_sayisi}")
+print(f"Boşluksuz         : {bosluksuz}")
+print(f"Büyük harf        : {buyuk_harf}")
+print(f"Küçük harf        : {kucuk_harf}")
+print(f"Rakam             : {rakam}")
+print(f"Ters hali         : {metin[::-1]}")
+print("="*50)
 ```
 
 ## Sık Yapılan Hatalar {#hatalar}
@@ -345,27 +328,27 @@ Python öğrenirken dikkat edilmesi gereken yaygın hatalar:
     ```python
     # YANLIŞ
     yas = 25
-    #print("Yaşım " + yas)  # TypeError!
+    print("Yaşım " + yas)  # TypeError!
 
     # DOĞRU
     print("Yaşım " + str(yas))  # Stringe çevir
-    #print(f"Yaşım {yas}")      # veya f-string kullan
+    print(f"Yaşım {yas}")      # veya f-string kullan
     ```
 2.  **input() değerini dönüştürmeyi unutmak:**
     ```python
     # YANLIŞ
-    #yas = input("Yaşınız: ")
-    #print(yas + 5)  # String + int olmaz!
+    yas = input("Yaşınız: ")
+    print(yas + 5)  # String + int olmaz!
 
     # DOĞRU
-    #yas = int(input("Yaşınız: "))
-    #print(yas + 5)  # Şimdi çalışır
+    yas = int(input("Yaşınız: "))
+    print(yas + 5)  # Şimdi çalışır
     ```
 3.  **Index hatasına dikkat:**
     ```python
     kelime = "Python"
     # YANLIŞ
-    #print(kelime[6])  # IndexError! (0-5 arası geçerli)
+    print(kelime[6])  # IndexError! (0-5 arası geçerli)
 
     # DOĞRU
     print(kelime[5])  # Son karakter
@@ -376,21 +359,14 @@ Python öğrenirken dikkat edilmesi gereken yaygın hatalar:
 ## Özet ve Sonuç {#ozet}
 Bu notumda Python'ın temellerini ve değişken kullanımını öğrendim. İşte önemli noktaların özeti:
 
-<div class="info-block">
-    <i class="fas fa-check-circle"></i>
-    <div class="content">
-        <strong>Öğrendiklerim:</strong>
-        <p>
-            ✓ Python'da değişken tanımlama (dinamik tipleme)<br>
-            ✓ Temel veri tipleri (str, int, float, bool)<br>
-            ✓ String işlemleri ve metodları<br>
-            ✓ String slicing teknikleri<br>
-            ✓ F-string ile modern formatlaşdırma<br>
-            ✓ Kullanıcıdan input alma<br>
-            ✓ Pratik örnekler ve yaygın hatalar
-        </p>
-    </div>
-</div>
+> **BİLGİLENDİRME!**
+> ✓ Python'da değişken tanımlama (dinamik tipleme)<br>
+> ✓ Temel veri tipleri (str, int, float, bool)<br>
+> ✓ String işlemleri ve metodları<br>
+> ✓ String slicing teknikleri<br>
+> ✓ F-string ile modern formatlaşdırma<br>
+> ✓ Kullanıcıdan input alma<br>
+> ✓ Pratik örnekler ve yaygın hatalar
 
 ### Sıradaki Adımlar
 Bir sonraki derste şunları öğreneceğim:

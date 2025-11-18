@@ -1,11 +1,66 @@
 {% assign post = include.post %}
+
+{% comment %}
+Tarih Çevirisi Mantığı: İngilizce ay adını Türkçe'ye çevirir.
+Bu, tüm post listeleme noktalarında tutarlı bir Türkçe tarih sağlar.
+{% endcomment %}
+{% assign ay_adi = post.date | date: "%B" %}
+{% case ay_adi %}
+{% when 'January' %} {% assign ay_adi_tr = 'OCAK' %}
+{% when 'February' %} {% assign ay_adi_tr = 'ŞUBAT' %}
+{% when 'March' %} {% assign ay_adi_tr = 'MART' %}
+{% when 'April' %} {% assign ay_adi_tr = 'NİSAN' %}
+{% when 'May' %} {% assign ay_adi_tr = 'MAYIS' %}
+{% when 'June' %} {% assign ay_adi_tr = 'HAZİRAN' %}
+{% when 'July' %} {% assign ay_adi_tr = 'TEMMUZ' %}
+{% when 'August' %} {% assign ay_adi_tr = 'AĞUSTOS' %}
+{% when 'September' %} {% assign ay_adi_tr = 'EYLÜL' %}
+{% when 'October' %} {% assign ay_adi_tr = 'EKİM' %}
+{% when 'November' %} {% assign ay_adi_tr = 'KASIM' %}
+{% when 'December' %} {% assign ay_adi_tr = 'ARALIK' %}
+{% else %}
+{% assign ay_adi_tr = ay_adi | upcase %}
+{% endcase %}
+{% assign gun = post.date | date: "%d" %}
+{% assign yil = post.date | date: "%Y" %}
+{% assign tr_tarih = gun | append: " " | append: ay_adi_tr | append: " " | append: yil %}
+
+
 <a href="{{ post.url | relative_url }}" class="journal-entry">
-    <div class="entry-date">{{ post.date | date: "%d %B %Y" | upcase }}</div>
+    <div class="entry-date">{{ tr_tarih }}</div>
+
     <h3>{{ post.title }}</h3>
-    <p>{{ post.description_preview }}</p>
+
+    <p>{{ post.excerpt | default: post.description_preview }}</p>
+
     <div class="entry-footer">
-        {% for tag in post.tags %}
-        {% comment %} Etiketi gösterirken daima küçük harfe çevir {% endcomment %}
+
+        {% comment %} Okuma Süresini Hesapla (Daha önce Layout'ta yaptığımız mantık) {% endcomment %}
+        {% assign word_count = post.content | strip_html | number_of_words %}
+        {% assign read_time = word_count | divided_by: 200.0 | ceil %}
+
+        {% comment %} Kategori İkonunu Ekle (Opsiyonel) {% endcomment %}
+        {% assign category_name = post.categories | first %}
+        {% assign cat_icon = "fas fa-folder" %}
+        {% if category_name == "Veritabanları" %}{% assign cat_icon = "fas fa-database" %}
+        {% elsif category_name == "Programlama Dilleri" %}{% assign cat_icon = "fas fa-code" %}
+        {% elsif category_name == "Web Geliştirme" %}{% assign cat_icon = "fab fa-js-square" %}{% endif %}
+
+        <span class="entry-category">
+            <i class="{{ cat_icon }}"></i> {{ category_name }}
+            {% comment %} Alt Kategori varsa dikey çizgi ve alt kategori adını ekle {% endcomment %}
+            {% if post.categories.size > 1 %}
+            {% assign sub_cat_name = post.categories[1] %}
+            {% if sub_cat_name and sub_cat_name != category_name %}
+            &nbsp; | &nbsp; {{ sub_cat_name }}
+            {% endif %}
+            {% endif %}
+        </span>
+
+        <span class="entry-tag"><i class="fas fa-clock"></i> {{ read_time }} dk</span>
+
+        {% for tag in post.tags limit:5 %}
+        {% comment %} Etiketleri daima küçük harfle ve sınırlı sayıda göster {% endcomment %}
         <span class="entry-tag">{{ tag | downcase }}</span>
         {% endfor %}
     </div>
