@@ -425,8 +425,7 @@ main {
     margin-top: 5rem;
     border-top: 3px double var(--border);
     flex-shrink: 0;
-    margin-top: auto;
-    /* İçerik kısaysa bile en alta yapış */
+    margin-top: auto; /* İçerik kısaysa bile en alta yapış */
     width: 100%;
     /* Footer'ın küçülmesini engeller */
 }
@@ -2147,41 +2146,53 @@ main {
     /* Masaüstünde gizli */
     flex-direction: column;
     justify-content: space-between;
-    width: 35px;
-    height: 25px;
+    width: 30px;
+    height: 24px;
     cursor: pointer;
-    background: transparent;
-    border: none;
-    z-index: 1001;
+    z-index: 101;
 }
 
 .hamburger-btn span {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: #d4a578;
-    /* Gold renk */
+    background: var(--primary);
     border-radius: 3px;
+    transition: all 0.3s;
 }
 
-/* 3. MOBİL MENÜ (Ekran Görüntüsündeki Sorunu Çözen Kısım) */
+/* Tam Ekran Overlay Menü */
 .mobile-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(31, 26, 21, 0.98); /* Koyu Tema Arkaplanı */
+    background: rgba(31, 26, 21, 0.98);
+    /* Koyu Tema Arkaplanı */
+    backdrop-filter: blur(8px);
     z-index: 9999;
-    
+    /* En üstte */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     /* Başlangıçta Gizli */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: all 0.4s ease;
 }
 
-/* Kapatma Butonu (X) stili (Görselde kayıptı) */
+/* Menü Aktif Olduğunda (JS Ekleyecek) */
+.mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Kapatma Butonu (X) */
 .close-btn {
     position: absolute;
     top: 20px;
@@ -2193,50 +2204,37 @@ main {
     cursor: pointer;
 }
 
-/* Menü Aktif Olduğunda (JS Ekleyecek) */
-.mobile-overlay.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-/* Menü Linkleri (Mavi rengi yok et) */
+/* Mobil Linkler */
 .mobile-menu-links {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
     text-align: center;
-    margin-bottom: 2rem;
 }
 
 .mobile-menu-links a {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
     font-family: 'Merriweather', serif;
-    /* Fontunu ayarla */
-    font-size: 1.5rem;
-    color: #e8dcc8 !important;
-    /* Krem rengi */
-    text-decoration: none !important;
-    /* Alt çizgiyi kaldır */
-    font-weight: bold;
-    border: none;
+    transition: color 0.3s;
 }
 
 .mobile-menu-links a:hover {
-    color: #d4a578 !important;
-    /* Hover rengi */
+    color: var(--primary);
 }
 
-/* Mobil Arama Kutusu */
 .mobile-search input {
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 1px solid #d4a578;
+    padding: 1rem;
+    margin-top: 2rem;
     background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--border);
     color: #fff;
-    width: 250px;
+    font-family: 'Courier Prime', monospace;
+    width: 280px;
     text-align: center;
 }
-
 
 /* --- RESPONSIVE MEDYA SORGULARI --- */
 
@@ -2246,18 +2244,17 @@ main {
     /* Navbar Düzeni */
     .desktop-only {
         display: none !important;
-        /* Masaüstü menüyü gizle */
+        /* Masaüstü elemanları gizle */
     }
 
     .hamburger-btn {
-        display: flex !important;
+        display: flex;
         /* Hamburgeri göster */
     }
 
     .navbar .container {
         justify-content: space-between;
-        align-items: center;
-        display: flex;
+        /* Logo sol, Hamburger sağ */
     }
 
     /* Grid Sistemini Tek Sütuna Çevir (Footer Sorununu da Çözer) */
@@ -2289,14 +2286,6 @@ main {
         order: 1;
         /* İçerik en üstte */
         width: 100%;
-    }
-    .navbar .nav-menu,
-    .navbar .search-box {
-        display: none !important; 
-    }
-    
-    .hamburger-btn {
-        display: flex; /* Hamburger butonunu görünür yap */
     }
 }
 
