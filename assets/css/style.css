@@ -58,6 +58,15 @@ main {
     /* Main içeriğin esnemesini sağlar ve footer'ı aşağı iter */
 }
 
+footer,
+.footer {
+    flex-shrink: 0;
+    /* Footer asla küçülmesin */
+    width: 100%;
+    margin-top: auto;
+    /* İçerik azsa bile en alta yapış */
+}
+
 /* Container & Layouts */
 .container {
     max-width: 1200px;
@@ -425,7 +434,8 @@ main {
     margin-top: 5rem;
     border-top: 3px double var(--border);
     flex-shrink: 0;
-    margin-top: auto; /* İçerik kısaysa bile en alta yapış */
+    margin-top: auto;
+    /* İçerik kısaysa bile en alta yapış */
     width: 100%;
     /* Footer'ın küçülmesini engeller */
 }
@@ -2146,95 +2156,107 @@ main {
     /* Masaüstünde gizli */
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 24px;
+    width: 35px;
+    height: 25px;
     cursor: pointer;
-    z-index: 101;
+    background: transparent;
+    border: none;
+    z-index: 1001;
 }
 
 .hamburger-btn span {
     display: block;
     width: 100%;
     height: 3px;
-    background: var(--primary);
+    background-color: #d4a578;
+    /* Gold renk */
     border-radius: 3px;
-    transition: all 0.3s;
 }
 
-/* Tam Ekran Overlay Menü */
+/* 3. MOBİL MENÜ (Ekran Görüntüsündeki Sorunu Çözen Kısım) */
 .mobile-overlay {
-    position: fixed;
+    position: fixed !important;
+    /* Ekrana çivile */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(31, 26, 21, 0.98);
-    /* Koyu Tema Arkaplanı */
-    backdrop-filter: blur(8px);
-    z-index: 9999;
-    /* En üstte */
+    width: 100vw;
+    height: 100vh;
+    background-color: #1f1a15 !important;
+    /* Koyu arkaplan (kesin) */
+    z-index: 99999 !important;
+    /* Her şeyin üstünde */
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    /* Başlangıçta Gizli */
+    /* Başlangıç Animasyonu */
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
-    transition: all 0.4s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Menü Aktif Olduğunda (JS Ekleyecek) */
+/* Menü Açıldığında */
 .mobile-overlay.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
 }
 
-/* Kapatma Butonu (X) */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 3rem;
-    background: none;
-    border: none;
-    color: var(--primary);
-    cursor: pointer;
-}
-
-/* Mobil Linkler */
+/* Menü Linkleri (Mavi rengi yok et) */
 .mobile-menu-links {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .mobile-menu-links a {
-    font-size: 1.8rem;
-    color: var(--text-light);
-    text-decoration: none;
-    font-weight: 700;
     font-family: 'Merriweather', serif;
-    transition: color 0.3s;
+    /* Fontunu ayarla */
+    font-size: 1.5rem;
+    color: #e8dcc8 !important;
+    /* Krem rengi */
+    text-decoration: none !important;
+    /* Alt çizgiyi kaldır */
+    font-weight: bold;
+    border: none;
 }
 
 .mobile-menu-links a:hover {
-    color: var(--primary);
+    color: #d4a578 !important;
+    /* Hover rengi */
 }
 
+/* Kapatma Butonu */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 2px solid #d4a578;
+    color: #d4a578;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobil Arama Kutusu */
 .mobile-search input {
-    padding: 1rem;
-    margin-top: 2rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #d4a578;
     background: rgba(255, 255, 255, 0.1);
-    border: 2px solid var(--border);
     color: #fff;
-    font-family: 'Courier Prime', monospace;
-    width: 280px;
+    width: 250px;
     text-align: center;
 }
+
 
 /* --- RESPONSIVE MEDYA SORGULARI --- */
 
@@ -2244,17 +2266,18 @@ main {
     /* Navbar Düzeni */
     .desktop-only {
         display: none !important;
-        /* Masaüstü elemanları gizle */
+        /* Masaüstü menüyü gizle */
     }
 
     .hamburger-btn {
-        display: flex;
+        display: flex !important;
         /* Hamburgeri göster */
     }
 
     .navbar .container {
         justify-content: space-between;
-        /* Logo sol, Hamburger sağ */
+        align-items: center;
+        display: flex;
     }
 
     /* Grid Sistemini Tek Sütuna Çevir (Footer Sorununu da Çözer) */

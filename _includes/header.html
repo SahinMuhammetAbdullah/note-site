@@ -32,19 +32,21 @@
 
 <!-- TAM EKRAN MOBİL MENÜ (Sayfa dışında gizli) -->
 <div class="mobile-overlay" id="mobileMenu">
-    <button class="close-btn" id="closeBtn">&times;</button>
-    
-    <div class="mobile-menu-links">
-        <a href="/">Ana Sayfa</a>
-        <a href="/gunluk">Günlük</a>
-        <a href="/arsiv">Arşiv</a>
-        <a href="/kategoriler">Kategoriler</a>
-        <a href="/etiketler">Etiketler</a>
-        <a href="/hakkimda">Hakkımda</a>
+        <button class="close-btn" id="closeBtn">
+            <i class="fa-solid fa-xmark"></i> <!-- FontAwesome varsa -->
+            <!-- Yoksa sadece: &times; -->
+        </button>
         
-        <!-- Mobil Arama -->
+        <div class="mobile-menu-links">
+            <a href="/">Ana Sayfa</a>
+            <a href="/gunluk/">Günlük</a>
+            <a href="/arsiv/">Arşiv</a>
+            <a href="/kategoriler/">Kategoriler</a>
+            <a href="/etiketler/">Etiketler</a>
+            <a href="/hakkimda/">Hakkımda</a>
+        </div>
+
         <div class="mobile-search">
             <input type="text" placeholder="Notlarda Ara...">
         </div>
     </div>
-</div>
