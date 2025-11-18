@@ -57,7 +57,12 @@ main {
     flex: 1 0 auto;
     /* Main içeriğin esnemesini sağlar ve footer'ı aşağı iter */
 }
-
+.footer {
+    flex-shrink: 0; /* Footer'ın küçülmesini engeller */
+    margin-top: auto; /* Eğer main içeriği kısaysa, footer'ı aşağı itmek için boşluk bırak */
+    width: 100%;
+    /* Diğer footer stilleriniz burada devam etmeli (background, padding vs.) */
+}
 /* Container & Layouts */
 .container {
     max-width: 1200px;
@@ -2281,7 +2286,6 @@ main {
 
     main,
     .content-area {
-        order: 1;
         /* İçerik en üstte */
         width: 100%;
     }
