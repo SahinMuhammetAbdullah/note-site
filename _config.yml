@@ -20,10 +20,9 @@ kramdown:
   toc_levels: 1..6 # Sadece H2 ve H3'ü TOC için kullan (isteğe bağlı)
 
 
-image:
-  path: /assets/images/rich-preview.png
-  width: 1200
-  height: 630
+image: /assets/images/rich-preview.png
+logo: /assets/img/logo.png
+
 # ----------------------------------------------------
 # SABİT LİSTELER VE META BİLGİLER
 # ----------------------------------------------------
