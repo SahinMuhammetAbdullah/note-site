@@ -78,7 +78,7 @@ Bununla beraber tanımlama yapılabilecek anahtar kelimlelerimiz vardır.
 
 Farklı veri tiplerimiz de var ama daha sonra deyineceğiz.
 
-Bu noktadan sonra şunu incelemek lazım Dart'ta *Null Safety* yani boş değer güvenliği. Dart bu konuda çok hassastır. Eğer bir değerin asla **null** yani boş olmayacağından eminseniz değişken tanımlarken anahtar kelimeeye `?` burakmanız gerekir.
+Bu noktadan sonra şunu incelemek lazım Dart'ta *Null Safety* yani boş değer güvenliği. Dart bu konuda çok hassastır. Eğer bir değerin asla **null** yani boş olmayacağından eminseniz değişken tanımlarken anahtar kelimeye `?` burakmanız gerekir.
 
 
 ```dart
