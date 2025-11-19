@@ -11,7 +11,7 @@ layout: default
     <p class="hero-p">"{{ page.title }}" etiketiyle etiketlenmiş tüm gönderiler.</p>
 
     <div class="notes-journal">
-        {% for post in page.posts %}
+        {% for post in page.posts reversed %}
             {% comment %} 
                 Bu, postlarınızı listeler. Postun içindeki etiketleri listelemez.
                 Post başlıkları (title) ve meta verileri (date) doğru gelmelidir.

@@ -32,7 +32,7 @@ permalink: /kategoriler/
     {% endcomment %}
 
     {% for parent in parent_categories %}
-        <details class="category-dropdown" open>
+        <details class="category-dropdown">
             <summary class="category-summary">
                 <i class="fas fa-folder"></i> {{ parent }}
             </summary>
@@ -64,20 +64,26 @@ permalink: /kategoriler/
                 ── 1) ALT KATEGORİLİ POSTLARI LİSTELE ─────────────────────
                 {% endcomment %}
                 {% for child in child_categories %}
-                    <li class="subcategory-title">
-                        ➤ <strong>{{ child }}</strong>
+                    <li class="subcategory-wrapper">
+                        <details class="child-category-dropdown">
+                            <summary class="child-category-summary">
+                                <i class="fas fa-file-alt"></i> <strong>{{ child }}</strong>
+                            </summary>
+
+                            <ul class="child-post-list">
+                                {% assign posts_in_child = posts_in_parent | where_exp: "p", "p.categories[1] == child" %}
+
+                                {% for post in posts_in_child %}
+                                    <li class="category-post-item">
+                                        <a href="{{ post.url | relative_url }}" class="category-post-link">
+                                            <span class="post-title-small">{{ post.title }}</span>
+                                            <span class="post-date-small">{{ post.date | date: "%d %b %Y" }}</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </details>
                     </li>
-
-                    {% assign posts_in_child = posts_in_parent | where_exp: "p", "p.categories[1] == child" %}
-
-                    {% for post in posts_in_child %}
-                        <li class="category-post-item">
-                            <a href="{{ post.url | relative_url }}" class="category-post-link">
-                                <span class="post-title-small">{{ post.title }}</span>
-                                <span class="post-date-small">{{ post.date | date: "%d %b %Y" }}</span>
-                            </a>
-                        </li>
-                    {% endfor %}
                 {% endfor %}
 
                 {% comment %}
@@ -86,18 +92,25 @@ permalink: /kategoriler/
                 {% assign no_child_posts = posts_in_parent | where_exp: "p", "p.categories.size == 1" %}
 
                 {% if no_child_posts.size > 0 %}
-                    <li class="subcategory-title">
-                        ➤ <strong>Genel</strong>
+                    <li class="subcategory-wrapper">
+                        <details class="child-category-dropdown">
+                            <summary class="child-category-summary">
+                                <i class="fas fa-file-alt"></i>
+                                <strong>Genel</strong>
+                            </summary>
+                            
+                            <ul class="child-post-list">
+                                {% for post in no_child_posts %}
+                                    <li class="category-post-item">
+                                        <a href="{{ post.url | relative_url }}" class="category-post-link">
+                                            <span class="post-title-small">{{ post.title }}</span>
+                                            <span class="post-date-small">{{ post.date | date: "%d %b %Y" }}</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </details>
                     </li>
-
-                    {% for post in no_child_posts %}
-                        <li class="category-post-item">
-                            <a href="{{ post.url | relative_url }}" class="category-post-link">
-                                <span class="post-title-small">{{ post.title }}</span>
-                                <span class="post-date-small">{{ post.date | date: "%d %b %Y" }}</span>
-                            </a>
-                        </li>
-                    {% endfor %}
                 {% endif %}
             </ul>
         </details>

@@ -2,7 +2,7 @@
 # SİTE AYARLARI (CORE CONFIG)
 # ----------------------------------------------------
 title: Yazılım Notlarım
-description: Ruby, Python ve diğer diller üzerine kişisel notlar.
+description: Programlama dilleri ve Yazılım Teknolojileri üzerine kişisel notlar.
 url: "https://note.masahin.dev"
 baseurl: ""
 permalink: /:categories/:title/
@@ -30,27 +30,14 @@ image:
 
 # Yazar Bilgisi (Sidebar ve Gönderi Metası için merkezi tanım)
 author_info:
-  name: "Abdullah Şahin"
-  email: "ornek@mail.com"   # istersen
-  role: "Yazar"              # istersen
-  # default_level kaldırıldı.
+  name: "Muhammet Abdullah Şahin"
+  email: "m.sahinsocial@mail.com"   # istersen
+  role: "Yazar"                     # istersen
 
 # Sosyal Medya Linkleri (Footer için)
 social_links:
   github: https://github.com/SahinMuhammetAbdullah
   linkedin: https://linkedin.com/in/muhammet-abdullah-sahin
-
-# Kategorilerin sabit listesi (Navigasyon için)
-categories_list:
-  - title: Ruby
-    icon: fas fa-gem
-    url: /kategori/ruby/
-  - title: Python
-    icon: fab fa-python
-    url: /kategori/python/
-  - title: Veritabanı
-    icon: fas fa-database
-    url: /kategori/veritabani/
 
 # ----------------------------------------------------
 # DEFAULT (VARSAYILAN) DEĞERLERİ
@@ -71,6 +58,8 @@ defaults:
 
 plugins:
   - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
 
 # ----------------------------------------------------
 # TEMA STİL DEĞİŞKENLERİ

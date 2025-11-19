@@ -1940,7 +1940,58 @@ main {
 .category-dropdown[open] .category-summary::before {
     content: "▲";
 }
+/* Ana kategori post listesinin iç boşluğunu düzenleme */
+.category-post-list {
+    margin-top: 10px;
+    padding-left: 0; /* Ana listeyi sıfırla */
+    list-style: none;
+}
 
+/* Alt Kategori Kapsayıcı (li) */
+.subcategory-wrapper {
+    margin: 5px 0;
+}
+
+/* Alt Kategori Başlığı (summary) Stili */
+.child-category-summary {
+    cursor: pointer;
+    font-size: 0.95rem; /* Biraz daha küçük font */
+    padding: 8px 15px;
+    margin-left: 20px; /* İç içe görünüm için sağa kaydır */
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-light); /* Arkaplanı biraz daha açık yap */
+    color: var(--text-color);
+    transition: background-color 0.2s ease;
+}
+
+.child-category-summary:hover {
+    background-color: var(--secondary-hover);
+}
+
+/* Açık/Kapalı İkon Ayarları (Opsiyonel) */
+.child-category-summary i {
+    margin-right: 8px;
+    color: var(--primary);
+}
+
+/* Alt Kategori Altındaki Post Listesi */
+.child-post-list {
+    list-style: none;
+    padding-left: 40px; /* Daha da iç içe görünmesi için boşluk */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Post Bağlantılarının Stili (Gerekirse) */
+.category-post-item {
+    padding: 4px 0;
+}
+
+.category-post-link {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+}
 .category-post-list {
     list-style: none;
     padding: 0 1.5rem 1.5rem;

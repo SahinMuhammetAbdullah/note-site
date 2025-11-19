@@ -65,7 +65,25 @@
         {% endif %}
     {% endif %}
 {% endfor %}
+{% comment %} categories_sidebar.html dosyasında da aynı güvenli mantığı kullanın {% endcomment %}
+{% assign primary_cats = site.posts | map: 'categories' | map: 'first' %}
+{% assign primary_cats = primary_cats | uniq | sort %}
 
+{% for category_name in primary_cats %}
+    {% comment %} Boş kategorileri atla {% endcomment %}
+    {% if category_name == nil or category_name == empty or category_name == "" %}{% continue %}{% endif %}
+    
+    {% assign total_count = 0 %}
+    {% for post in site.posts %}
+        {% if post.categories[0] == category_name %}
+            {% assign total_count = total_count | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+
+    {% if total_count > 0 %}
+        {# ... (Geri kalan HTML ve ikon atamaları) ... #}
+    {% endif %}
+{% endfor %}
 
 <div class="categories-sidebar">
     <div class="category-list">

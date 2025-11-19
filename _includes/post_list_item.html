@@ -26,7 +26,7 @@ Bu, tüm post listeleme noktalarında tutarlı bir Türkçe tarih sağlar.
 {% assign tr_tarih = gun | append: " " | append: ay_adi_tr | append: " " | append: yil %}
 
 
-<a href="{{ post.url | relative_url }}" class="journal-entry">
+<a href="{{ post.url | replace: '%20', '-' | replace: ' ', '-' | relative_url }}" class="journal-entry">
     <div class="entry-date">{{ tr_tarih }}</div>
 
     <h3>{{ post.title }}</h3>

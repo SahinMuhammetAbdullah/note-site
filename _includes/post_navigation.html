@@ -1,6 +1,6 @@
 <nav class="note-navigation">
     {% if page.prev_note_link %}
-    <a href="{{ page.prev_note_link | relative_url }}" class="nav-note prev-note">
+    <a href="{{ page.prev_note_link | relative_url | slugify }}" class="nav-note prev-note">
         <i class="fas fa-chevron-left"></i>
         <div class="nav-content">
             <span class="nav-label">Önceki Not</span>
@@ -12,7 +12,7 @@
     {% endif %}
 
     {% if page.next_note_link %}
-    <a href="{{ page.next_note_link | relative_url }}" class="nav-note next-note">
+    <a href="{{ page.next_note_link | relative_url | slugify }}" class="nav-note next-note">
         <div class="nav-content">
             <span class="nav-label">Sonraki Not</span>
             <span class="nav-title">{{ page.next_note }}</span>

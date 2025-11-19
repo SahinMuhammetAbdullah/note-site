@@ -3,7 +3,7 @@ layout: post
 title: Python Temelleri ve Değişkenler
 subtitle: ""
 date: 2024-11-17 10:00:00 +0300
-categories: [Veri Tabanı,Python]
+categories: [Proramlama Dilleri,Python]
 tags: [başlangıç, temel, değişkenler, f-string, input,diller]
 level: Başlangıç
 description_preview: Bugün Python öğrenmeye başladım. Değişken tanımlama ve temel veri tipleri üzerinde çalıştım. Print fonksiyonu ile konsola çıktı almayı, string ve integer veri tiplerini öğrendim. Özellikle f-string formatlaması çok işime yaradı...

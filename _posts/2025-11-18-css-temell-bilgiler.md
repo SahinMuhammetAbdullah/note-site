@@ -11,8 +11,8 @@ categories: [Web Teknolojileri, CSS]
 tags: [Seçiciler, dizayn]
 level: Başlangıç
 
-# prev_note:
-# prev_note_link:
+prev_note: HTML Temelleri
+prev_note_link: web teknolojileri/html/html-temell-bilgiler/
 # next_note:
 # next_note_link:
 # related_posts:
