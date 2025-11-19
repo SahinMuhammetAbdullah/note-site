@@ -7,7 +7,7 @@ excerpt: "Dart hakkında temel yapılar."
 description_preview: Dart diline giriş ve temel yapılar.
 date: 2025-11-18 17:00:00 +0300
 
-categories: [Proramlama Dilleri, Dart]
+categories: [Programlama Dilleri, Dart]
 tags: [mobil programala, flutter, diller]
 level: Başlangıç
 

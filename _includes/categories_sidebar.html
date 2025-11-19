@@ -110,7 +110,7 @@
             {% comment %} İkon Eşleştirme (Eğer özel ikon istiyorsanız) {% endcomment %}
             {% if category_name == "Veritabanları" %}{% assign cat_icon = "fas fa-database" %}
             {% elsif category_name == "Programlama Dilleri" %}{% assign cat_icon = "fas fa-code" %}
-            {% elsif category_name == "Web Geliştirme" %}{% assign cat_icon = "fab fa-js-square" %}{% endif %}
+            {% elsif category_name == "Web Teknolojileri" %}{% assign cat_icon = "fab fa-js-square" %}{% endif %}
 
             {% if total_count > 0 %}
                 <a href="{{ site.baseurl }}/kategori/{{ category_name | slugify }}" class="category-item category-main">

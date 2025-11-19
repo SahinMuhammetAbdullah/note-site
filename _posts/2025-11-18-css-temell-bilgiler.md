@@ -8,16 +8,16 @@ description_preview: Bu format web teknolojilerinden biri olan CSS in temel bili
 date: 2025-11-18 13:00:00 +0300
 
 categories: [Web Teknolojileri, CSS]
-tags: [Seçiciler, dizayn]
+tags: [Seçiciler, dizayn, diller]
 level: Başlangıç
 
 prev_note: HTML Temelleri
-prev_note_link: web teknolojileri/html/html-temell-bilgiler/
+prev_note_link: /web-teknolojileri/html/html-temell-bilgiler/
 # next_note:
 # next_note_link:
-# related_posts:
-#   - title:
-#     url:
+related_posts:
+  - title: HTML Temelleri
+    url: /web-teknolojileri/html/html-temell-bilgiler/
 #   - title:
 #     url:
 #   - title:
