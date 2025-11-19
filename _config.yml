@@ -80,3 +80,7 @@ style_vars:
 collections:
   pages:
     output: true # Koleksiyonun çıktı üretmesini sağlar
+
+exclude:
+  - "temp/*"
+  - README.md

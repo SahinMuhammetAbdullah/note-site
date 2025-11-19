@@ -803,13 +803,19 @@ main {
 /* 4. Metin elementlerini zorla akışa geri getirme (Önceki çözümden) */
 .highlighter-rouge.language-plaintext {
     /* Bu, metin akışını bozan kutunun kendisini görsel olarak sıfırlar */
-    display: inline !important;
-    visibility: visible !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
+    display: inline !important; /* Metin akışına kat */
+    visibility: visible !important; /* Görünür yap */
+    
+    /* ESTETİK DOKUNUŞ: Arka plandan hafif ayrım */
+    background: rgba(139, 111, 71, 0.05) !important; /* Çok hafif kahvemsi bir ton */
+    border: 1px dashed var(--accent); /* Yumuşak kesikli kenarlık */
+    border-radius: 4px; 
+    
+    /* İç/Dış Boşlukları Sıfırlama ve Kontrol */
+    padding: 0.2rem 0.4rem !important; /* Hafif iç boşluk */
+    margin: 0.2rem 0 !important; /* Hafif dikey boşluk */
+    
     box-shadow: none !important;
-    background: none !important;
 }
 
 /* Ancak, metin akışına gömülü olan inline <code> etiketini görünür tutarız */
@@ -1103,7 +1109,18 @@ main {
     background: none;
     /* Arka planı dış kapsayıcıdan alır */
 }
-
+.highlight pre code {
+    font-family: 'Courier Prime', monospace;
+    color: #e8dcc8;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    
+    /* YENİ EKLEME: Kod içeriğinin blok element gibi davranmasını sağlar */
+    display: block; 
+    
+    /* Gerekirse, soldan boşluğu zorla sıfırlar */
+    padding-left: 0 !important; 
+}
 .highlight code {
     font-family: 'Courier Prime', monospace;
     /* Monospace yazı tipi */
