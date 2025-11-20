@@ -2174,6 +2174,10 @@ main {
         margin: 0;
     }
 
+    .logo {
+        font-size: 1.2rem;
+    }
+
     .note-content {
         padding: 0.5rem 0.3rem !important;
     }
@@ -2190,7 +2194,7 @@ main {
     }
 
     .note-content h3 {
-        font-size: 1.1rem !important;
+        font-size: 1.2rem !important;
         margin: 0.6rem 0 0.3rem 0;
     }
 
@@ -2224,7 +2228,7 @@ main {
     }
 
     .journal-entry h3 {
-        font-size: 1rem !important;
+        font-size: 1.2rem !important;
         margin-bottom: 0.4rem;
     }
 
