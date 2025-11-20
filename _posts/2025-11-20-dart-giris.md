@@ -5,7 +5,7 @@ title: "Dart Bölüm: 1 | Dart'a Giriş"
 subtitle: "Temel Dart yapıları"
 excerpt: "Dart hakkında temel yapılar."
 description_preview: Dart diline giriş ve temel yapılar.
-date: 2025-11-18 17:00:00 +0300
+date: 2025-11-10 17:00:00 +0300
 
 categories: [Programlama Dilleri, Dart]
 tags: [mobil programala, flutter, diller]
@@ -122,7 +122,7 @@ list2.add(4);  // const objeye ekleme yapılamaz
 ```
 
 ![Const ve Final](/assets/images/postimages/const-final.png)
-> **CAPTION** Const ve Final.
+> **CAPTION** Const ve Final Bellek Görünümü.
 
 Buradaki görselde kısaca şunun çıkarımını yapmalıyız ``const`` ile oluşturulan değişkenler eğer aynı değere sahipse bellekte aynı adresi göstermekte. Bu durumda bize bellek tüketimini azaltığı görülmektedir. Bu kullanım flutter ile daha efektif anlaşılmaktadır. Gerçekleştirilen uygulamalarda statik ve aynı değerlilikte olan değişkenler const anahtarkelimesi vermek bellek yönetimi verimliliğini sağlamaktadır.
 
@@ -272,10 +272,179 @@ if (ogr1 is! Ogrenciler) {
 
 | Onluk Tabanda | Açıklama | Bit Bazlı | Açıklama                   | Boş değer | Açıklama                     |
 | ------------- | -------- | --------- | -------------------------- | --------- | ---------------------------- |
-| x += 3        | x = x +3 | <<=       | Bitsel sola kaydır ve ata. | b ??= a   | b boşsa a'daki değer atansın |
-| x -= 3        | x = x +3 | >>=       | Bitsel sağa kaydır ve ata  | --------- | ---------------------------- |
-| x *= 3        | x = x +3 | >>>=      | Unsigned sağ kaydır        | --------- | ---------------------------- |
+| x += 3        | x = x +3 | \<\<=     | Bitsel sola kaydır ve ata. | b ??= a   | b boşsa a'daki değer atansın |
+| x -= 3        | x = x +3 | \>\>=     | Bitsel sağa kaydır ve ata  | --------- | ---------------------------- |
+| x *= 3        | x = x +3 | \>\>\>=   | Unsigned sağ kaydır        | --------- | ---------------------------- |
 | x /= 3        | x = x +3 | &=        | Bitsel AND yap ve ata      | --------- | ---------------------------- |
 | x ~/= 3       | x = x +3 | \|=       | Bitsel OR yap ve ata       | --------- | ---------------------------- |
 | x %= 3        | x = x +3 | ^=        | Bitsel XOR yap ve ata      | --------- | ---------------------------- |
 
+### Mantıksal Operatörler
+
+| Onluk Tabanda | Açıklama |
+| ------------- | -------- |
+| !expr         | NOT      |
+| &&            | AND      |
+| \|\|          | OR       |
+
+### Bitsel ve Kayırma Operatörleri
+
+| Bitsel İşlemler | Açıklama                                                      |
+| --------------- | ------------------------------------------------------------- |
+| &               | AND                                                           |
+| \|              | OR                                                            |
+| ^               | XOR                                                           |
+| ~expr           | Ters işater (0000 1111 --> 1111 0000)                         |
+| \<<             | Sola kaydırma                                                 |
+| \>>             | Sağa kaydırma                                                 |
+| \>>>            | İşaretsiz Sağa kaydırma(Negatif sayıytı pozitif gibi düşünür) |
+
+```dart
+final value = 0x22;
+final bitmask = 0x0f;
+
+assert((value & bitmask) == 0x02); // AND
+assert((value & ~bitmask) == 0x20); // AND NOT
+assert((value | bitmask) == 0x2f); // OR
+assert((value ^ bitmask) == 0x2d); // XOR
+
+assert((value << 4) == 0x220); // sola kaydırma
+assert((value >> 4) == 0x02); // sağa kaydırma
+
+assert((-value >> 4) == -0x03);
+
+assert((value >>> 4) == 0x02); // işaret bitsiz sağa kaydırma
+assert((-value >>> 4) > 0); // işaret bitsiz sağa kaydırma
+```
+
+### Koşul İfadeleri
+
+Dart'ta kısa if blokları diye oluşturabileceğimiz bir takım yapılardır. `?`, `??` ve `:` işaretleri ile kullanılmaktadır.
+
+```dart
+var num1;
+var num2 = 2;
+if (num2 == 2) {
+    prtint('if çalıştır!');
+} else {
+    prtint('else çalıştır!');
+}
+
+// bu yukarda görünen blokla aynı işlevi yerine getirmektedir
+(num2 == 2) ? prtint('if çalıştır!') : prtint('else çalıştır!')
+
+num1 ??= num2;
+print(num1); // # 2
+
+num1 = 4;
+num1 ??= num2;
+print(num1); // # 4
+
+// name null ise 'isimsiz' değerini dönür
+String? name;
+print(name ?? 'isimsiz');
+
+int puan = 82;
+
+String durum = (puan >= 90)
+    ? "AA"
+    : (puan >= 80)
+        ? "BA"
+        : (puan >= 70)
+            ? "BB"
+            : "CC";
+
+print(durum); // BA
+
+```
+
+### Cascade Operatörü
+
+Cascade operatörü bir sınıfın verilerini tanımlarken işimizi kolaylaştırmaya ve kod okunabilirliği ve takranından kaçınarak üretmemizi sağlar.
+
+```dart
+// Bir Personal() sınıfımız olsun
+var personal1 = Personal();
+personal1.name = 'Abdullah';
+personal1.salary = 22000;
+
+// Birde şu şekilde yapılır
+var personal2 = Personal()
+    ..name = 'Can'
+    ..salary = 22400;
+// bu iki işlemde de doğrudur.
+// buna ek olarak name String ve 
+// salary int olarak tanımlandı ve 
+// nullable tanımlandıysa bu kontrolde
+
+var personal3 = Personal()
+    ?..name = 'Can'
+    ..salary = 22400;
+// bu şekilde atama başarılı bir şekilde
+// gerçekleştirilmiş olur
+// bu işlemler personal1 içinde 
+// personal1?.name = 'Abdullah';
+// şeklinde tanımlanabilir.
+```
+
+### Spread Operatörü
+
+Bu operatör ise bir listeyilist, set veya map yapısındaki verileri başka bir koleksiyona açarak atamasını yapar.
+
+```dart
+var baseList = [1, 2, 3];
+var newList = [
+0,
+...baseList,
+4
+];
+// baseList parçalanır ve tek tek newList'e eklenir
+print(newList); // [0, 1, 2, 3, 4]
+
+List<int>? nums = null;
+
+var result = [
+1,
+...?nums,  // nums null → yok sayılır
+2
+];
+// ...? ile hatadan kaçınmış oluruz
+// eğer ? olamsaydı hata alacak ve 
+// komutlar çalışmayacaktı bu şekilde
+// boş listeyi yok sayatak devam edebildik
+print(result); // [1, 2]
+```
+
+### Diğer operatörler
+
+
+| Operator | Name                   | Meaning                                                 |
+| -------- | ---------------------- | ------------------------------------------------------- |
+| ()       | Fonksiyon çağrısı      | Fonksiyonu çalıştırır                                   |
+| []       | Liste/harita erişimi   | İndex ile elemana erişir                                |
+| ?[]      | Koşullu erişim         | Nulldeğilse elemana erişir, null ise null döner         |
+| .        | Üye erişimi            | Nesnenin özelliğine erişir                              |
+| ?.       | Koşullu üye erişimi    | Null değilse özelliğe erişir, null ise null döner       |
+| !        | Null değil doğrulaması | Null olamayacağını garanti eder, null ise hata fırlatır |
+
+## Yorum Satırları
+
+Dart'ta 3 tip yorum satırı vardır.
+
+```dart
+// Bu tek satırda bir yorum satırı örneği
+
+/*
+    * Bu ise 
+    çok satırda
+    yorum satırı
+    örneği
+*/
+
+/// Burada üç tane '/'
+/// ifadesi ise
+/// dökümantasyonların
+/// açıklamalarında 
+/// kullanılan yorum
+/// satırı örneğidir
+```
