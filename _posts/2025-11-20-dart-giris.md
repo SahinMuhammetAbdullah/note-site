@@ -238,7 +238,7 @@ bool isEql = num1 >= num2;   // false
 bool isEql = num1 <= num2;   // true
 ```
 
-Kisacasi bu şekil dedir.
+Kısacası bu şekil dedir.
 
 ### Tip Kontrol Operatörleri
 

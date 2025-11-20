@@ -17,16 +17,16 @@ Sitenin global ayarları ve yazar bilgileri **`_config.yml`** dosyasında tutulu
 
 Her yazının başında yer alan Front Matter (YAML blok) sitenin ilgili post hakkında bilgi edinmesini sağlar.
 
-| Alan Adı | Tip | Zorunluluk | Açıklama |
-| :--- | :--- | :--- | :--- |
-| `title` | String | EVET | Yazının ana başlığı. |
-| `subtitle` | String | HAYIR | Başlık altındaki kısa açıklama. |
-| `excerpt` | String | EVET | Sosyal medya ve listeler için kullanılan 1-2 cümlelik özet. |
-| `date` | Tarih | EVET | Yayınlanma tarihi. |
-| `categories` | Dizi | EVET | Hiyerarşi için kullanılır: `[Ana Kategori, Alt Kategori]`. |
-| `tags` | Dizi | EVET | Etiketler (küçük harfle yazılmalıdır). |
-| `level` | String | HAYIR | Notun zorluk seviyesi (örn: Başlangıç, İleri). |
-| `related_posts` | Dizi | HAYIR | Sidebar'da listelenecek ilgili diğer postlar. |
+| Alan Adı        | Tip    | Zorunluluk | Açıklama                                                    |
+| :-------------- | :----- | :--------- | :---------------------------------------------------------- |
+| `title`         | String | EVET       | Yazının ana başlığı.                                        |
+| `subtitle`      | String | HAYIR      | Başlık altındaki kısa açıklama.                             |
+| `excerpt`       | String | EVET       | Sosyal medya ve listeler için kullanılan 1-2 cümlelik özet. |
+| `date`          | Tarih  | EVET       | Yayınlanma tarihi.                                          |
+| `categories`    | Dizi   | EVET       | Hiyerarşi için kullanılır: `[Ana Kategori, Alt Kategori]`.  |
+| `tags`          | Dizi   | EVET       | Etiketler (küçük harfle yazılmalıdır).                      |
+| `level`         | String | HAYIR      | Notun zorluk seviyesi (örn: Başlangıç, İleri).              |
+| `related_posts` | Dizi   | HAYIR      | Sidebar'da listelenecek ilgili diğer postlar.               |
 
 ### 1.2 Otomatik Hesaplanan Bilgiler
 
