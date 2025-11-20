@@ -2161,14 +2161,37 @@ main {
 @media (max-width: 768px) {
 
     /* Font boyutlarını dengele */
+    body {
+        font-size: 87.5%; /* %12.5 oranında küçülme (16px yerine 14px olur) */
+    }
+
+    /* 2. ANA BAŞLIKLARI VE METİN İÇERİĞİNİ YENİDEN AYARLAMA */
+    .note-article {
+        font-size: 1em; /* İçerik fontunu body'nin yeni değerine göre ayarlar */
+    }
+
+    /* Büyük Başlıkların Daha Küçük Görünmesini Sağlama */
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem; /* 3.5rem yerine daha küçük */
     }
 
     .note-title {
-        font-size: 2rem;
+        font-size: 2rem; /* 3rem yerine daha küçük */
     }
 
+    .note-content h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Kart Başlıklarını Dengeleme (Ana Sayfa) */
+    .journal-entry h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Sidebar'daki tüm metinleri ve listeleri etkiler */
+    .sidebar-section h3 {
+        font-size: 1.1rem;
+    }
     /* Kartların iç boşluğunu azalt */
     .journal-entry,
     .note-article {

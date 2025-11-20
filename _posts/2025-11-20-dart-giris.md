@@ -5,7 +5,7 @@ title: "Dart Bölüm: 1 | Dart'a Giriş"
 subtitle: "Temel Dart yapıları"
 excerpt: "Dart hakkında temel yapılar."
 description_preview: Dart diline giriş ve temel yapılar.
-date: 2025-11-10 17:00:00 +0300
+date: 2025-11-20 17:00:00 +0300
 
 categories: [Programlama Dilleri, Dart]
 tags: [mobil programala, flutter, diller]
@@ -15,21 +15,19 @@ level: Başlangıç
 # prev_note_link:
 # next_note:
 # next_note_link:
-# related_posts:
-#   - title:
-#     url:
-#   - title:
-#     url:
-#   - title:
-#     url:
-#   - title:
-#     url:
+related_posts:
+  - title: BTK Dart Eğitimi
+    url: https://www.btkakademi.gov.tr/portal/course/dart-programlama-dili-29014
+  - title: Dart Değişkenler
+    url: https://dart.dev/language/variables
+  - title: Dart Operatörler
+    url: https://dart.dev/language/operators
+  - title: Dart Yorum Satırları 
+    url: https://dart.dev/language/comments
 #   - title:
 #     url:
 
-# image: 
-#   path: /assets/img/my-featured-image.jpg
-#   alt: Python kod örneği görseli
+# image: /assets/img/my-featured-image.jpg
 ---
 
 ## Giriş

@@ -15,9 +15,9 @@ prev_note: HTML Temelleri
 prev_note_link: /web-teknolojileri/html/html-temell-bilgiler/
 # next_note:
 # next_note_link:
-related_posts:
-  - title: HTML Temelleri
-    url: /web-teknolojileri/html/html-temell-bilgiler/
+# related_posts:
+#   - title: HTML Temelleri
+#     url: /web-teknolojileri/html/html-temell-bilgiler/
 #   - title:
 #     url:
 #   - title:
@@ -27,9 +27,7 @@ related_posts:
 #   - title:
 #     url:
 
-# image: 
-#   path: /assets/img/my-featured-image.jpg
-#   alt: Python kod örneği görseli
+# image: /assets/img/my-featured-image.jpg
 ---
 
 ## Seçici Türleri

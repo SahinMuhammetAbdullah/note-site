@@ -15,9 +15,9 @@ level: Başlangıç
 # prev_note_link:
 next_note: CSS Temelleri
 next_note_link: /web-teknolojileri/css/css-temell-bilgiler/
-related_posts:
-  - title: CSS Temelleri
-    url: /web-teknolojileri/css/css-temell-bilgiler/
+# related_posts:
+#   - title: CSS Temelleri
+#     url: /web-teknolojileri/css/css-temell-bilgiler/
 #   - title:
 #     url:
 #   - title:
@@ -27,9 +27,7 @@ related_posts:
 #   - title:
 #     url:
 
-# image: 
-#   path: /assets/img/my-featured-image.jpg
-#   alt: Python kod örneği görseli
+# image: /assets/img/my-featured-image.jpg
 ---
 
 ## Temel Yapı
