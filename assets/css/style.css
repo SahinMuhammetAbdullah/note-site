@@ -2160,66 +2160,97 @@ main {
 /* Mobil Telefonlar (768px ve altı) */
 @media (max-width: 768px) {
 
-    /* Font boyutlarını dengele */
+    /* 1. GENEL FONT ÖLÇEKLEME */
     body {
-        font-size: 87.5%; /* %12.5 oranında küçülme (16px yerine 14px olur) */
+        font-size: 56.25%; /* 9px baz */
+        line-height: 1.4;
     }
 
-    /* 2. ANA BAŞLIKLARI VE METİN İÇERİĞİNİ YENİDEN AYARLAMA */
+    /* 2. METİN ALANLARI → padding azaltıldı */
     .note-article {
-        font-size: 1em; /* İçerik fontunu body'nin yeni değerine göre ayarlar */
+        max-width: 100% !important;
+        width: 100%;
+        padding: 0.6rem !important;   /* çok daha dar */
+        margin: 0;
+        border-radius: 0;
     }
 
-    /* Büyük Başlıkların Daha Küçük Görünmesini Sağlama */
-    .hero h1 {
-        font-size: 2rem; /* 3.5rem yerine daha küçük */
+    .note-content {
+        padding: 0.5rem 0.3rem !important;
     }
 
+    /* Başlıklar */
     .note-title {
-        font-size: 2rem; /* 3rem yerine daha küçük */
+        font-size: 1.6rem !important;
+        margin-bottom: 0.8rem;
     }
 
     .note-content h2 {
-        font-size: 1.6rem;
+        font-size: 1.2rem !important;
+        margin: 0.8rem 0 0.4rem 0;
     }
 
-    /* Kart Başlıklarını Dengeleme (Ana Sayfa) */
-    .journal-entry h3 {
-        font-size: 1.2rem;
+    .note-content h3 {
+        font-size: 1.1rem !important;
+        margin: 0.6rem 0 0.3rem 0;
     }
 
-    /* Sidebar'daki tüm metinleri ve listeleri etkiler */
-    .sidebar-section h3 {
-        font-size: 1.1rem;
-    }
-    /* Kartların iç boşluğunu azalt */
-    .journal-entry,
-    .note-article {
-        padding: 1.5rem;
-    }
-
-    /* Tablo Taşmasını Engelle */
+    /* 3. TABLOLAR → scrollable (kayan), sıkı padding, boşluk yok */
     .note-content table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+        /* Tablonun kendisi, içeriği taşsa bile kaydırma çubuğu çıkarmamalıdır. */
+        /* Tablonun kapsayıcısı (parent) kaydırma çubuğu çıkarmalıdır. */
+        width: 100%;                  /* Kapsayıcıyı tam doldurmaya zorla */
+        display: block;               /* Dikey akışı sağlar */
+        overflow-x: auto;             /* Yatay kaydırma çubuğu gerekiyorsa çıksın */
+        white-space: nowrap;          /* Kolonların tek satırda kalmasını sağlar */
+        
+        border-collapse: collapse;    /* Kenar boşluklarını yok eder */
+        table-layout: auto;           /* CRITICAL: Sütunları içeriğe göre boyutlandırır */
+        
+        margin: 1rem 0;
+        padding: 0;
+        max-inline-size: min-content;
     }
 
-    /* Kod Blokları Taşmasını Engelle */
+    /* 2. TABLO İÇİ HÜCRELERİN SIKILAŞTIRILMASI */
+    .note-content table td,
+    .note-content table th {
+        padding: 0.5rem 0.7rem;       /* Mobil için sıkı padding */
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    /* 4. JOURNAL ENTRY (kartlar) → padding azaltma */
+    .journal-entry {
+        padding: 0.8rem !important;
+    }
+
+    .journal-entry h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.4rem;
+    }
+
+    /* 5. SIDEBAR */
+    .sidebar-section {
+        padding: 0.5rem 0.3rem;
+    }
+
+    .sidebar-section h3,
+    .sidebar-section a {
+        font-size: 0.85rem !important;
+        line-height: 1.3;
+    }
+
+    /* 6. KOD BLOKLARI → sıkı ve kompakt */
     .highlighter-rouge {
-        /* Ekran kenarlarına yaslamak isterseniz marginleri negatif verin */
-        margin-left: -1rem;
-        margin-right: -1rem;
-        width: calc(100% + 2rem);
-        border-radius: 0;
-        /* Kenar yuvarlaklığını kaldır */
-        border-left: none;
-        border-right: none;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        width: calc(100% + 1rem);
     }
 
     .highlighter-rouge .highlight {
-        padding-bottom: 10px;
-        /* Scroll çubuğu için alan */
+        font-size: 0.88rem;
+        padding: 0.6rem;
+        line-height: 1.3;
     }
 
 }
