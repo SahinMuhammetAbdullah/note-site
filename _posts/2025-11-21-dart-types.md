@@ -13,12 +13,12 @@ level: Orta
 
 prev_note: "Dart Bölüm: 1 | Dart'a Giriş"
 prev_note_link: /programlama-dilleri/dart/dart-giris/
-# next_note:
-# next_note_link:
+next_note: "Dart Bölüm: 3 | Yerleşik Tipler: Records"
+next_note_link: /programlama-dilleri/dart/dart-records
 related_posts:
   - title: BTK Dart Eğitimi
     url: https://www.btkakademi.gov.tr/portal/course/dart-programlama-dili-29014
-  - title: Dart Değişkenler
+  - title: Dart Yerleşik Tipler
     url: https://dart.dev/language/built-in-types
 ---
 
