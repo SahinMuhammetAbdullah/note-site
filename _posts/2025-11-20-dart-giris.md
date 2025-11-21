@@ -13,8 +13,8 @@ level: Başlangıç
 
 # prev_note:
 # prev_note_link:
-# next_note:
-# next_note_link:
+next_note: "Dart Bölüm: 2 | Yerleşik Tipler"
+next_note_link: /programlama-dilleri/dart/dart-types/
 related_posts:
   - title: BTK Dart Eğitimi
     url: https://www.btkakademi.gov.tr/portal/course/dart-programlama-dili-29014

@@ -8,7 +8,7 @@ description_preview: Bu format web teknolojilerinden biri olan CSS in temel bili
 date: 2025-11-18 17:00:00 +0300
 
 categories: [Web Teknolojileri, HTML]
-tags: [Etikatler, dizayn, diller]
+tags: [Etiketler, dizayn, diller]
 level: Başlangıç
 
 # prev_note:

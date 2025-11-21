@@ -5,7 +5,7 @@ subtitle: "Jekyll Note Pages projesine içerik ekleme ve özelleştirme rehberi.
 excerpt: "Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Matter alanlarını ve CSS ile kontrol edilen Admonition (Uyarı Kutusu) yapısını nasıl kullanacağınızı açıklar."
 date: 2025-11-17 13:00:00 +0300
 categories: [Sistem, Kılavuz]
-tags: [markdown, rehber, seo, yapilandirma]
+tags: [markdown, rehber, seo, yapılandırma]
 level: Talimatlar
 ---
 
