@@ -19,7 +19,7 @@ title: Yazılım Dersleri
     <section id="notlar">
         <h2 class="section-title">SON YAZILAR</h2>
         <div class="notes-journal">
-            {% for post in site.posts limit:4 %}
+            {% for post in site.posts %}
                 {% include post_list_item.html post=post %}
             {% endfor %}
         </div>

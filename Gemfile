@@ -11,3 +11,5 @@ gem 'jekyll-reading-time'
 gem 'jekyll-sitemap'
 gem "jekyll-feed"
 gem "jekyll-seo-tag"
+
+gem 'nokogiri'

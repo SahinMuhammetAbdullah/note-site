@@ -7,6 +7,8 @@ url: "https://note.masahin.dev"
 baseurl: ""
 permalink: /:categories/:title/
 timezone: Europe/Istanbul
+lang: tr
+locale: tr_TR
 
 # ----------------------------------------------------
 # YORUMLAYICI AYARLARI (MARKDOWN/ROUGE)
@@ -46,6 +48,7 @@ defaults:
       path: ""
       type: "posts"
     values:
+      isPublish: true
       layout: "post"
       # Yazar bilgisi artık config dosyasındaki author_info'dan geliyor:
       author: "{{ site.author_info.name }}" 

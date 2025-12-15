@@ -77,7 +77,34 @@ permalink: /kategoriler/
                                     <li class="category-post-item">
                                         <a href="{{ post.url | relative_url }}" class="category-post-link">
                                             <span class="post-title-small">{{ post.title }}</span>
-                                            <span class="post-date-small">{{ post.date | date: "%d %b %Y" }}</span>
+                                            {% comment %} 
+                                                post.date'den İngilizce Ay Kısaltmasını (%b) çek ve Türkçe'ye çevir.
+                                            {% endcomment %}
+                                            {% assign ay_cevirileri = "Jan:Oca,Feb:Şub,Mar:Mar,Apr:Nis,May:May,Jun:Haz,Jul:Tem,Aug:Ağu,Sep:Eyl,Oct:Eki,Nov:Kas,Dec:Ara" | split: "," %}
+
+                                            {% assign month_en = post.date | date: "%b" %}
+                                            {% assign month_tr = month_en %}
+
+                                            {% for pair in ay_cevirileri %}
+                                                {% assign parts = pair | split: ":" %}
+                                                {% assign en = parts[0] %}
+                                                {% assign tr = parts[1] %}
+                                                {% if month_en == en %}
+                                                    {% assign month_tr = tr %}
+                                                {% endif %}
+                                            {% endfor %}
+
+                                            {% assign gun = post.date | date: "%d" %}
+                                            {% assign yil = post.date | date: "%Y" %}
+
+                                            {% comment %} 
+                                                KRİTİK DÜZELTME: Tüm parçaları tek bir satırda ve güvenli bir şekilde birleştiriyoruz.
+                                            {% endcomment %}
+                                            {% capture tr_tarih_format %}
+                                                {{ gun }} {{ month_tr }} {{ yil }}
+                                            {% endcapture %}
+
+                                            <span class="post-date-small">{{ tr_tarih_format | strip }}</span>
                                         </a>
                                     </li>
                                 {% endfor %}

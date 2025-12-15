@@ -36,6 +36,47 @@
     box-sizing: border-box;
 }
 
+/* ------------------------------------------------ */
+/* SCROLLBAR ÖZELLEŞTİRME (Koyu Tema Tonları) */
+/* ------------------------------------------------ */
+
+/* -- WebKit Tarayıcıları (Chrome, Edge, Safari) -- */
+
+/* Scrollbar'ın genel genişliği/yüksekliği */
+::-webkit-scrollbar {
+    width: 10px; 
+    height: 10px;
+}
+
+/* Scrollbar'ın arka plan izi (track) - '78623c' */
+::-webkit-scrollbar-track {
+    background: #463924;
+}
+
+/* Scrollbar'ın kaydırma çubuğu (thumb) - '2c2416' */
+::-webkit-scrollbar-thumb {
+    background: #2c2416;
+    border-radius: 10px; 
+    /* Scrollbar'a biraz derinlik ve boşluk verir */
+    border: 3px solid #463924; 
+}
+
+/* Mouse ile üzerine gelindiğinde */
+::-webkit-scrollbar-thumb:hover {
+    /* Hafifçe açılmış koyu ton */
+    background: #4a3c2e; 
+}
+
+
+/* -- Firefox Tarayıcıları -- */
+html {
+    /* 1. Kaydırma çubuğu (Thumb) | 2. Arka plan izi (Track) */
+    scrollbar-color: #2c2416 #78623c;
+    
+    /* Scrollbar'ı ince ayarlar */
+    scrollbar-width: thin; 
+}
+
 html,
 body {
     height: 100%;
@@ -149,6 +190,28 @@ main {
     width: 100%;
 }
 
+.note-article a {
+    /* Altı çizgisini tamamen kaldırır */
+    text-decoration: none; 
+    
+    /* Bağlantı rengini koyu metin rengine ayarlar */
+    color: #694e1e;
+    font-weight: bold;
+    
+    /* Hover ve diğer geçişler için yumuşak bir animasyon ekler */
+    transition: color 0.3s ease, text-decoration-color 0.3s ease; 
+}
+
+.note-article a:hover {
+    /* Fare üzerine geldiğinde rengi tema vurgu rengine (Accent Color) çevirir */
+    color: var(--accent-color, #78623c); 
+    
+    /* Hafifçe altını çizerek link olduğunu belli eder */
+    text-decoration: underline; 
+    
+    /* Alt çizgi rengini vurgu rengine ayarlar (Bazı tarayıcılar için) */
+    text-decoration-color: var(--accent-color, #78623c); 
+}
 .search-box {
     position: relative;
 }
@@ -254,8 +317,12 @@ main {
 
 .category-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    
+    /* KRİTİK: Tam olarak 3 eşit sütun oluşturulmasını garanti eder. */
+    grid-template-columns: repeat(3, 1fr); 
+    
+    gap: 1.5rem; /* Sütunlar arası boşluk */
+    /* Diğer stilleriniz... */
 }
 
 .category-item {
@@ -1229,6 +1296,8 @@ main {
 .highlight .gr { color: #f44747; }
 .highlight .gu { color: #4ec9b0; font-weight: bold; }
 
+.highlight .si {color: aliceblue;}
+
 
 
 /* --------------------------------------------------------------------------
@@ -1555,15 +1624,6 @@ main {
 }
 
 
-/* -------------------------------------------------------------------------- */
-/* Mobil Uyum (1200px altındaki kuralı da güncelleyelim) */
-@media (max-width: 1200px) {
-    .main-container-3-col {
-        /* Sol TOC'yi gizleyerek makaleye alan açmıştık, bu kural aynı kalır. */
-        grid-template-columns: 1fr minmax(200px, 280px);
-        gap: 2rem;
-    }
-}
 
 /* --------------------------------------------------------------------------
    ÖZEL ALINTI (QUOTE BLOCK) STİLİ
@@ -2106,7 +2166,6 @@ main {
 }
 
 /* --- RESPONSIVE MEDYA SORGULARI --- */
-
 /* Tablet ve Altı (1024px ve altı) */
 @media (max-width: 1024px) {
 
@@ -2148,12 +2207,19 @@ main {
         /* Sticky özelliğini kapat */
         order: 2;
         /* İçerikten sonra gelsin */
+        max-width:none;
     }
 
     main,
     .content-area {
         /* İçerik en üstte */
         width: 100%;
+    }
+    .category-list{
+        display: contents;
+    }
+    .category-main {
+        margin: 1.2rem;
     }
 }
 
@@ -2162,7 +2228,6 @@ main {
 
     /* 1. GENEL FONT ÖLÇEKLEME */
     body {
-        font-size: 56.25%; /* 9px baz */
         line-height: 1.4;
     }
 

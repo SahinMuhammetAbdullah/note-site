@@ -8,7 +8,7 @@ description_preview: Dart'ta bulunan tipler üzerine yapılan çalışmamın not
 date: 2025-11-21 21:00:00 +0300
 
 categories: [Programlama Dilleri, Dart]
-tags: [mobil programala, flutter, diller, types]
+tags: [mobil programala, flutter, diller, types, build-in types]
 level: Orta
 
 prev_note: "Dart Bölüm: 1 | Dart'a Giriş"
