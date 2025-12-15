@@ -2303,7 +2303,6 @@ main {
 
     .hamburger-btn {
         display: flex;
-        width: 1.3rem;
         /* Hamburgeri göster */
     }
 
@@ -2376,7 +2375,7 @@ main {
     }
 
     .logo {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .note-content {
