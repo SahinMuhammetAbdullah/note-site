@@ -656,6 +656,8 @@ main {
 .note-content p {
     margin-bottom: 1.5rem;
     color: #4a3f2f;
+    text-align: justify;
+    text-indent: 1em;
 }
 
 .note-content ul,
@@ -739,6 +741,8 @@ main {
     margin: 0;
     padding: 0;
     color: var(--accent);
+    text-align: center;
+
     /* Metin rengi */
 }
 

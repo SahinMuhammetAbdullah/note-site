@@ -1,12 +1,11 @@
 ---
 layout: post
-isPublish: false
 
 title: "Dart Bölüm: 3 | Yerleşik Tipler: Records"
 subtitle: "Dart Records"
 excerpt: "Dart'ta bulunan records incelemesi."
 description_preview: Dart'ta records yapısı üzerine yapılan çalışmamın notları.
-date: 2025-11-21 21:00:00 +0300
+date: 2025-12-13 21:00:00 +0300
 
 categories: [Programlama Dilleri, Dart]
 tags: [mobil programala, flutter, diller, types, records]

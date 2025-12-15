@@ -48,7 +48,6 @@ defaults:
       path: ""
       type: "posts"
     values:
-      isPublish: true
       layout: "post"
       # Yazar bilgisi artık config dosyasındaki author_info'dan geliyor:
       author: "{{ site.author_info.name }}" 
