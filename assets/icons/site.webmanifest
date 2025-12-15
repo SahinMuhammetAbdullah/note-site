@@ -1,6 +1,6 @@
 {
-    "name": "Yazılım Notlarım",
-    "short_name": "Yazılım Notlarım",
+    "name": "Ders Notlarım",
+    "short_name": "DNote",
     "icons": [
         {
             "src": "/assets/icons/android-icon-36x36.png",

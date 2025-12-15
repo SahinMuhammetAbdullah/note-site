@@ -1,8 +1,8 @@
 # ----------------------------------------------------
 # SİTE AYARLARI (CORE CONFIG)
 # ----------------------------------------------------
-title: Yazılım Notlarım
-description: Programlama dilleri ve Yazılım Teknolojileri üzerine kişisel notlar.
+title: Çalışma Notlarım
+description: Programlama dilleri, Yazılım Teknolojileri ve diğer eğitimlerim üzerine kişisel notlar.
 url: "https://note.masahin.dev"
 baseurl: ""
 permalink: /:categories/:title/
