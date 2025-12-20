@@ -93,6 +93,34 @@ Metin içinde görsel olarak dikkat çekmek veya ipucu vermek için > (blockquot
 
 > **ALINTI** "Basit, karmaşıktan daha iyidir. Karmaşık, içice geçmişten daha iyidir." - Python Zen'i
 
+### 2.4 Hiyerarşik Şemalar ve Renklendirme (Mermaid)
+
+Sistem mimarilerini veya süreç akışlarını görselleştirmek için Mermaid bloklarını kullanın. CSS dosyasındaki hazır sınıfları (class) kullanarak kutuları anlamlarına göre renklendirebilirsiniz.
+
+**Kullanılabilir Renk Sınıfları:**
+* `rootNode`: Ana başlıklar (Mavi)
+* `warningNode`: Dikkat çekilmesi gereken adımlar (Sarı)
+* `successNode`: Tamamlanan veya onaylanan süreçler (Yeşil)
+* `errorNode`: Hata veya durdurma noktaları (Kırmızı)
+* `infoNode`: Genel bilgilendirme kutuları (Açık Mavi)
+* `leafNode`: Standart detay adımları (Koyu Kahve)
+
+**Örnek Uygulama:**
+
+```mermaid
+graph TD
+    A[Sistem Girişi] --> B{Hata Var mı?}
+    B -- Hayır --> C[İşlemi Tamamla]
+    B -- Evet --> D[Hata Günlüğü Tut]
+    D --> E[Sistemi Durdur]
+
+    %% Stil Atamaları
+    class A rootNode
+    class B warningNode
+    class C successNode
+    class D infoNode
+    class E errorNode
+```
 ## 3. SEO ve Yapılandırma İpuçları
 robots.txt: Sitenizin kökünde mevcuttur ve tüm botlara tarama izni verir.
 
