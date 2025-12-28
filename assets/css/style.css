@@ -2824,6 +2824,13 @@ sup a:hover {
         margin-left: 5px;
         display: inline-block;
     }
+    .note-navigation .nav-title {
+        font-size: 0.8rem;
+    }
+
+    .note-navigation .nav-label {
+        font-size: 0.6rem;
+    }
 }
 
 
