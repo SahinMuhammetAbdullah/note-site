@@ -2599,6 +2599,7 @@ sup a:hover {
 
 .footnotes li {
     margin-bottom: 10px;
+    color: var(--text-muted);
 }
 
 
