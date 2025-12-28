@@ -20,6 +20,7 @@ kramdown:
   input: GFM 
   auto_ids: true # Otomatik ID (anchor) oluşturmayı etkinleştirir
   toc_levels: 1..6 # Sadece H2 ve H3'ü TOC için kullan (isteğe bağlı)
+  footnote_nr: 1
 
 
 image: /assets/images/rich-preview.png

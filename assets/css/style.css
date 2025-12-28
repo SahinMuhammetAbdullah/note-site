@@ -6,27 +6,25 @@
 :root {
     /* Bu değişkenler _includes/head.html içinde Liquid ile doldurulur. */
     /* Örnek varsayılan değerler: */
-    --primary: #d4a578;
-    /* Altın kahve */
+    --primary: #d4a578;     /* Altın kahve */
     --primary-dark: #b3865b;
-    --accent: #a58e6e;
-    /* Hafif soluk kahve */
-    --text-light: #e8dcc8;
-    /* Açık krem */
-    --text-dark: #3a3227;
-    /* Koyu kahve metin */
-    --bg-dark: #1f1a15;
-    /* Koyu arka plan */
-    --bg-card: #2c2416;
-    /* Koyu kart arka planı */
-    --bg-paper: #fffefb;
-    /* Kağıt benzeri açık arka plan */
-    --border: #5a4b3f;
-    /* Koyu kahve kenarlık */
-    --border-color: #4a3f2f;
-    /* Biraz daha koyu kenarlık */
-    --text-muted: #bbb;
-    /* Daha soluk metin */
+
+    --accent: #a58e6e;     /* Hafif soluk kahve */
+    --text-light: #e8dcc8;     /* Açık krem */
+    --text-dark: #3a3227;     /* Koyu kahve metin */
+    --bg-dark: #1f1a15;     /* Koyu arka plan */
+    --bg-card: #2c2416;     /* Koyu kart arka planı */
+    --bg-paper: #fffefb;     /* Kağıt benzeri açık arka plan */
+    --border: #5a4b3f;     /* Koyu kahve kenarlık */
+    --border-color: #4a3f2f; /* Biraz daha koyu kenarlık */
+    --text-muted: #bbb;     /* Daha soluk metin */
+
+    --z-index-base: 1;
+    --z-index-sidebar: 100;     /* Sidebar ve içerik kartları */
+    --z-index-navbar: 1000;     /* Sticky Navbar */
+    --z-index-floating: 99999; /* Yüzen Butonlar (TOC ve Yukarı Çık) */
+    --z-index-modal: 100000;   /* Tam Ekran Mermaid ve Lightbox */
+    --z-index-top: 100001;
 }
 
 
@@ -720,20 +718,41 @@ main {
     line-height: 2;
 }
 
-.note-content h2 {
-    font-size: 2rem;
+.note-content h1, 
+.note-content h2, 
+.note-content h3, 
+.note-content h4, 
+.note-content h5, 
+.note-content h6 {
     color: var(--text-dark);
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent);
+    font-family: 'Merriweather', Georgia, serif;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-top: 2.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left; /* Paragraflar justify ise başlıklar sola yaslı kalmalı */
 }
 
-.note-content h3 {
-    font-size: 1.5rem;
-    color: var(--text-dark);
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+/* H1 ve H2 genellikle çok büyüktür */
+.note-content h2 { font-size: 1.85rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.3rem; }
+.note-content h3 { font-size: 1.55rem; }
+.note-content h4 { font-size: 1.3rem; }
+
+/* H5: p etiketinden (genelde 1rem/1.1rem) daha büyük ve kalın */
+.note-content h5 {
+    font-size: 1.2rem !important; /* p etiketinden kesinlikle büyük */
+    font-weight: 800 !important;   /* Ekstra kalın yaparak metinden ayır */
+    color: #2c2416;               /* Koyu tema vurgusu */
+    margin-top: 1.5rem;
+}
+
+/* H6: En küçük başlık (p ile aynı boyda ama stil farkıyla ayrışır) */
+.note-content h6 {
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 1.2rem;
 }
 
 .note-content p {
@@ -1578,6 +1597,8 @@ main {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: var(--z-index-sidebar);
 }
 
 /* Bölüm Başlıkları (İçindekiler, Etiketler, Not Bilgileri) */
@@ -1811,7 +1832,6 @@ main {
     top: 100px;
     height: fit-content;
     align-self: start;
-    z-index: 50;
 }
 
 .sidebar-left {
@@ -2405,16 +2425,19 @@ main {
 /* Aktif (Tam Ekran) Hali - Arka Plan Tema Rengi Yapıldı */
 .mermaid-wrapper.is-active {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: rgba(26, 21, 14, 0.98) !important;
-    z-index: 10000;
+    z-index: var(--z-index-modal) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 60px;
-    cursor: zoom-out; /* Boşluğa tıklandığında kapanacağını belirtir */
+    cursor: zoom-out;
+    /* Boşluğa tıklandığında kapanacağını belirtir */
 }
 
 /* Tam Ekrandaki Şema */
@@ -2424,21 +2447,24 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto; /* Büyük şemalar için kaydırma */
+    overflow: auto;
+    /* Büyük şemalar için kaydırma */
 }
 
 .mermaid-wrapper.is-active .mermaid svg {
     /* Şemayı tam ekranda devasa boyuta getirir */
     width: auto !important;
     height: auto !important;
-    min-width: 80% !important; 
+    min-width: 80% !important;
     max-width: 95% !important;
     max-height: 85vh !important;
-    transform: scale(1.1); /* Hafif bir yakınlaştırma efekti */
+    transform: scale(1.1);
+    /* Hafif bir yakınlaştırma efekti */
 }
 
 /* Yazı ve Kutu Detayları */
-.mermaid .node .label, .mermaid .label text {
+.mermaid .node .label,
+.mermaid .label text {
     fill: #ffffff !important;
     font-weight: 800 !important;
     font-size: 14px !important;
@@ -2448,12 +2474,14 @@ main {
 /* Kapat Butonu Konumu */
 .mermaid-wrapper.is-active .mermaid-view-btn {
     position: fixed;
-    top: 30px; right: 30px;
+    top: 30px;
+    right: 30px;
     background: #e74c3c;
     padding: 10px 20px;
     font-size: 14px;
     opacity: 1;
 }
+
 /* Mobilde çok taşmasın diye ufak ayar */
 @media (max-width: 768px) {
     .mermaid-wrapper.is-active .mermaid svg {
@@ -2473,6 +2501,7 @@ main {
     /* Ekstra kalınlık */
     font-size: 14px !important;
 }
+
 /* Şema İçi Renkler */
 /* --- Evrensel Kutu Sınıfları --- */
 /* Kök (Mavi) */
@@ -2537,6 +2566,73 @@ main {
     fill: #78623c !important;
 }
 
+/* Metin içindeki [1] numarasının stili */
+sup {
+    font-size: 0.8em;
+    margin-left: 2px;
+}
+
+sup a {
+    color: #78623c !important;
+    /* Tema renginiz */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+sup a:hover {
+    text-decoration: underline;
+}
+
+/* Sayfa sonundaki Referanslar Listesi (Footnotes) */
+.footnotes {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(120, 98, 60, 0.2);
+    font-size: 0.9em;
+    color: #a0a0a0;
+}
+
+.footnotes ol {
+    padding-left: 20px;
+    line-height: 0.4;
+}
+
+.footnotes li {
+    margin-bottom: 10px;
+}
+
+
+/* Kaynağa geri dönme oku (↩) */
+.reversefootnote {
+    color: #78623c !important;
+    margin-left: 5px;
+    text-decoration: none;
+}
+/* Dipnotlar (Footnotes) Bölümüne Otomatik Başlık Ekleme */
+.footnotes::before {
+    content: "Referanslar"; /* Buraya 'Kaynakça' da yazabilirsiniz */
+    display: block;
+    font-size: 1.5rem; /* Başlık boyutu */
+    font-weight: 700;
+    color: var(--bg-dark); /* Temanızdaki altın-kahve tonu */
+    font-family: 'Courier Prime', monospace; /* Temanıza uygun font */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent); /* Altına şık bir çizgi */
+    letter-spacing: 1px;
+}
+
+/* Listenin geri kalanıyla olan mesafesini düzenle */
+.footnotes ol {
+    margin-top: 1rem;
+}
+
+/* Eğer mobilde başlık çok büyük gelirse ayar çekebilirsiniz */
+@media (max-width: 768px) {
+    .footnotes::before {
+        font-size: 1.2rem;
+    }
+}
 /* --- RESPONSIVE MEDYA SORGULARI --- */
 /* Tablet ve Altı (1024px ve altı) */
 @media (max-width: 1024px) {
@@ -2711,3 +2807,89 @@ main {
     }
 
 }
+
+
+/* 1. Yüzen TOC Butonu (Sol Alt) */
+.toc-mobile-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: var(--z-index-floating) !important;
+    display: none;
+    /* Masaüstünde gizli */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+/* 2. Yukarı Çık Butonu (Sağ Alt) */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--bg-card);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: var(--z-index-top);
+    display: flex;
+    /* Her zaman görünür (veya JS ile scroll sonrası) */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    /* Başlangıçta gizli */
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.back-to-top-btn.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* 3. Mobilde Sidebar Panel Hali */
+@media (max-width: 992px) {
+    .toc-mobile-btn {
+        display: flex;
+    }
+    .back-to-top-btn { bottom: 20px; right: 15px; }
+
+    .toc-sidebar {
+        position: fixed;
+        bottom: 85px;
+        left: 20px;
+        width: 280px;
+        max-height: 70vh;
+        z-index: var(--z-index-floating) !important;
+        background: var(--bg-card) !important;
+        overflow-y: auto;
+        transform: scale(0);
+        transform-origin: bottom left;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .toc-sidebar.is-visible {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+

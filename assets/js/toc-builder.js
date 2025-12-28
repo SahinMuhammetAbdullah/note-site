@@ -134,4 +134,38 @@ function enableCollapsibleToc() {
     headings.forEach(heading => {
         observer.observe(heading);
     });
+
+
+    const tocBtn = document.getElementById('toc-mobile-toggle');
+    const tocSidebar = document.querySelector('.toc-sidebar');
+    
+    if (tocBtn && tocSidebar) {
+        tocBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const visible = tocSidebar.classList.toggle('is-visible');
+            tocBtn.querySelector('i').className = visible ? 'fas fa-times' : 'fas fa-list';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!tocSidebar.contains(e.target) && !tocBtn.contains(e.target)) {
+                tocSidebar.classList.remove('is-visible');
+                tocBtn.querySelector('i').className = 'fas fa-list';
+            }
+        });
+    }
+
+    // --- Yukarı Çık Kontrolü ---
+    const backToTop = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('is-visible');
+        } else {
+            backToTop.classList.remove('is-visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
