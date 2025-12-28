@@ -12,7 +12,7 @@ tags: [AI, Makine Öğrenimi ]
 level: Başlangıç
 
 prev_note: AI Giriş Bölüm 1 | Yapay Zeka'ya Giriş
-prev_note_link: /yapay-zeka/yapay-zekaya-giris/
+prev_note_link: /yapay-zeka/ai-giris-yapay-zekaya-giris/
 # next_note:
 # next_note_link:
 related_posts:
@@ -192,6 +192,37 @@ Alt alanlarında;
 
 Gibi seçenekler mevcuttur. Ayrıca derin öğrenme tarafında da bulunan farklı alt dalları bulunmaktadır.
 
+## Makine Öğrenmi Süreci
+
+![Makine Öğrenmi Süreci](/assets/images/postimages/makine-ogrenimi-sureci.png)
+> **CAPTION** Pekiştirmeli Öğrenme [^13]
+
+Görsel üzerinden gidecek olursak, ilk açalamada veri toplama, dizenleme ve ön işleme süreci vardır. Sonrasında veriler doğrultusnda modelin seçilmesi ve eğitilmesi olacaktır. Sonrasında da sonuçlar değerlendirilir. Farklı bir veri seti ile testedilir ve değerlendirmeler alınır. Başarısız olursa başa dönerek yeniden model seçimi yapılır. Başarılı olursa da kabul edilir.
+
+## Araçlar
+
+- TensorFlow
+- Keras
+- Scikit-learn
+- Caffe2
+- Apache Spark MLlib
+- OpenNN
+- Amazon SageManager
+
+Modeller, algoritmalar, veri önişleme algoritmaları vb. birçok yapıyı barındıran farklı araçları listeledik.
+
+
+## Model Seçimi
+
+- Problem anlaşılmalı.
+- Başarı kriterleri tanımlanmalı.
+- Veri gereksinimleri anlama.
+- Veri gereksinimleri belirleme.
+- Model eğitimi için veri toplama.
+- Veri önişleme yapılmalı.
+- Modelin özellikleri belirlenir.
+
+Bu adımlar sonrası model eğitilir. 
 
 [^1]: ResearchGate. [Görsel Kaynağı](https://www.researchgate.net/figure/The-main-types-of-machine-learning-Main-approaches-include-classification-and-regression_fig1_354960266)
 [^2]: DatabaseTown. [Görsel Kaynağı](https://databasetown.com/supervised-learning-algorithms/)
@@ -205,3 +236,4 @@ Gibi seçenekler mevcuttur. Ayrıca derin öğrenme tarafında da bulunan farkl�
 [^10]: GeeksForGeeks. [Görsel Kaynağı](https://www.geeksforgeeks.org/machine-learning/ml-gradient-boosting/)
 [^11]: DatabaseTown. [Görsel Kaynağı](https://databasetown.com/unsupervised-learning-types-applications/)
 [^12]: DatabaseTown. [Görsel Kaynağı](https://databasetown.com/basics-of-reinforcement-learning/)
+[^13]: Spiceworks. [Görsel Kaynağı](https://www.spiceworks.com/soft-tech/what-is-ml/)

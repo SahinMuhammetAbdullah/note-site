@@ -14,7 +14,7 @@ level: Başlangıç
 # prev_note:
 # prev_note_link: 
 next_note: AI Giriş Bölüm 2 | Makine Öğrenmesi
-next_note_link: /yapay-zeka/makine-ogrenimi/
+next_note_link: /yapay-zeka/ai-giris-makine-ogrenimi/
 related_posts:
   - title: BTK Yapay Zekaya Giriş Eğitimi
     url: https://www.btkakademi.gov.tr/portal/course/yapay-zekaya-giris-29193
