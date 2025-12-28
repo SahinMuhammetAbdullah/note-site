@@ -43,8 +43,10 @@ Bu, tüm post listeleme noktalarında tutarlı bir Türkçe tarih sağlar.
         {% assign category_name = post.categories | first %}
         {% assign cat_icon = "fas fa-folder" %}
         {% if category_name == "Veritabanları" %}{% assign cat_icon = "fas fa-database" %}
+        {% elsif category_name == "Yapay Zeka" %}{% assign cat_icon = "fa-solid fa-robot" %}
         {% elsif category_name == "Programlama Dilleri" %}{% assign cat_icon = "fas fa-code" %}
-        {% elsif category_name == "Web Geliştirme" %}{% assign cat_icon = "fab fa-js-square" %}{% endif %}
+        {% elsif category_name == "Sistem" %}{% assign cat_icon = "fas fa-microchip" %}
+        {% elsif category_name == "Web Teknolojileri" %}{% assign cat_icon = "fab fa-js-square" %}{% endif %}
 
         <span class="entry-category">
             <i class="{{ cat_icon }}"></i> {{ category_name }}

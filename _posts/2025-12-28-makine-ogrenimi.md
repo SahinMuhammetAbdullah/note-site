@@ -7,14 +7,14 @@ excerpt: "Bu yazımız BTK Yapay Zeka'ya giriş ders notlarindan oluşmatadır."
 description_preview: BTK Akademide yer alan Yapay Zeka'ya Giriş deri notları.
 date: 2025-12-28 23:00:00 +0300
 
-categories: [Yapay Zeka, ]
-tags: [AI, Makine Öğrenimi ]
+categories: [Yapay Zeka, AI-Giriş]
+tags: [AI, Makine Öğrenimi, AI Tools ]
 level: Başlangıç
 
 prev_note: AI Giriş Bölüm 1 | Yapay Zeka'ya Giriş
-prev_note_link: /yapay-zeka/ai-giris-yapay-zekaya-giris/
-# next_note:
-# next_note_link:
+prev_note_link: /yapay-zeka/ai-giris/yapay-zekaya-giris/
+next_note: AI Giriş Bölüm 3 | Derin Öğrenme
+next_note_link: /yapay-zeka/ai-giris/derin-ogrenme/
 related_posts:
   - title: BTK Yapay Zekaya Giriş Eğitimi
     url: https://www.btkakademi.gov.tr/portal/course/yapay-zekaya-giris-29193
