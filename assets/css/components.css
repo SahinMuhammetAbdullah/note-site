@@ -1,0 +1,372 @@
+
+main {
+    flex: 1 0 auto;
+    /* Main içeriğin esnemesini sağlar ve footer'ı aşağı iter */
+}
+
+.footer {
+    flex-shrink: 0;
+    /* Footer'ın küçülmesini engeller */
+    margin-top: auto;
+    /* Eğer main içeriği kısaysa, footer'ı aşağı itmek için boşluk bırak */
+    width: 100%;
+    /* Diğer footer stilleriniz burada devam etmeli (background, padding vs.) */
+}
+/* Footer */
+.footer {
+    background: linear-gradient(180deg, #2c2416 0%, #1a1410 100%);
+    padding: 3rem 0;
+    margin-top: 5rem;
+    border-top: 3px double var(--border);
+    flex-shrink: 0;
+    /* Footer'ın küçülmesini engeller */
+}
+
+.footer .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer p {
+    color: var(--accent);
+    font-family: 'Courier Prime', monospace;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--accent);
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+/* Container & Layouts */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(180deg, #1a1410 0%, #2c2416 100%);
+    border-bottom: 3px double var(--border);
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.logo {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-menu a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1rem;
+    position: relative;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 5rem 0 4rem;
+    position: relative;
+}
+
+.hero::before {
+    content: '📖';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    opacity: 0.3;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 300;
+}
+
+.divider {
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin: 3rem auto;
+}
+
+/* Section Titles (Genel) */
+.section-title {
+    font-size: 2.2rem;
+    margin: 3rem 0 2rem 0;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--primary);
+    margin: 1rem auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   MARKDOWN TABLO STİLLERİ
+   -------------------------------------------------------------------------- */
+
+.note-content table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    /* Çift kenarlıkları kaldırır */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    /* Kenar yuvarlaklığını korur */
+    background: var(--bg-card);
+    /* Tablo Arka Planı: Koyu kahverengi */
+    border-radius: 6px;
+    /* Hafif yuvarlatılmış kenarlar */
+    color: var(--text-light);
+    /* Koyu zeminde açık metin */
+    font-family: 'Merriweather', Georgia, serif;
+}
+
+/* Tablo Başlıkları (Thead) */
+.note-content thead {
+    background: var(--primary);
+    /* Başlık Arka Planı: Temel tema rengi (d4a574) */
+    color: var(--bg-dark);
+    /* Başlık Metni: Koyu kahverengi metin */
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Courier Prime', monospace;
+    /* Başlıklar Courier fontuyla */
+}
+
+/* Tablo Hücreleri (td ve th) */
+.note-content th,
+.note-content td {
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    /* Kenarlık: Yumuşak koyu çizgi */
+    text-align: left;
+    vertical-align: top;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Vücut Satırları (Alternatif Satır Vurgusu - Daha az belirgin) */
+.note-content tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+    /* Her ikinci satırda çok hafif gölge */
+}
+
+/* Tablo Başlıkları (Markdown'da kalın metin için) */
+.note-content td strong {
+    color: var(--primary);
+    /* Vurgulu metni tema renginde göster */
+}
+
+
+/* --------------------------------------------------------------------------
+   HAKKIMDA SAYFASI (DEFTER GÖRÜNÜMÜ)
+   -------------------------------------------------------------------------- */
+
+.notebook-page-wrapper {
+    position: relative;
+    margin: 3rem auto;
+    max-width: 800px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    background-color: #e6e0d4;
+    /* DIŞ KAĞIT: Daha sarımsı ton */
+    padding: 20px;
+    overflow: hidden;
+}
+
+.notebook-page {
+    position: relative;
+    padding: 1rem 2rem 1rem 3rem;
+    background-color: #fffffa;
+    /* İÇ KAĞIT: Yumuşak beyaz/krem */
+    border: 1px solid #d4c4b0;
+    /* Yumuşak kenarlık */
+    border-radius: 4px;
+    min-height: 400px;
+}
+
+/* Kırmızı sol kenar çizgisi (daha az belirgin) */
+.notebook-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2.5rem;
+    width: 2px;
+    height: 100%;
+    background-color: #c90000;
+    /* Ana tema rengine yakın yumuşak kahve tonu */
+    opacity: 0.4;
+    /* Opaklığı azaltıldı */
+}
+
+/* Yatay defter çizgileri (daha az belirgin) */
+.notebook-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(to bottom,
+            transparent,
+            transparent 28px,
+            #d4c4b0 29px,
+            /* Çizgi rengi: Daha açık ve yumuşak kahve */
+            #d4c4b0 30px);
+    background-size: 100% 30px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.7;
+    /* Çizgi opaklığı azaltıldı */
+}
+
+.notebook-page .note-content {
+    position: relative;
+    z-index: 2;
+    line-height: 30px;
+    padding-bottom: 20px;
+}
+
+/* Sosyal linklerin hizalamasını düzelt (defter görünümü için) */
+.notebook-page .social-links {
+    margin-top: 2rem !important;
+    justify-content: flex-start !important;
+    gap: 1.5rem !important;
+}
+
+/* Başlık ve paragraf stillerini ayarla (isteğe bağlı) */
+.notebook-page .note-content p {
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.notebook-page .note-content p:last-child {
+    margin-bottom: 0;
+}
+
+.page-container {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    /* soldaki ve sağdaki sidebar genişlikleri */
+    gap: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Görüntüdeki küçük 'Etiketler' başlığı için (Eski bir widget adı olabilir) */
+/* --------------------------------------------------------------------------
+   3 SÜTUNLU ANA YAPI (Genişlik Artışı)
+   -------------------------------------------------------------------------- */
+
+.main-container-3-col {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 4fr minmax(260px, 320px);
+    gap: 4rem;
+}

@@ -1,0 +1,56 @@
+
+/* Button */
+.btn-vintage {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: var(--bg-card);
+    color: var(--primary);
+    text-decoration: none;
+    border: 3px solid var(--primary);
+    border-radius: 4px;
+    transition: all 0.3s;
+    font-weight: 700;
+    font-family: 'Courier Prime', monospace;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-vintage:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.btn-center {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+
+
+/* TEK GÖNDERİ SAYFASI STİLLERİ */
+
+.back-btn {
+    background: var(--bg-card);
+    color: var(--primary);
+    border: 2px solid var(--border);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    transform: translateX(-5px);
+}

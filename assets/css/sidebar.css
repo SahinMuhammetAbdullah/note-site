@@ -1,0 +1,96 @@
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 120px;
+    /* Navbar'ın altından başlar */
+    height: fit-content;
+    padding: 0;
+    /* İçerik padding'i section'larda olmalı */
+}
+
+/* Her Bir Widget/Bölüm (İçindekiler, Etiketler, Bilgiler) */
+.sidebar-section {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: var(--z-index-sidebar);
+}
+
+/* Bölüm Başlıkları (İçindekiler, Etiketler, Not Bilgileri) */
+.sidebar-section h3 {
+    color: var(--primary);
+    /* Ana tema rengi */
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-family: 'Courier Prime', monospace;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+}
+
+.sidebar-section h3 i {
+    font-size: 1.1rem;
+}
+
+.sidebar-section h4 {
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar-left,
+.sidebar-right {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    align-self: start;
+}
+
+.sidebar-left {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Etiket Bulutu Stili (İlgili Notlar İçindeki Etiketler) */
+.tags-cloud .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tags-cloud .tags a {
+    background: rgba(139, 111, 71, 0.3);
+    color: var(--text-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-family: 'Courier Prime', monospace;
+    transition: all 0.3s;
+}
+
+.tags-cloud .tags a:hover {
+    background: var(--accent);
+}
+
+/* Not Bilgileri Bölümü */
+.note-info-details p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.note-info-details strong {
+    color: var(--primary);
+    /* Başlıkları vurgulamak için */
+    margin-right: 0.5rem;
+}

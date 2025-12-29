@@ -1,0 +1,88 @@
+:root {
+    /* Bu değişkenler _includes/head.html içinde Liquid ile doldurulur. */
+    /* Örnek varsayılan değerler: */
+    --primary: #d4a578;     /* Altın kahve */
+    --primary-dark: #b3865b;
+
+    --accent: #a58e6e;     /* Hafif soluk kahve */
+    --text-light: #e8dcc8;     /* Açık krem */
+    --text-dark: #3a3227;     /* Koyu kahve metin */
+    --bg-dark: #1f1a15;     /* Koyu arka plan */
+    --bg-card: #2c2416;     /* Koyu kart arka planı */
+    --bg-paper: #fffefb;     /* Kağıt benzeri açık arka plan */
+    --border: #5a4b3f;     /* Koyu kahve kenarlık */
+    --border-color: #4a3f2f; /* Biraz daha koyu kenarlık */
+    --text-muted: #bbb;     /* Daha soluk metin */
+
+    --z-index-base: 1;
+    --z-index-sidebar: 100;     /* Sidebar ve içerik kartları */
+    --z-index-navbar: 1000;     /* Sticky Navbar */
+    --z-index-floating: 99999; /* Yüzen Butonlar (TOC ve Yukarı Çık) */
+    --z-index-modal: 100000;   /* Tam Ekran Mermaid ve Lightbox */
+    --z-index-top: 100001;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------------------------------------ */
+/* SCROLLBAR ÖZELLEŞTİRME (Koyu Tema Tonları) */
+/* ------------------------------------------------ */
+
+/* -- WebKit Tarayıcıları (Chrome, Edge, Safari) -- */
+
+/* Scrollbar'ın genel genişliği/yüksekliği */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Scrollbar'ın arka plan izi (track) - '78623c' */
+::-webkit-scrollbar-track {
+    background: #463924;
+}
+
+/* Scrollbar'ın kaydırma çubuğu (thumb) - '2c2416' */
+::-webkit-scrollbar-thumb {
+    background: #2c2416;
+    border-radius: 10px;
+    /* Scrollbar'a biraz derinlik ve boşluk verir */
+    border: 3px solid #463924;
+}
+
+/* Mouse ile üzerine gelindiğinde */
+::-webkit-scrollbar-thumb:hover {
+    /* Hafifçe açılmış koyu ton */
+    background: #4a3c2e;
+}
+
+
+/* -- Firefox Tarayıcıları -- */
+html {
+    /* 1. Kaydırma çubuğu (Thumb) | 2. Arka plan izi (Track) */
+    scrollbar-color: #2c2416 #78623c;
+
+    /* Scrollbar'ı ince ayarlar */
+    scrollbar-width: thin;
+}
+
+html,
+body {
+    height: 100%;
+    /* HTML ve body'nin tüm viewport'u kaplamasını sağlar */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.8;
+    color: var(--text-light);
+    background: var(--bg-dark);
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .1) 2px, rgba(0, 0, 0, .1) 4px);
+}

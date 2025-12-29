@@ -1,0 +1,98 @@
+/* Genel tablet ve büyük mobil cihazlar için */
+/* --- HAMBURGER MENÜ STİLLERİ --- */
+
+/* Hamburger Butonu */
+.hamburger-btn {
+    display: none;
+    /* Masaüstünde gizli */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+/* Tam Ekran Overlay Menü */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 26, 21, 0.98);
+    /* Koyu Tema Arkaplanı */
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    /* En üstte */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Başlangıçta Gizli */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+/* Menü Aktif Olduğunda (JS Ekleyecek) */
+.mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Kapatma Butonu (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* Mobil Linkler */
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+}
+
+.mobile-menu-links a {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Merriweather', serif;
+    transition: color 0.3s;
+}
+
+.mobile-menu-links a:hover {
+    color: var(--primary);
+}
+
+.mobile-search input {
+    padding: 1rem;
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--border);
+    color: #fff;
+    font-family: 'Courier Prime', monospace;
+    width: 280px;
+    text-align: center;
+}

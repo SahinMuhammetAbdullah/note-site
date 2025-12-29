@@ -1,0 +1,61 @@
+/* Metin içindeki [1] numarasının stili */
+sup {
+    font-size: 0.8em;
+    margin-left: 2px;
+}
+
+sup a {
+    color: #78623c !important;
+    /* Tema renginiz */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+sup a:hover {
+    text-decoration: underline;
+}
+
+/* Sayfa sonundaki Referanslar Listesi (Footnotes) */
+.footnotes {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(120, 98, 60, 0.2);
+    font-size: 0.9em;
+    color: #a0a0a0;
+}
+
+.footnotes ol {
+    padding-left: 20px;
+    line-height: 0.4;
+}
+
+.footnotes li {
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+
+/* Kaynağa geri dönme oku (↩) */
+.reversefootnote {
+    color: #78623c !important;
+    margin-left: 5px;
+    text-decoration: none;
+}
+/* Dipnotlar (Footnotes) Bölümüne Otomatik Başlık Ekleme */
+.footnotes::before {
+    content: "Referanslar"; /* Buraya 'Kaynakça' da yazabilirsiniz */
+    display: block;
+    font-size: 1.5rem; /* Başlık boyutu */
+    font-weight: 700;
+    color: var(--bg-dark); /* Temanızdaki altın-kahve tonu */
+    font-family: 'Courier Prime', monospace; /* Temanıza uygun font */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent); /* Altına şık bir çizgi */
+    letter-spacing: 1px;
+}
+
+/* Listenin geri kalanıyla olan mesafesini düzenle */
+.footnotes ol {
+    margin-top: 1rem;
+}

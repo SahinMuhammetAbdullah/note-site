@@ -1,0 +1,177 @@
+/* --- Mermaid Genel Kapsayıcı --- */
+.mermaid-wrapper {
+    position: relative;
+    margin: 2rem 0;
+    background: rgba(44, 36, 22, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(120, 98, 60, 0.2);
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
+/* Büyütme Butonu */
+.mermaid-view-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #78623c;
+    color: white;
+    border: 1px solid rgba(229, 220, 203, 0.3);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    /* Her zaman üstte */
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.mermaid-wrapper:hover .mermaid-view-btn {
+    opacity: 1;
+}
+
+/* Aktif (Tam Ekran) Hali - Arka Plan Tema Rengi Yapıldı */
+.mermaid-wrapper.is-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(26, 21, 14, 0.98) !important;
+    z-index: var(--z-index-modal) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    cursor: zoom-out;
+    /* Boşluğa tıklandığında kapanacağını belirtir */
+}
+
+/* Tam Ekrandaki Şema */
+.mermaid-wrapper.is-active .mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    /* Büyük şemalar için kaydırma */
+}
+
+.mermaid-wrapper.is-active .mermaid svg {
+    /* Şemayı tam ekranda devasa boyuta getirir */
+    width: auto !important;
+    height: auto !important;
+    min-width: 80% !important;
+    max-width: 95% !important;
+    max-height: 85vh !important;
+    transform: scale(1.1);
+    /* Hafif bir yakınlaştırma efekti */
+}
+
+/* Yazı ve Kutu Detayları */
+.mermaid .node .label,
+.mermaid .label text {
+    fill: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    text-transform: uppercase;
+}
+
+/* Kapat Butonu Konumu */
+.mermaid-wrapper.is-active .mermaid-view-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #e74c3c;
+    padding: 10px 20px;
+    font-size: 14px;
+    opacity: 1;
+}
+
+/* Mobilde çok taşmasın diye ufak ayar */
+@media (max-width: 768px) {
+    .mermaid-wrapper.is-active .mermaid svg {
+        min-width: 800px !important;
+    }
+}
+
+/* Kutu İçindeki Fontlar: Kalın ve Beyaz */
+.mermaid .node .label,
+.mermaid .label text,
+.mermaid .nodeLabel {
+    fill: #ffffff !important;
+    /* SVG metin rengi */
+    color: #ffffff !important;
+    /* HTML etiket rengi */
+    font-weight: 800 !important;
+    /* Ekstra kalınlık */
+    font-size: 14px !important;
+}
+
+/* Şema İçi Renkler */
+/* --- Evrensel Kutu Sınıfları --- */
+/* Kök (Mavi) */
+.mermaid .rootNode rect,
+.mermaid .rootNode polygon {
+    fill: #0b3d59 !important;
+    stroke: #e5dccb !important;
+    stroke-width: 2px !important;
+}
+
+/* Uyarı (Sarı) */
+.mermaid .warningNode rect,
+.mermaid .warningNode polygon {
+    fill: #f39c12 !important;
+    stroke: #2c2416 !important;
+}
+
+/* Başarı (Yeşil) */
+.mermaid .successNode rect,
+.mermaid .successNode polygon {
+    fill: #27ae60 !important;
+    stroke: #2c2416 !important;
+}
+
+/* Hata (Kırmızı) */
+.mermaid .errorNode rect,
+.mermaid .errorNode polygon {
+    fill: #c0392b !important;
+    stroke: #2c2416 !important;
+}
+
+/* İnfo (Mavi) */
+
+.mermaid .infoNode rect,
+.mermaid .infoNode polygon {
+
+    fill: #2980b9 !important;
+    /* Profesyonel Mavi Tonu */
+    stroke: #e5dccb !important;
+    stroke-width: 2px !important;
+}
+
+/* Detay/Yaprak (Koyu Kahve - Tema ile uyumlu) */
+
+.mermaid .leafNode rect,
+.mermaid .leafNode circle,
+.mermaid .leafNode ellipse {
+
+    fill: #2c2416 !important;
+    stroke: #78623c !important;
+    stroke-width: 1px !important;
+
+}
+
+/* Bağlantı Okları */
+.mermaid .edgePaths .path {
+    stroke: #78623c !important;
+    stroke-width: 2.5px !important;
+}
+
+.mermaid .marker {
+    fill: #78623c !important;
+}

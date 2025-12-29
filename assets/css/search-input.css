@@ -1,0 +1,32 @@
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 0.7rem 2.5rem 0.7rem 1.2rem;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    width: 280px;
+    font-size: 0.95rem;
+    background: rgba(61, 51, 38, 0.6);
+    color: var(--text-light);
+    font-family: 'Courier Prime', monospace;
+}
+
+.search-box input::placeholder {
+    color: var(--accent);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(61, 51, 38, 0.9);
+}
+
+.search-box i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+}

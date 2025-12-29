@@ -1,0 +1,245 @@
+/* Eğer mobilde başlık çok büyük gelirse ayar çekebilirsiniz */
+@media (max-width: 768px) {
+    .footnotes::before {
+        font-size: 1.2rem;
+    }
+}
+/* --- RESPONSIVE MEDYA SORGULARI --- */
+/* Tablet ve Altı (1024px ve altı) */
+@media (max-width: 1024px) {
+
+    /* Navbar Düzeni */
+    .desktop-only {
+        display: none !important;
+        /* Masaüstü elemanları gizle */
+    }
+
+    .hamburger-btn {
+        display: flex;
+        /* Hamburgeri göster */
+    }
+
+    .navbar .container {
+        justify-content: space-between;
+        /* Logo sol, Hamburger sağ */
+    }
+
+    /* Grid Sistemini Tek Sütuna Çevir (Footer Sorununu da Çözer) */
+    .main-container,
+    .main-container-3-col,
+    .page-container {
+        display: flex;
+        /* Grid yerine Flex kullan */
+        flex-direction: column;
+        /* Alt alta diz */
+        padding: 2rem 1.5rem;
+        gap: 3rem;
+        max-width: 100%;
+    }
+
+    /* Sidebarları İçeriğin Altına Al */
+    .sidebar,
+    .sidebar-left,
+    .sidebar-right {
+        width: 100%;
+        position: static;
+        /* Sticky özelliğini kapat */
+        order: 2;
+        /* İçerikten sonra gelsin */
+        max-width: none;
+    }
+
+    main,
+    .content-area {
+        /* İçerik en üstte */
+        width: 100%;
+    }
+
+    .category-list {
+        display: contents;
+    }
+
+    .category-main {
+        margin: 0.8rem;
+    }
+
+    .category-main h3 {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+}
+
+/* Mobil Telefonlar (768px ve altı) */
+@media (max-width: 768px) {
+
+    /* 1. GENEL FONT ÖLÇEKLEME */
+    body {
+        line-height: 1.4;
+    }
+
+    /* 2. METİN ALANLARI → padding azaltıldı */
+    .note-article {
+        max-width: 100% !important;
+        width: 100%;
+        padding: 0.6rem !important;
+        /* çok daha dar */
+        margin: 0;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .note-content {
+        padding: 0.5rem 0.3rem !important;
+    }
+
+    /* Başlıklar */
+    .note-title {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.8rem;
+    }
+
+    .note-content h2 {
+        font-size: 1.2rem !important;
+        margin: 0.8rem 0 0.4rem 0;
+    }
+
+    .note-content h3 {
+        font-size: 1.2rem !important;
+        margin: 0.6rem 0 0.3rem 0;
+    }
+
+    /* 3. TABLOLAR → scrollable (kayan), sıkı padding, boşluk yok */
+    .note-content table {
+        /* Tablonun kendisi, içeriği taşsa bile kaydırma çubuğu çıkarmamalıdır. */
+        /* Tablonun kapsayıcısı (parent) kaydırma çubuğu çıkarmalıdır. */
+        width: 100%;
+        /* Kapsayıcıyı tam doldurmaya zorla */
+        display: block;
+        /* Dikey akışı sağlar */
+        overflow-x: auto;
+        /* Yatay kaydırma çubuğu gerekiyorsa çıksın */
+        white-space: nowrap;
+        /* Kolonların tek satırda kalmasını sağlar */
+
+        border-collapse: collapse;
+        /* Kenar boşluklarını yok eder */
+        table-layout: auto;
+        /* CRITICAL: Sütunları içeriğe göre boyutlandırır */
+
+        margin: 1rem 0;
+        padding: 0;
+        max-inline-size: min-content;
+    }
+
+    /* 2. TABLO İÇİ HÜCRELERİN SIKILAŞTIRILMASI */
+    .note-content table td,
+    .note-content table th {
+        padding: 0.5rem 0.7rem;
+        /* Mobil için sıkı padding */
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+
+    /* 4. JOURNAL ENTRY (kartlar) → padding azaltma */
+    .journal-entry {
+        padding: 0.8rem !important;
+    }
+
+    .journal-entry h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.4rem;
+    }
+
+    /* 5. SIDEBAR */
+    .sidebar-section {
+        padding: 0.5rem 0.3rem;
+    }
+
+    .sidebar-section h3,
+    .sidebar-section a {
+        font-size: 0.85rem !important;
+        line-height: 1.3;
+    }
+
+    /* 6. KOD BLOKLARI → sıkı ve kompakt */
+    .highlighter-rouge {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        width: calc(100% + 1rem);
+    }
+
+    .highlighter-rouge .highlight {
+        font-size: 0.88rem;
+        padding: 0.6rem;
+        line-height: 1.3;
+    }
+
+ /* Referans listesinin genel yapısı */
+    .footnotes ol {
+        font-size: 0.9rem !important; /* Çok küçük olup okunurluğu bozmasın */
+        line-height: 1.4 !important;  /* Metin alt satıra kayarsa satırlar arası nefes alsın */
+        padding-left: 5px !important; /* Rakamların dışarı taşmasını engelle */
+    }
+
+    /* Her bir referans maddesi arasındaki mesafe */
+    .footnotes li {
+        margin-bottom: 12px !important; /* Alt satıra kayan madde ile bir sonraki maddeyi ayırır */
+    }
+
+    /* Kaynağa geri dönme oku (↩) için boşluk */
+    .reversefootnote {
+        margin-left: 5px;
+        display: inline-block;
+    }
+    .note-navigation .nav-title {
+        font-size: 0.8rem;
+    }
+
+    .note-navigation .nav-label {
+        font-size: 0.6rem;
+    }
+
+    .note-navigation .nav-note {
+        padding: 0.7rem;
+    }
+
+    .note-navigation .nav-note i {
+        font-size: 0.9rem;
+        font-weight:900;
+        
+    } 
+}
+
+/* 3. Mobilde Sidebar Panel Hali */
+@media (max-width: 992px) {
+    .toc-mobile-btn {
+        display: flex;
+    }
+    .back-to-top-btn { bottom: 20px; right: 15px; }
+
+    .toc-sidebar {
+        position: fixed;
+        bottom: 85px;
+        left: 20px;
+        width: 280px;
+        max-height: 70vh;
+        z-index: var(--z-index-floating) !important;
+        background: var(--bg-card) !important;
+        overflow-y: auto;
+        transform: scale(0);
+        transform-origin: bottom left;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .toc-sidebar.is-visible {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
