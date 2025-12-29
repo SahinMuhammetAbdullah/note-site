@@ -780,20 +780,13 @@ main {
 
 /* Metin İçi Kod */
 .note-content code {
-    /* Görünürlüğü ve akışı zorla (Normal metin akışında kalır) */
     display: inline;
     visibility: visible;
-
     font-family: 'Courier Prime', monospace;
-
-    padding: 0.2rem 0.4rem;
+    padding: 0.1rem; /* Padding'i biraz küçülttük */
     border-radius: 3px;
-
     color: var(--accent);
     cursor: copy;
-    /* Tıklanabilir olduğunu göster */
-
-    /* Fazlalıkları sıfırla */
     margin: 0;
     line-height: normal;
 }
@@ -2926,5 +2919,118 @@ sup a:hover {
         pointer-events: auto;
     }
 }
+/* --- DİL ÖĞRENME BLOKLARI: GİRİNTİ VE BOŞLUĞU SIFIRLAMA --- */
+
+/* 1. Tüm kod bloklarının girintisini zorla sıfırla */
+.highlighter-rouge, 
+.highlighter-rouge pre, 
+.highlighter-rouge code,
+.note-content .highlighter-rouge pre {
+    text-indent: 0 !important;   /* Paragraf başı boşluğunu kaldırır */
+    padding-left: 0 !important;  /* Eğer soldan padding varsa sıfırlar */
+}
+
+/* 2. İngilizce (eng) özel kutusu için hizalama */
+.highlighter-rouge[data-lang="eng"] pre.highlight {
+    padding: 1rem 1.2rem !important; /* İçeriği kutuya nizami yerleştirir */
+    text-indent: 0 !important;
+    background: rgba(212, 165, 116, 0.08) !important;
+    border-left: 5px solid var(--primary) !important;
+    display: block !important;
+}
+
+.highlighter-rouge[data-lang="eng"] code {
+    display: block !important;
+    text-indent: 0 !important;
+    font-family: 'Merriweather', serif !important;
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    color: var(--text-dark) !important;
+    white-space: pre-wrap !important; /* Uzun cümleleri alt satıra kaydırır ama girinti yapmaz */
+}
+
+/* 3. Renkli Takı (Span) Problemi: Harfleri birleştirme */
+.gr {
+    color: #e74c3c !important; /* Canlı kırmızı */
+    font-weight: 800 !important;
+    text-decoration: none;
+    /* Kritik: Harf ile kelime arasında boşluk oluşmasını engeller */
+    display: inline !important; 
+    margin-left: 0 !important; 
+    margin-right: 0 !important;
+    padding: 0 !important;
+}
+
+.fl {
+    /* Metin rengi (okunabilirlik için koyu ton) */
+    color: #2f3a00;
+
+    font-weight: 800;
+    text-decoration: none;
+
+    /* Marker efekti */
+    background: linear-gradient(
+        transparent 55%,
+        rgba(190, 230, 80, 0.85) 55%
+    );
+
+    padding: 0 0.15em;
+
+    /* Satır kırılınca düzgün görünmesi için */
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+
+    display: inline;
+}
+
+/* Makale içindeki yatay çizgiler */
+.note-content hr {
+    border: none;
+    height: 2px; /* Tek net çizgi için yüksekliği 1px yapıyoruz */
+    background-color: var(--primary); /* Çizgi rengi */
+    margin: 3rem auto;
+    width: 100%;
+    position: relative;
+    opacity: 0.5; /* Çok göze batmaması için hafif şeffaflık */
+    overflow: visible; /* Simgenin görünmesi için şart */
+}
+
+/* Çizginin ortasına elmas simgesi */
+.note-content hr::after {
+    content: "♦";
+    position: absolute;
+    /* Dikey ortalama: Tam merkez için -12px ile -15px arası idealdir */
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Arka plan: Çizginin simge arkasından geçmemesi için sayfa rengi */
+    background-color: var(--bg-paper); 
+    padding: 0 12px; /* Simgenin sağ ve solundaki boşluk (çizgiyi kesme mesafesi) */
+    
+    color: var(--primary);
+    font-size: 1.2rem;
+    line-height: 1;
+}
 
 
+.fl-blue {
+    /* Metin rengi */
+    color: #0f2f3a;
+
+    font-weight: 800;
+    text-decoration: none;
+
+    /* Marker efekti (mavi-camgöbeği) */
+    background: linear-gradient(
+        transparent 55%,
+        rgba(120, 200, 220, 0.85) 55%
+    );
+
+    padding: 0 0.15em;
+
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+
+    display: inline;
+}
