@@ -3,7 +3,7 @@ title: İngilizce Bölüm 1 | "Be" Fiili ve Geniş Zaman
 subtitle: İngilizce'de Adım Adım İlerleme
 excerpt: BTK Akademi İngilizce Dil serisi notları.
 description_preview: BTK Akademide yer alan "A1 Seviye İngilizce" dersi notları.
-date: 2025-12-29 00:00:00 +0300
+date: 2025-12-29 23:59:00 +0300
 
 categories: [Language, English]
 tags: [grammar, tenses, learning, beginner]
