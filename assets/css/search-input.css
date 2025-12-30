@@ -75,3 +75,30 @@
     color: var(--accent);
     font-style: italic;
 }
+
+/* Sonuç öğesi içindeki içerik dizilimi */
+.res-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Kategori ve Etiket Rozeti (Badge) */
+.res-badge {
+    font-size: 0.7rem;
+    background: rgba(212, 165, 116, 0.15); /* Temadaki altın renginin şeffaf hali */
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    font-family: 'Courier Prime', monospace;
+    border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+/* Alt başlıkların altında hangi makalede olduğunu gösteren yazı */
+.res-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    font-style: italic;
+    color: var(--text-light);
+}

@@ -22,26 +22,46 @@ document.addEventListener('DOMContentLoaded', () => {
             const filteredResults = [];
             searchData.forEach(post => {
                 const q = query.toLowerCase();
-                
-                // 1. Ana başlık, kategori veya etiket eşleşmesi (Normal Makale Linki)
-                if (post.title.toLowerCase().includes(q) || 
-                    post.category.toLowerCase().includes(q) || 
-                    (post.tags && post.tags.toLowerCase().includes(q))) {
+
+                // 1. ANA BAŞLIK EŞLEŞMESİ
+                if (post.title.toLowerCase().includes(q)) {
                     filteredResults.push({ title: post.title, url: post.url, date: post.date, type: 'post' });
                 }
 
-                // 2. Alt başlık (##) eşleşmesi (Çıpalı Link)
+                // 2. KATEGORİ EŞLEŞMESİ
+                else if (post.category && post.category.toLowerCase().includes(q)) {
+                    filteredResults.push({
+                        title: post.title,
+                        label: `Kategori: ${post.category}`,
+                        url: post.url,
+                        date: post.date,
+                        type: 'meta'
+                    });
+                }
+
+                // 3. ETİKET EŞLEŞMESİ
+                else if (post.tags && post.tags.toLowerCase().includes(q)) {
+                    filteredResults.push({
+                        title: post.title,
+                        label: `Etiket: ${post.tags}`,
+                        url: post.url,
+                        date: post.date,
+                        type: 'meta'
+                    });
+                }
+
+                // 4. ALT BAŞLIK (##) EŞLEŞMESİ
                 if (post.headers && post.headers.toLowerCase().includes(q)) {
                     const headers = post.headers.split(' | ');
                     headers.forEach(h => {
                         if (h.toLowerCase().includes(q) && h.includes('#')) {
                             const [hText, hAnchor] = h.split('#');
-                            filteredResults.push({ 
-                                title: hText, 
-                                subtitle: post.title, // Hangi makalede olduğunu belirtmek için
-                                url: `${post.url}#${hAnchor}`, 
-                                date: post.date, 
-                                type: 'header' 
+                            filteredResults.push({
+                                title: hText,
+                                subtitle: post.title,
+                                url: `${post.url}#${hAnchor}`,
+                                date: post.date,
+                                type: 'header'
                             });
                         }
                     });
@@ -51,14 +71,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filteredResults.length > 0) {
                 resultsContainer.style.display = 'block';
                 filteredResults.forEach(res => {
-                    // Tipine göre başlık formatını ayarla
-                    const displayTitle = res.type === 'header' ? `<b>${res.title}</b> <small style="opacity:0.6">(${res.subtitle})</small>` : res.title;
-                    
+                    let displayHTML = '';
+
+                    if (res.type === 'header') {
+                        displayHTML = `<span class="res-title"><b>${res.title}</b></span>
+                       <span class="res-subtitle"># ${res.subtitle}</span>`;
+                    } else if (res.type === 'meta') {
+                        displayHTML = `<span class="res-title">${res.title}</span>
+                       <span class="res-badge">${res.label}</span>`;
+                    } else {
+                        displayHTML = `<span class="res-title">${res.title}</span>`;
+                    }
+
                     resultsContainer.innerHTML += `
-                        <a href="${res.url}" class="search-result-item">
-                            <span class="res-title">${displayTitle}</span>
-                            <span class="res-date">${res.date}</span>
-                        </a>`;
+        <a href="${res.url}" class="search-result-item">
+            <div class="res-content">${displayHTML}</div>
+            <span class="res-date">${res.date}</span>
+        </a>`;
                 });
             } else {
                 resultsContainer.innerHTML = '<div class="search-result-item">Sonuç bulunamadı...</div>';
