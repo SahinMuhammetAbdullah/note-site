@@ -11,6 +11,7 @@ main {
     /* Eğer main içeriği kısaysa, footer'ı aşağı itmek için boşluk bırak */
     width: 100%;
     /* Diğer footer stilleriniz burada devam etmeli (background, padding vs.) */
+    z-index: 99999;
 }
 /* Footer */
 .footer {
