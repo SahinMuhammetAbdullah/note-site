@@ -1,0 +1,60 @@
+.error-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-code {
+    font-family: 'Courier Prime', monospace;
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--primary);
+    opacity: 0.2;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.error-illustration {
+    font-size: 4rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.error-title {
+    font-family: 'Merriweather', serif;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    font-family: 'Courier Prime', monospace;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    color: var(--text-light);
+}
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Hayalet Animasyonu */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .error-code { font-size: 5rem; top: 15%; }
+    .error-title { font-size: 1.5rem; }
+}

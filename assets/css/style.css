@@ -1,6 +1,7 @@
 /* Ana Bileşenler ve Root */
 @import url("root.css");
 @import url("components.css");
+@import url("error.css");
 
 /* Sayfa Yapısı */
 @import url("sidebar.css");
