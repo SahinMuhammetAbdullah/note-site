@@ -311,7 +311,7 @@
         max-height: 80vh;
         background: var(--bg-card);
         border-top: 3px solid var(--primary);
-        z-index: 10000;
+        z-index: 100001;
         transition: bottom 0.4s ease;
         padding: 20px;
         border-radius: 20px 20px 0 0;
