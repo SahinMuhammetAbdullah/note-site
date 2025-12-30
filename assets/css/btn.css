@@ -301,14 +301,6 @@
     padding-bottom: 15px;
 }
 
-.close-panel-btn {
-    background: none;
-    border: none;
-    color: var(--primary);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 /* Panel içindeki liste düzeni */
 .info-details-list p {
     margin: 10px 0;
