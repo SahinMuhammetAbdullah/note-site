@@ -2,22 +2,52 @@
 layout: none
 ---
 [
-  {% for post in site.posts %}
-    {% assign h2_data = "" %}
-    {% assign parts = post.content | split: '<h2' %}
-    {% for part in parts %}
-      {% if forloop.first %}{% continue %}{% endif %}
-      {% assign anchor = part | split: 'id="' | last | split: '"' | first %}
-      {% assign header_text = part | split: '</h2>' | first | split: '>' | last | strip_html | strip_newlines %}
-      {% assign h2_data = h2_data | append: header_text | append: "#" | append: anchor | append: " | " %}
-    {% endfor %}
-    {
-      "title"    : {{ post.title | jsonify }},
-      "url"      : {{ post.url | relative_url | jsonify }},
-      "category" : {{ post.categories | join: ', ' | jsonify }},
-      "tags"     : {% if post.tags %}{{ post.tags | join: ', ' | jsonify }}{% else %}""{% endif %},
-      "date"     : {{ post.date | date: '%d %b %Y' | jsonify }},
-      "headers"  : {{ h2_data | jsonify }}
-    } {% unless forloop.last %},{% endunless %}
-  {% endfor %}
+{% for post in site.posts %}
+  {% assign h2_data = "" %}
+
+  {%- assign blocks = post.content | split: '</h2>' -%}
+  {%- for block in blocks -%}
+    {%- if block contains '<h2' -%}
+
+      {%- assign h2_open = block | split: '<h2' | last -%}
+
+      {%- assign id_raw = h2_open
+        | split: 'id="'
+        | last
+        | split: '"'
+        | first
+      -%}
+
+      {%- assign text_raw = h2_open
+        | split: '>'
+        | last
+        | strip_html
+        | strip
+        | strip_newlines
+        | escape
+      -%}
+
+      {%- unless id_raw contains 'fn' or id_raw contains 'ref' -%}
+        {%- if id_raw != "" and text_raw != "" -%}
+          {%- assign h2_data = h2_data
+            | append: text_raw
+            | append: "#"
+            | append: id_raw
+            | append: " | "
+          -%}
+        {%- endif -%}
+      {%- endunless -%}
+
+    {%- endif -%}
+  {%- endfor -%}
+
+  {
+    "title"    : {{ post.title | jsonify }},
+    "url"      : {{ post.url | relative_url | jsonify }},
+    "category" : {{ post.categories | join: ', ' | jsonify }},
+    "tags"     : {% if post.tags %}{{ post.tags | join: ', ' | jsonify }}{% else %}""{% endif %},
+    "date"     : {{ post.date | date: '%d %b %Y' | jsonify }},
+    "headers"  : {{ h2_data | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
 ]
