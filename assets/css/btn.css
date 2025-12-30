@@ -302,16 +302,11 @@
 }
 
 .close-panel-btn {
-    appearance: none;
-    -webkit-appearance: none; /* iOS için */
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /* Panel içindeki liste düzeni */
