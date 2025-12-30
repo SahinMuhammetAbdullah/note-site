@@ -364,4 +364,7 @@
         font-size: 1.5rem;
         cursor: pointer;
     }
+
+    .note-meta .note-date, .note-meta .time {display: none;} 
+    .note-tags {display: none;} 
 }
