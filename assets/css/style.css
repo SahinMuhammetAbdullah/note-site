@@ -267,3 +267,94 @@
         font-size: 0.7rem;
     }
 }
+
+/* Masaüstünde gizle */
+
+@media (max-width: 962px) {
+
+    .info-mobile-btn { display: flex; }
+    
+    /* Masaüstü sidebarını mobilde temizle */
+    .sidebar-section { 
+        margin-bottom: 25px; 
+    }
+    
+    /* Eğer sidebar normal akışta duruyorsa onu gizle */
+    .post-sidebar-desktop { display: none; }
+    
+    /* Buton Ayarları */
+    .info-mobile-btn {
+        display: flex;
+        position: fixed;
+        bottom: 85px; /* TOC butonunun hemen üstünde */
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary);
+        color: var(--bg-dark);
+        border: none;
+        border-radius: 50%;
+        z-index: 9999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Panel Ayarları (image_307e49.png baz alınarak düzeltildi) */
+    .info-mobile-panel {
+        display: block;
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        background: var(--bg-card);
+        border-top: 3px solid var(--primary);
+        z-index: 10000;
+        transition: bottom 0.4s ease;
+        padding: 20px;
+        border-radius: 20px 20px 0 0;
+        overflow-y: auto;
+    }
+
+    .info-mobile-panel.is-active { bottom: 0; }
+
+    /* LİSTE HATALARINI GİDEREN KRİTİK KISIM */
+    .info-panel-content ul {
+        list-style: none !important; /* Mavi noktaları ve girintileri kaldırır */
+        padding: 0 !important;
+        margin: 0 0 15px 0 !important;
+    }
+
+    .info-panel-content li {
+        margin-bottom: 10px !important;
+        padding-left: 0 !important;
+    }
+
+    .info-panel-content a {
+        color: var(--primary) !important; /* Mavi link yerine altın rengi */
+        text-decoration: none !important;
+        font-weight: bold;
+    }
+
+    /* Etiketlerin yan yana düzgün durması için */
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .sidebar-section h3 {
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    .info-details-box p {
+        margin: 5px 0;
+        line-height: 1.6;
+    }
+}

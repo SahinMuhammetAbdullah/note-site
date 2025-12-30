@@ -1,9 +1,11 @@
+<!-- Masaüstü -->
+
 {% comment %} 
     İlgili Notlar bloğunu, sadece listede eleman varsa göster. 
     (page.related_posts'un boyutu 0'dan büyükse)
 {% endcomment %}
 {% if page.related_posts and page.related_posts.size > 0 %}
-<div class="sidebar-section">
+<div class="sidebar-section post-sidebar-desktop">
     <h3><i class="fas fa-book"></i> İlgili Notlar</h3>
     <ul class="related-list">
         {% for item in page.related_posts %}
@@ -13,7 +15,7 @@
 </div>
 {% endif %}
 
-<div class="sidebar-section tags-cloud">
+<div class="sidebar-section tags-cloud post-sidebar-desktop">
     <h3><i class="fas fa-tags"></i> Etiketler</h3>
     <div class="tags">
         {% for tag in page.tags %}
@@ -48,7 +50,7 @@
 {% assign tr_tarih = gun | append: " " | append: ay_adi_tr | append: " " | append: yil %}
 
 
-<div class="sidebar-section">
+<div class="sidebar-section post-sidebar-desktop">
     <h3><i class="fas fa-info-circle"></i> Not Bilgileri</h3>
     <div style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8;">
         <p><strong>Yazar:</strong> {{ site.author_info.name }}</p>
@@ -63,4 +65,81 @@
         </p>
         <p><strong>Seviye:</strong> {{ page.level }}</p>
     </div>
+</div>
+
+<!-- Mobil -->
+{% comment %} Tarih Hesaplama Bloğu (Senin kodun, dokunulmadı) {% endcomment %}
+{% assign ay_adi = page.date | date: "%B" %}
+{% case ay_adi %}
+    {% when 'January' %} {% assign ay_adi_tr = 'Ocak' %}
+    {% when 'February' %} {% assign ay_adi_tr = 'Şubat' %}
+    {% when 'March' %} {% assign ay_adi_tr = 'Mart' %}
+    {% when 'April' %} {% assign ay_adi_tr = 'Nisan' %}
+    {% when 'May' %} {% assign ay_adi_tr = 'Mayıs' %}
+    {% when 'June' %} {% assign ay_adi_tr = 'Haziran' %}
+    {% when 'July' %} {% assign ay_adi_tr = 'Temmuz' %}
+    {% when 'August' %} {% assign ay_adi_tr = 'Ağustos' %}
+    {% when 'September' %} {% assign ay_adi_tr = 'Eylül' %}
+    {% when 'October' %} {% assign ay_adi_tr = 'Ekim' %}
+    {% when 'November' %} {% assign ay_adi_tr = 'Kasım' %}
+    {% when 'December' %} {% assign ay_adi_tr = 'Aralık' %}
+{% else %}
+    {% assign ay_adi_tr = ay_adi %}
+{% endcase %}
+{% assign gun = page.date | date: "%d" %}
+{% assign yil = page.date | date: "%Y" %}
+{% assign tr_tarih = gun | append: " " | append: ay_adi_tr | append: " " | append: yil %}
+
+<button class="info-mobile-btn" id="infoMobileBtn" title="Not Detayları">
+    <i class="fas fa-info"></i>
+</button>
+
+<div class="info-mobile-panel" id="infoMobilePanel">
+    <div class="info-panel-header">
+        <span><i class="fas fa-leaf"></i> Not Detayları</span>
+        <button id="closeInfoPanel" class="close-panel-btn"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="info-panel-content">
+        <div class="sidebar-info-inner">
+            
+            {% if page.related_posts and page.related_posts.size > 0 %}
+            <div class="sidebar-section">
+                <h3><i class="fas fa-book"></i> İlgili Notlar</h3>
+                <ul class="related-list">
+                    {% for item in page.related_posts %}
+                    <li><a href="{{ item.url | relative_url }}" target="_blank">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="sidebar-section tags-cloud">
+                <h3><i class="fas fa-tags"></i> Etiketler</h3>
+                <div class="tags">
+                    {% for tag in page.tags %}
+                    <a href="{{ site.baseurl }}/etiket/{{ tag | slugify }}" class="tag-link">{{ tag | downcase }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3><i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+                <div class="info-details-box">
+                    <p><strong>Yazar:</strong> {{ site.author_info.name }}</p>
+                    <p><strong>Tarih:</strong> {{ tr_tarih }}</p>
+                    <p><strong>Kategori:</strong> {{ page.categories | first }}</p>
+                    <p><strong>Okuma Süresi:</strong>
+                        {% if current_read_time == nil or current_read_time == 0 %}
+                        ~ hesaplanıyor
+                        {% else %}
+                        ~{{ current_read_time }} dk
+                        {% endif %}
+                    </p>
+                    <p><strong>Seviye:</strong> {{ page.level }}</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
 </div>
