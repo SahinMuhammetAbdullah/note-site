@@ -3,12 +3,21 @@ layout: none
 ---
 [
   {% for post in site.posts %}
+    {% assign h2_data = "" %}
+    {% assign parts = post.content | split: '<h2' %}
+    {% for part in parts %}
+      {% if forloop.first %}{% continue %}{% endif %}
+      {% assign anchor = part | split: 'id="' | last | split: '"' | first %}
+      {% assign header_text = part | split: '</h2>' | first | split: '>' | last | strip_html | strip_newlines %}
+      {% assign h2_data = h2_data | append: header_text | append: "#" | append: anchor | append: " | " %}
+    {% endfor %}
     {
-      "title"    : "{{ post.title | escape }}",
-      "url"      : "{{ post.url | relative_url }}",
-      "category" : "{{ post.categories | join: ', ' | escape }}",
-      "tags"     : "{{ post.tags | join: ', ' | escape }}",
-      "date"     : "{{ post.date | date: '%d %b %Y' }}"
+      "title"    : {{ post.title | jsonify }},
+      "url"      : {{ post.url | relative_url | jsonify }},
+      "category" : {{ post.categories | join: ', ' | jsonify }},
+      "tags"     : {% if post.tags %}{{ post.tags | join: ', ' | jsonify }}{% else %}""{% endif %},
+      "date"     : {{ post.date | date: '%d %b %Y' | jsonify }},
+      "headers"  : {{ h2_data | jsonify }}
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]

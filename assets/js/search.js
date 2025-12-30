@@ -1,42 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInputs = document.querySelectorAll('.search-box input, .mobile-search input');
-    
-    // Sonuçların görüneceği bir alan oluştur (Eğer yoksa)
     const resultsContainer = document.createElement('div');
     resultsContainer.id = 'search-results-list';
     resultsContainer.className = 'search-results-overlay';
     document.body.appendChild(resultsContainer);
 
     let searchData = [];
-
-    // Verileri bir kez çek
-    fetch('/search.json')
-        .then(response => response.json())
-        .then(data => searchData = data);
+    fetch('/search.json').then(response => response.json()).then(data => searchData = data);
 
     searchInputs.forEach(input => {
         input.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
-            resultsContainer.innerHTML = ''; // Temizle
+            resultsContainer.innerHTML = '';
 
             if (query.length < 2) {
                 resultsContainer.style.display = 'none';
                 return;
             }
 
-            const filtered = searchData.filter(post => 
-                post.title.toLowerCase().includes(query) || 
-                post.category.toLowerCase().includes(query) ||
-                post.tags.toLowerCase().includes(query) // Etiketlerde de ara
-            );
+            // Mevcut filtreleme mantığın
+            const filteredResults = [];
+            searchData.forEach(post => {
+                const q = query.toLowerCase();
+                
+                // 1. Ana başlık, kategori veya etiket eşleşmesi (Normal Makale Linki)
+                if (post.title.toLowerCase().includes(q) || 
+                    post.category.toLowerCase().includes(q) || 
+                    (post.tags && post.tags.toLowerCase().includes(q))) {
+                    filteredResults.push({ title: post.title, url: post.url, date: post.date, type: 'post' });
+                }
 
-            if (filtered.length > 0) {
+                // 2. Alt başlık (##) eşleşmesi (Çıpalı Link)
+                if (post.headers && post.headers.toLowerCase().includes(q)) {
+                    const headers = post.headers.split(' | ');
+                    headers.forEach(h => {
+                        if (h.toLowerCase().includes(q) && h.includes('#')) {
+                            const [hText, hAnchor] = h.split('#');
+                            filteredResults.push({ 
+                                title: hText, 
+                                subtitle: post.title, // Hangi makalede olduğunu belirtmek için
+                                url: `${post.url}#${hAnchor}`, 
+                                date: post.date, 
+                                type: 'header' 
+                            });
+                        }
+                    });
+                }
+            });
+
+            if (filteredResults.length > 0) {
                 resultsContainer.style.display = 'block';
-                filtered.forEach(post => {
+                filteredResults.forEach(res => {
+                    // Tipine göre başlık formatını ayarla
+                    const displayTitle = res.type === 'header' ? `<b>${res.title}</b> <small style="opacity:0.6">(${res.subtitle})</small>` : res.title;
+                    
                     resultsContainer.innerHTML += `
-                        <a href="${post.url}" class="search-result-item">
-                            <span class="res-title">${post.title}</span>
-                            <span class="res-date">${post.date}</span>
+                        <a href="${res.url}" class="search-result-item">
+                            <span class="res-title">${displayTitle}</span>
+                            <span class="res-date">${res.date}</span>
                         </a>`;
                 });
             } else {
@@ -46,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Boşluğa tıklayınca kapat
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.search-box') && !e.target.closest('.mobile-search')) {
             resultsContainer.style.display = 'none';
