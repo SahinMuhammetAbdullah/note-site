@@ -19,3 +19,5 @@ related_posts:
 ---
 
 ## Giriş
+
+$1000^\circ \text{C}$ 

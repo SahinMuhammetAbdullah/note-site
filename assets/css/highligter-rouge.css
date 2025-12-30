@@ -16,10 +16,7 @@
 }
 
 /* 3. Plaintext Kutusunun İçindeki Gömülü Kopyala Butonunu Gizle */
-/* Metin akışına karışan, JS ile eklenmeyen butonları gizler */
-.highlighter-rouge.language-plaintext .copy-btn {
-    display: none !important;
-}
+
 
 /* 4. Metin elementlerini zorla akışa geri getirme (Önceki çözümden) */
 .highlighter-rouge.language-plaintext {
@@ -79,31 +76,6 @@
     /* Alt kenarlık */
 }
 
-/* Kopyalama Butonu Stili */
-.copy-btn {
-    position: absolute;
-    top: 0.5rem;
-    /* Başlık çubuğunun dikey ortasına yakın */
-    right: 1rem;
-    /* Sağdan boşluk */
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-light);
-    padding: 0.4rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.85rem;
-    transition: all 0.3s;
-    z-index: 10;
-    /* Diğer elementlerin üzerinde olmasını sağlar */
-}
-
-.copy-btn:hover {
-    background: var(--primary);
-    color: var(--bg-dark);
-    border-color: var(--primary);
-}
 
 /* Kod içeriği (pre ve code etiketleri) */
 .highlight pre {
@@ -348,7 +320,7 @@
 .highlighter-rouge code,
 .note-content .highlighter-rouge pre {
     text-indent: 0 !important;   /* Paragraf başı boşluğunu kaldırır */
-    padding-left: 0 !important;  /* Eğer soldan padding varsa sıfırlar */
+   /* padding-left: 0 !important;  /* Eğer soldan padding varsa sıfırlar */
 }
 
 /* 2. İngilizce (eng) özel kutusu için hizalama */

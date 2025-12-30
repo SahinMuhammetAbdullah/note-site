@@ -54,3 +54,199 @@
     color: var(--bg-dark);
     transform: translateX(-5px);
 }
+
+/* 1. Yüzen TOC Butonu (Sol Alt) */
+.toc-mobile-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: var(--z-index-floating) !important;
+    display: none;
+    /* Masaüstünde gizli */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+/* 2. Yukarı Çık Butonu (Sağ Alt) */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: var(--bg-card);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: var(--z-index-top);
+    display: flex;
+    /* Her zaman görünür (veya JS ile scroll sonrası) */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    /* Başlangıçta gizli */
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.back-to-top {
+    display: block;
+    margin-top: 2rem;
+    width: fit-content;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.back-to-top-btn.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Metin akışına karışan, JS ile eklenmeyen butonları gizler */
+.highlighter-rouge.language-plaintext .copy-btn {
+    display: none !important;
+}
+
+
+/* Kopyalama Butonu Stili */
+.copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    /* Başlık çubuğunun dikey ortasına yakın */
+    right: 1rem;
+    /* Sağdan boşluk */
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-light);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    z-index: 10;
+    /* Diğer elementlerin üzerinde olmasını sağlar */
+}
+
+.copy-btn:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    border-color: var(--primary);
+}
+
+/* Büyütme Butonu */
+.mermaid-view-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #78623c;
+    color: white;
+    border: 1px solid rgba(229, 220, 203, 0.3);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    /* Her zaman üstte */
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.mermaid-wrapper:hover .mermaid-view-btn {
+    opacity: 1;
+}
+
+/* Kapat Butonu Konumu */
+.mermaid-wrapper.is-active .mermaid-view-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #e74c3c;
+    padding: 10px 20px;
+    font-size: 14px;
+    opacity: 1;
+}
+
+/* Hamburger Butonu */
+.hamburger-btn {
+    display: none;
+    /* Masaüstünde gizli */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+/* Kapatma Butonu (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.search-results-overlay {
+    position: fixed;
+    top: 80px; /* Header'ın hemen altında */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    background: var(--bg-card);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 999999;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+}
+
+.search-result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px dotted var(--border);
+    text-decoration: none;
+    color: var(--text-light);
+    transition: background 0.2s;
+}
+
+.search-result-item:hover {
+    background: rgba(212, 165, 116, 0.1);
+}
+
+.res-title { font-weight: bold; color: var(--primary); }
+.res-date { font-size: 0.8rem; font-family: 'Courier Prime', monospace; opacity: 0.7; }

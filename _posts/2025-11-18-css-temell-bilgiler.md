@@ -80,7 +80,7 @@ prev_note_link: /web-teknolojileri/html/html-temell-bilgiler/
 | `a:hover`             | uzerinde fare olan linkleri seçer.                   |
 | `input[type]`         | `<input>` içinde type özelligine sahip olanlari seç. |
 | `input[type=“text”]`  | `<input>` icinde type özelligi text olanlari seç.    |
-| `img [title~=“kedi”]` | <img> tagindaki title özelligi kedi olanlari seç.    |
+| `img [title~=“kedi”]` | `<img>` tagindaki title özelligi kedi olanlari seç.    |
 
 ### Kısmi Seciciler
 

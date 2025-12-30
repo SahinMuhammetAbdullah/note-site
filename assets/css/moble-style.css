@@ -1,26 +1,7 @@
 /* Genel tablet ve büyük mobil cihazlar için */
 /* --- HAMBURGER MENÜ STİLLERİ --- */
 
-/* Hamburger Butonu */
-.hamburger-btn {
-    display: none;
-    /* Masaüstünde gizli */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-    cursor: pointer;
-    z-index: 101;
-}
 
-.hamburger-btn span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 3px;
-    transition: all 0.3s;
-}
 
 /* Tam Ekran Overlay Menü */
 .mobile-overlay {
@@ -51,18 +32,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-}
-
-/* Kapatma Butonu (X) */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 3rem;
-    background: none;
-    border: none;
-    color: var(--primary);
-    cursor: pointer;
+    z-index: 999991;
 }
 
 /* Mobil Linkler */
