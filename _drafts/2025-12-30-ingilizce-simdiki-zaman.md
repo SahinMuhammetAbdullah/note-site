@@ -18,6 +18,11 @@ related_posts:
     url: https://www.btkakademi.gov.tr/portal/course/a1-seviye-ingilizce-17583
 ---
 
-## Giriş
+## Şimdiki Zaman
 
-$1000^\circ \text{C}$ 
+The Present Continuous Tense, şuan yaptığımız eylemleri ifade etmekte kullandığımız bir zamandır. Türkçe'de "-yor" eki ile karşılanır. Yardımcı fiili, "be" fiilidir. 
+
+**Form:** `Subject + be + V-ing` şeklindedir.
+
+I<span class="gr">'m </span>work<span class="gr">ing</span> on a project right now.
+

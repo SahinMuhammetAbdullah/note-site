@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    
+    CSS Temelleri | Çalışma Notlarım
+    
+</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script src="/assets/js/mermaid-code.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/style.css?v=1770297252">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CSS Temelleri | Çalışma Notlarım</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="CSS Temelleri">
+<meta name="author" content="{{ site.author_info.name }}">
+<meta property="og:locale" content="tr_TR">
+<meta name="description" content="Bu notta web sayfalarının dizaynı açısından ele alınmış notlardan oluşmaktadır.">
+<meta property="og:description" content="Bu notta web sayfalarının dizaynı açısından ele alınmış notlardan oluşmaktadır.">
+<link rel="canonical" href="http://localhost:4000/web-teknolojileri/css/css-temell-bilgiler/">
+<meta property="og:url" content="http://localhost:4000/web-teknolojileri/css/css-temell-bilgiler/">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2025-11-18T13:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="CSS Temelleri">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"{{ site.author_info.name }}"},"dateModified":"2025-11-18T13:00:00+03:00","datePublished":"2025-11-18T13:00:00+03:00","description":"Bu notta web sayfalarının dizaynı açısından ele alınmış notlardan oluşmaktadır.","headline":"CSS Temelleri","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/web-teknolojileri/css/css-temell-bilgiler/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/iimagesmg/logo.png"},"name":"{{ site.author_info.name }}"},"url":"http://localhost:4000/web-teknolojileri/css/css-temell-bilgiler/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<style>
+    /* CSS değişkenleri config dosyasından alınır */
+    :root {
+        --primary: #d4a574;
+        --primary-dark: #b8925f;
+        --bg-dark: #2c2416;
+        --bg-paper: #f4ebe0;
+        --bg-card: #3d3326;
+        --text-light: #f4ebe0;
+        --text-dark: #2c2416;
+        --accent: #8b6f47;
+        --border: #5a4a3a;
+    }
+</style>
+
+
+<link rel="canonical" href="http://localhost:4000/web-teknolojileri/css/css-temell-bilgiler/">
+
+<meta name="description" content="Bu notta web sayfalarının dizaynı açısından ele alınmış notlardan oluşmaktadır.">
+
+
+
+
+
+<meta property="og:image" content="">
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:title" content="CSS Temelleri">
+<meta property="og:description" content="Bu notta web sayfalarının dizaynı açısından ele alınmış notlardan oluşmaktadır.">
+<meta property="og:url" content="http://localhost:4000/web-teknolojileri/css/css-temell-bilgiler/">
+<meta property="og:type" content="article">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="manifest" href="/assets/icons/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYZ7X6Y7SZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KYZ7X6Y7SZ');
+</script>
+    </head>
+    <body>
+
+        <nav class="navbar">
+    <div class="container">
+        <!-- LOGO -->
+        <a href="/" class="logo">
+            <i class="fa-solid fa-book-open"></i> Ders Notlarım
+        </a>
+
+        <!-- MASAÜSTÜ MENÜ (Mobilde Gizlenecek) -->
+        <ul class="nav-menu desktop-only">
+            <li><a href="/">Ana Sayfa</a></li>
+            <li><a href="/gunluk/">Günlük</a></li>
+            <li><a href="/arsiv/">Arşiv</a></li>
+            <li><a href="/kategoriler/">Kategoriler</a></li>
+            <li><a href="/etiketler/">Etiketler</a></li>
+            <li><a href="/hakkimda/">Hakkımda</a></li>
+        </ul>
+
+        <!-- ARAMA (Mobilde Gizlenecek) -->
+        <div class="search-box desktop-only">
+            <input type="text" placeholder="Notlarda Ara...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <!-- HAMBURGER BUTONU (Sadece Mobilde Görünecek) -->
+        <div class="hamburger-btn" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- TAM EKRAN MOBİL MENÜ (Sayfa dışında gizli) -->
+<div class="mobile-overlay" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">
+        <i class="fa-solid fa-xmark"></i> <!-- FontAwesome varsa -->
+        <!-- Yoksa sadece: &times; -->
+    </button>
+
+    <div class="mobile-menu-links">
+        <a href="/">Ana Sayfa</a>
+        <a href="/gunluk/">Günlük</a>
+        <a href="/arsiv/">Arşiv</a>
+        <a href="/kategoriler/">Kategoriler</a>
+        <a href="/etiketler/">Etiketler</a>
+        <a href="/hakkimda/">Hakkımda</a>
+    </div>
+
+    <div class="mobile-search">
+        <input type="text" placeholder="Notlarda Ara...">
+    </div>
+</div>
+
+
+
+        <main>
+            
+
+
+
+
+
+
+
+
+<div class="main-container-3-col">
+
+    <aside class="sidebar-left">
+        <button id="toc-mobile-toggle" class="toc-mobile-btn">
+    <i class="fas fa-list"></i>
+</button>
+
+<button id="back-to-top" class="back-to-top-btn">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<div class="sidebar-section toc-sidebar">
+    <h3>
+<i class="fas fa-list"></i> İçindekiler</h3>
+    <div id="dynamic-toc-target" class="toc-placeholder"></div>
+</div>
+
+        
+    </aside>
+
+    <div class="note-content-wrapper">
+        <a href="/gunluk/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Notlara Geri Dön
+        </a>
+
+        <article class="note-article">
+            
+
+            <header class="note-header">
+                <h1 class="note-title">CSS Temelleri</h1>
+                
+                
+                
+                <h2 class="post-subtitle" style="color: var(--accent); margin-top: -1rem; font-size: 1.3rem;">Web Projeleri için temel CSS bilgileri.</h2>
+                
+                
+                
+                
+                <p class="post-excerpt" style="font-style: italic; margin-top: 1rem; color: #4a3f2f;">Bu notta web sayfalarının dizaynı açısından ele alınmış notlardan oluşmaktadır.</p>
+                
+            </header>
+            <div class="note-meta">
+                <span class="note-date">
+                    <i class="fas fa-calendar"></i> 18 Kasım 2025
+                </span>
+                <span class="note-info time">
+                    <i class="fas fa-clock"></i> 7 dk
+                </span>
+                <span class="note-info user">
+                    <i class="fas fa-user"></i> Muhammet Abdullah Şahin
+                </span>
+            </div>
+
+            <div class="note-tags">
+                <span class="tag tag-category">
+                    <i class="fas fa-code"></i>
+                    Web Teknolojileri
+                </span>
+                
+                <span class="tag">Seçiciler</span>
+                
+                <span class="tag">dizayn</span>
+                
+                <span class="tag">diller</span>
+                
+            </div>
+            <div class="note-content">
+                <h2 id="seçici-türleri">Seçici Türleri</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seçici Türü</th>
+      <th>İşlevi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Komut</td>
+      <td>Tek bir HTML komutunu seçer.</td>
+    </tr>
+    <tr>
+      <td>Grup</td>
+      <td>Birden fazla HTML komutunu seçer.</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>Tüm HTML komutlarini seçer.</td>
+    </tr>
+    <tr>
+      <td>#id</td>
+      <td>Belli bir #id değerine sahip komutu seçer.</td>
+    </tr>
+    <tr>
+      <td>.class</td>
+      <td>Belli bir .class değerine sahip komutlari seçer .</td>
+    </tr>
+    <tr>
+      <td>Komut.class</td>
+      <td>Belli bir .class degerine sahip belli bir Komut’u seçer.</td>
+    </tr>
+    <tr>
+      <td>Pseudo-class</td>
+      <td>Belli bir duruma sahip HTML komutunu seçer.</td>
+    </tr>
+    <tr>
+      <td>Pseudo-elements</td>
+      <td>Bir elemanin belli bir kismini secmeye yarayan seçiçilerdir.</td>
+    </tr>
+    <tr>
+      <td>Özellik</td>
+      <td>Belli bir özellige sahip HTML komutunu seçer.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="temel-seçici-ornekleri">Temel Seçici Ornekleri</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seçici</th>
+      <th>Açiklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>*</td>
+      <td>Her şey seçilecek.</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>p tagi seçilecek.</td>
+    </tr>
+    <tr>
+      <td>#ilk</td>
+      <td>id degeri #ilk olan seçilecek.</td>
+    </tr>
+    <tr>
+      <td>.son</td>
+      <td>class degeri .son olan secilecek.</td>
+    </tr>
+    <tr>
+      <td>h1.egik</td>
+      <td>class degeri .egik olan h1 etiketleri secilecek.</td>
+    </tr>
+    <tr>
+      <td>p strong</td>
+      <td>p tag igindeki tüm strong taglari secilecek.</td>
+    </tr>
+    <tr>
+      <td>nav #buton</td>
+      <td>nav tagi içinde id degeri #buton tüm elemanlar seçilecek.</td>
+    </tr>
+    <tr>
+      <td>h1,h2,h3,h4,h5,h6</td>
+      <td>h1-h6 arasi tüm taglar secilecek.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="karmasik-secici-ornekleri">Karmasik Secici Ornekleri</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seçici</th>
+      <th>Açiklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.banner p</code></td>
+      <td>class degeri banner olan eleman icindeki p tagi secilcek.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">div &gt; p</code></td>
+      <td>ebeveyni div olan tüm p taglari secilecek.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">menu ul li</code></td>
+      <td>class degeri menu olan eleman içinde bulunan ul taginin içindeki li tagını seçer</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nav.menu li</code></td>
+      <td>nav tag icinde bulunan ve class degeri menu olan eleman igindeki li tagi secilecek.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">body &gt; p:first-child</code></td>
+      <td>body tag icindeki ilk paragraf (ilk cocuk eleman).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">body &gt; p:last-child</code></td>
+      <td>body tagı icindeki son paragraf (son gocuk eleman).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">:active</code></td>
+      <td>Aktif elemani sec</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">:after</code></td>
+      <td>Sonraki elemani seç</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="link-ve-ozellik-seciciler">Link ve Ozellik Seciciler</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seçici</th>
+      <th>Açiklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">a:link</code></td>
+      <td>henüz ziyaret edilmemis linkleri seçer.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">a:visited</code></td>
+      <td>ziyaret edilmis linkleri secger.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">a:focus</code></td>
+      <td>klavye ile etkinlestirilmis linkleri seçer.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">a:hover</code></td>
+      <td>uzerinde fare olan linkleri seçer.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">input[type]</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> içinde type özelligine sahip olanlari seç.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">input[type=“text”]</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> icinde type özelligi text olanlari seç.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">img [title~=“kedi”]</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> tagindaki title özelligi kedi olanlari seç.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="kısmi-seciciler">Kısmi Seciciler</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seçici</th>
+      <th>Açiklama</th>
+      <th>Örnek Kod</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>::first-line</td>
+      <td>ilk satir.</td>
+      <td><code class="language-plaintext highlighter-rouge">p::first-line {color: red}</code></td>
+    </tr>
+    <tr>
+      <td>::first-letter</td>
+      <td>ilk harf.</td>
+      <td><code class="language-plaintext highlighter-rouge">p::first-letter {color: #ff0000; font-size: xx-large; }</code></td>
+    </tr>
+    <tr>
+      <td>::before</td>
+      <td>Onceki</td>
+      <td><code class="language-plaintext highlighter-rouge">h1::before { content: url(smiley.gif); } </code></td>
+    </tr>
+    <tr>
+      <td>::after</td>
+      <td>Sonraki</td>
+      <td><code class="language-plaintext highlighter-rouge">h2::after { content: url(smiley.gif); }</code></td>
+    </tr>
+    <tr>
+      <td>::marker</td>
+      <td>Liste madde imi</td>
+      <td><code class="language-plaintext highlighter-rouge">::marker { color: red; font-size: 23px; }</code></td>
+    </tr>
+    <tr>
+      <td>::selection</td>
+      <td>Secilen nesne rengi</td>
+      <td><code class="language-plaintext highlighter-rouge">::selection { color: red; background: yellow; }</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="paragraf-i̇şlemleri">Paragraf İşlemleri</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Özellikler</th>
+      <th>Alabilecegi Degerler</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Font-family</td>
+      <td>Times, Courier, Verdana,</td>
+      <td>Yazitipi</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>renkadi, #rrggbb, rgb(rrr,ggg,bbb)</td>
+      <td>Metin boyutunu degistirir. 1 em=16 px</td>
+    </tr>
+    <tr>
+      <td>font-size,</td>
+      <td>smaller, small, medium, large, larger, px, em</td>
+      <td>Metinlerin daha ince, normal ya da kalin gésterir.</td>
+    </tr>
+    <tr>
+      <td>font-weight</td>
+      <td>lighter, normal, bold, bolder</td>
+      <td>Metinlerin normal ya da egik gériinmesini saglar.</td>
+    </tr>
+    <tr>
+      <td>font-style</td>
+      <td>normal, italic</td>
+      <td>Metinlerin kiigiik harf boyutlarinda ama biiyiik harf</td>
+    </tr>
+    <tr>
+      <td>font-variant</td>
+      <td>normal, smal-caps</td>
+      <td>karakterleri ile goriinmesini saglar.</td>
+    </tr>
+    <tr>
+      <td>text-transform</td>
+      <td>none, lowercase, uppercase,capitalize</td>
+      <td>Metinleri biiyiik harfe veya kücük harfe cevirmeye yarar.</td>
+    </tr>
+    <tr>
+      <td>text-decoration</td>
+      <td>none, underline, overline, line-through</td>
+      <td>Metinlerin altini, istiiniéi veya Gzerini gizmek igin kullanilir.</td>
+    </tr>
+    <tr>
+      <td>letter-spacing</td>
+      <td>normal, em</td>
+      <td>Harfler arasindaki mesafe</td>
+    </tr>
+    <tr>
+      <td>word-spacing</td>
+      <td>normal, em</td>
+      <td>Kelimeler arasindaki mesafe</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="metin-i̇şlemleri">Metin İşlemleri</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ozellik</th>
+      <th>Alabilecegi Degerler</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>text-indent</td>
+      <td>em, px</td>
+      <td>Paragrafin ilk satirdaki girintisini ayarlar.</td>
+    </tr>
+    <tr>
+      <td>ateqer-1 (1-40)</td>
+      <td>left, right, center, justify</td>
+      <td>Paragrafin sola, saga ortaya veya her iki kenara yaslanmasini saglar.</td>
+    </tr>
+    <tr>
+      <td>line-height</td>
+      <td>em, px</td>
+      <td>Paragraftaki satirlar arasindaki mesafeyi ayarlar.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="listeleme-i̇şlemleri">Listeleme İşlemleri</h3>
+
+<ul>
+  <li>none (madde imi yok)</li>
+  <li>disk (daire)</li>
+  <li>circle (ember)</li>
+  <li>square (kare)</li>
+  <li>decimal (numara)</li>
+  <li>lower-alpha (kiigiik harf , a,b,c)</li>
+  <li>lower-greek (yunanca kiiciik harf)</li>
+  <li>lower-latin (latince kiigtk harf,a,b,c,)</li>
+  <li>lower-roman (kiigiik roma rakami,i,ii,iii,iv)</li>
+  <li>upper-alpha (biiyiik harf,A,B,C)</li>
+  <li>upper-greek (yunanca biiyiik harf)</li>
+  <li>upper-latin (latince biiyuk harf,A,B,C)</li>
+  <li>upper-roman (büyük roma rakami,I, II, II,IV)</li>
+  <li>url(“resim”) (madde imi yerine resim goriintilenir)</li>
+</ul>
+
+<h3 id="kutu-kenarları">Kutu Kenarları</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ozellik</th>
+      <th>Alabilecegi Degerler</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>border-style</td>
+      <td>none, solid, dotted, dashed, double, groove, ridge, inset, outset</td>
+      <td>Kenar cizgi tipini belirler</td>
+    </tr>
+    <tr>
+      <td>border-width</td>
+      <td>px, thin, medium, thick</td>
+      <td>Cizgi kalinligint ayarlar.</td>
+    </tr>
+    <tr>
+      <td>border-color</td>
+      <td>renk_adi, #rrggbb, rgb(rrr,ggg,bbb)</td>
+      <td>Kenarlik rengini belirler.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="kutular-i̇çin-düzen-tablosu">Kutular İçin Düzen Tablosu</h3>
+
+<p><a href="/assets/images/postimages/kutular.png" data-lightbox="post-gallery" data-title="Bu bir kutu diyagramı gösteriyor."><img src="/assets/images/postimages/kutular.png" alt="Bu bir kutu diyagramı gösteriyor."></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> Bu bir kutu diyagramı gösteriyor.</p>
+</blockquote>
+
+<h3 id="kutunun-sayfaya-konumlandirilmasi">Kutunun Sayfaya Konumlandirilmasi</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ozellik ve Değer</th>
+      <th>Açiklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>position:static;</td>
+      <td>Her kutunun varsayilan degeridir. Static degere sahip kutular HTML komutu nereye konulduysa orada bulunur.</td>
+    </tr>
+    <tr>
+      <td>position:relative;</td>
+      <td>Kutunun bulundugu konumuna gore tasinmasini saglar.</td>
+    </tr>
+    <tr>
+      <td>position:fixed;</td>
+      <td>Kutunun sayfa kenarlarina gre konumlanmasini saglar.</td>
+    </tr>
+    <tr>
+      <td>position:absolute;</td>
+      <td>Baska kutu iginde bulunan kutulari kontrol etmek icin kullanilir. iginde bulundugu kutuya gore Ustten, sagdan, alttan ve soldan mesafeler verilerek kutunun konumu ayarlanir.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="kutudan-tasan-iceriginin-ayarlanmas">Kutudan Tasan Iceriginin Ayarlanmas!</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ozellik ve Değer</th>
+      <th>Açiklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>overflow:visible;</td>
+      <td>Varsayilan olarak bu deger kullanilir. Eger igerik kutu igine sigmazsa tasan kisim alttan devam eder ve ziyaretciye gésterilir.</td>
+    </tr>
+    <tr>
+      <td>overflow:hidden;</td>
+      <td>icerik kutu icine sigmazsa tasan kisim ziyaretciye gosterilmez.</td>
+    </tr>
+    <tr>
+      <td>overflow:scroll;</td>
+      <td>içerik kutu igine sigmazsa tasan kisim ziyaretciye gésterilmez ama bir kaydirma cubugu ile tasan igerigin goriintiilenmesi saglanir.</td>
+    </tr>
+    <tr>
+      <td>overflow:auto;</td>
+      <td>Eger taşma olursa kaydirma cubugu güsterilir ve tasan içerik kaydirma cubugu ile görüntilenebilir.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="kutularda-golge-olusturma">Kutularda Golge Olusturma</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Değer</th>
+      <th>Açiklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>none</td>
+      <td>Varsayilan degerdir. Gölge olmaz.</td>
+    </tr>
+    <tr>
+      <td>h-shadow</td>
+      <td>Gélgenin yatay boyutu.</td>
+    </tr>
+    <tr>
+      <td>v-shadow</td>
+      <td>Gélgenin dikey boyutu.</td>
+    </tr>
+    <tr>
+      <td>blur</td>
+      <td>Gélgenin kenarini belirlenen boyutta yumusatir.</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>Gélge rengi.</td>
+    </tr>
+    <tr>
+      <td>inset</td>
+      <td>Gélgeyi nesnenin i¢ tarafina yapar.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="temel-renk-komutları">Temel Renk Komutları</h3>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">red</code>, <code class="language-plaintext highlighter-rouge">black</code>, <code class="language-plaintext highlighter-rouge">blue</code>
+</li>
+  <li><code class="language-plaintext highlighter-rouge">rgb(0,0,0)</code></li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Opacity</code> (saydamlık)</li>
+</ul>
+
+<hr>
+
+<h2 id="semantik-sayfa-duzeni-etiketleri">Semantik Sayfa Duzeni Etiketleri</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Değer</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;article&gt;</code></td>
+      <td>Yorum, haber, forum gönderisi, blog gönderisi, müzik veya video gibi içerikleri kapsar.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;section&gt;</code></td>
+      <td>Genellikle benzer konuya sahip birden fazla <code class="language-plaintext highlighter-rouge">&lt;article&gt;</code> etiketini barındırır.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;header&gt;</code></td>
+      <td>Bir sayfanın, makalenin veya bölümün başlık bilgisini kapsar.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code></td>
+      <td>Sayfa içine veya sayfa dışına link vermek için oluşturulan menüleri kapsar.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;aside&gt;</code></td>
+      <td>Sayfaların sol ya da sağ kenarında bulunan menü v.b. içeriği barındıran bölümdür.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;footer&gt;</code></td>
+      <td>Herhangi bir sayfanın, makalenin, bölümün veya menünün en altında bulunur ve genellikle en yakın içeriğin iletişim ve telif hakkı bilgilerini barındırır.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;figure&gt;</code></td>
+      <td>Fotoğraf, şekil, illüstrasyon gibi içerikleri ve bu içeriklerle ilgili başlık bilgisini barındırır.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h4 id="html">.HTML</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">"logo"</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- Buraya başlık bilgileri gelecek --&gt;</span>
+        <span class="nt">&lt;/header&gt;</span>
+        <span class="nt">&lt;nav</span> <span class="na">id=</span><span class="s">"anamenu"</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- Buraya ana menü gelecek --&gt;</span>
+        <span class="nt">&lt;/nav&gt;</span>
+        <span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">"icerik"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;article&gt;</span>
+                <span class="c">&lt;!-- Buraya içerik 1 gelecek --&gt;</span>
+            <span class="nt">&lt;/article&gt;</span>
+            <span class="nt">&lt;article&gt;</span>
+                <span class="c">&lt;!-- Buraya içerik 2 gelecek --&gt;</span>
+            <span class="nt">&lt;/article&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+        <span class="nt">&lt;aside</span> <span class="na">id=</span><span class="s">"yanmenu"</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- Buraya yan menü gelecek --&gt;</span>
+        <span class="nt">&lt;/aside&gt;</span>
+        <span class="nt">&lt;footer</span> <span class="na">id=</span><span class="s">"altmenu"</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- Buraya telif bilgileri gelecek --&gt;</span>
+        <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+<h4 id="css">.CSS</h4>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*</span><span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="nb">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#container</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nx">deeppink</span> <span class="nb">solid</span> <span class="m">3px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">90%</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#logo</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nx">green</span> <span class="nb">dashed</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">90%</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#anamenu</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nx">black</span> <span class="nb">dashed</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">90%</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#icerik</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nx">yellow</span> <span class="nb">dotted</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">70%</span><span class="p">;</span>
+    <span class="nl">min-height</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+    <span class="py">becround-color</span><span class="p">:</span> <span class="nx">gray</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#yanmenu</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nx">blue</span> <span class="nb">solid</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">30%</span><span class="p">;</span>
+    <span class="nl">min-height</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+    <span class="py">becround-color</span><span class="p">:</span> <span class="nx">white</span><span class="p">;</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#altmenu</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nx">yellow</span> <span class="nb">dashed</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">min-height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="py">becround-color</span><span class="p">:</span> <span class="nx">gray</span><span class="p">;</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<hr>
+
+<h3 id="tepkisel-web-sayfası-oluşturma">Tepkisel Web sayfası oluşturma</h3>
+<ol>
+  <li>Adım <code class="language-plaintext highlighter-rouge">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+</li>
+  <li>Ölçü birimleri (sık kullanılanlar)
+    <ul>
+      <li>Absulude
+        <ul>
+          <li>px: (piksel)</li>
+          <li>pt: (punto)</li>
+        </ul>
+      </li>
+      <li>Relative
+        <ul>
+          <li>% : (yüzde)</li>
+          <li>em: (oran)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Nesne sığdırma
+    <ul>
+      <li>object-fit:
+        <ul>
+          <li>none        : Bovut degistirmez.</li>
+          <li>fill        : Varsayilan deger.</li>
+          <li>contain     : En-boy orant korunarak iginde bulundugu nesneye gore boyut degistirir.</li>
+          <li>cover       : En-boy orant korunarak i¢inde bulundugu nesneye gore boyut degistirir, kutu içine sigmak icin resim kirpilir.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="izgara-tabanli-sayfa-tasarim-grid-view">Izgara Tabanli Sayfa Tasarim! (Grid View)</h3>
+
+<p><a href="/assets/images/postimages/izgara.png" data-lightbox="post-gallery" data-title="Izgara Tabanli Sayfa Tasarim"><img src="/assets/images/postimages/izgara.png" alt="Izgara Tabanli Sayfa Tasarim"></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> Izgara Tabanli Sayfa Tasarim.</p>
+</blockquote>
+
+<h3 id="css-kod-sorgusu-media-query">CSS Kod Sorgusu (Media Query)</h3>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="n">only</span> <span class="nb">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">400px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nt">body</span> <span class="p">{</span>
+        <span class="nl">background-color</span><span class="p">:</span> <span class="nx">yellow</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="tepkisel-sayfa-oluşturma-adımları">Tepkisel Sayfa Oluşturma Adımları</h3>
+<ol>
+  <li>HTML Sayfasinin Kodlanması
+    <div class="language-html highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Kutu Genisliginin Sabitlenmesi
+    <div class="language-css highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>     <span class="o">*</span><span class="p">{</span>
+         <span class="nl">box-sizing</span><span class="p">:</span> <span class="nb">border-box</span><span class="p">;</span>
+         <span class="nl">padding</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+         <span class="nl">margin</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Sütun CSS Kodlarinin Yazilmasi
+    <div class="language-css highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c">/* (100/12)=8.33 ==&gt; bir sütun genisligi */</span>
+ <span class="c">/* sütun sayisi ve sayfa genisligi yüzdesi */</span>
+ <span class="nc">.Col-1</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">8.33%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.col-2</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">16.66%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.col-3</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">25%</span><span class="p">;}</span>
+ <span class="nc">.Col-4</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">33.33%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.col-5</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">41.66%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.col-6</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;}</span>
+ <span class="nc">.Col-7</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">58.33%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.Col-8</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">66.66%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.col-9</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">75%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.Col-10</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">83.33%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.Col-11</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">91.66%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="nc">.col-12</span> <span class="p">{</span><span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Sütunlarin Sola Yaslandirilmasi
+    <div class="language-css highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>     <span class="c">/* “col-" ile basglayan tim siniflara uygulansin */</span>
+     <span class="o">[</span><span class="nt">class</span><span class="o">*=</span><span class="s1">"col-"</span><span class="o">]</span> <span class="p">{</span>
+         <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+         <span class="nl">padding</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+         <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">red</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Satirlarin Temizlenmesi
+    <div class="language-css highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c">/*Yan yana satır gelmesin diye yazılıyor*/</span>
+ <span class="nc">.row</span><span class="nd">::after</span> <span class="p">{</span>
+     <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+     <span class="nl">clear</span><span class="p">:</span> <span class="nb">both</span><span class="p">;</span>
+     <span class="nl">display</span><span class="p">:</span> <span class="nb">table</span><span class="p">;</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Küçük Ekranlarla Uyum
+    <div class="language-css highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c">/* Cep telefonlarinda her kutu %100 genislikte olsun */</span>
+ <span class="k">@media</span> <span class="n">only</span> <span class="nb">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+     <span class="o">[</span><span class="nt">class</span><span class="o">*=</span><span class="s1">"col-"</span><span class="o">]</span> <span class="p">{</span> <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Tepkisel Resim
+    <div class="language-css highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nt">img</span><span class="p">{</span>
+     <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+     <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+ <span class="p">}</span>
+
+</code></pre></div>    </div>
+  </li>
+  <li>Satir ve Kutularin Olusturulması
+    <div class="language-html highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"row1"</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-2"</span><span class="nt">&gt;</span>
+         LOGO
+     <span class="nt">&lt;/div&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-10"</span><span class="nt">&gt;</span>
+         MENU
+     <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+
+            </div>
+
+            <nav class="note-navigation">
+    
+    <a href="/web-teknolojileri/html/html-temell-bilgiler/" class="nav-note prev-note">
+        <i class="fas fa-chevron-left"></i>
+        <div class="nav-content">
+            <span class="nav-label">Önceki Not</span>
+            <span class="nav-title">HTML Temelleri</span>
+        </div>
+    </a>
+    
+
+    
+    <div></div>
+    
+</nav>
+        </article>
+    </div>
+
+    <aside class="sidebar-right">
+        <!-- Masaüstü -->
+
+
+
+
+<div class="sidebar-section tags-cloud post-sidebar-desktop">
+    <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+    <div class="tags">
+        
+        <a href="/etiket/se%C3%A7iciler" class="tag-link">seçiciler</a>
+        
+        <a href="/etiket/dizayn" class="tag-link">dizayn</a>
+        
+        <a href="/etiket/diller" class="tag-link">diller</a>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="sidebar-section post-sidebar-desktop">
+    <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+    <div style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8;">
+        <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+        <p><strong>Tarih:</strong> 18 Kasım 2025</p>
+        <p><strong>Kategori:</strong> Web Teknolojileri</p>
+        <p><strong>Okuma Süresi:</strong>
+            
+            ~7 dk
+            
+        </p>
+        <p><strong>Seviye:</strong> Başlangıç</p>
+    </div>
+</div>
+
+<!-- Mobil -->
+
+
+
+
+
+
+
+<button class="info-mobile-btn" id="infoMobileBtn" title="Not Detayları">
+    <i class="fas fa-info"></i>
+</button>
+
+<div class="info-mobile-panel" id="infoMobilePanel">
+    <div class="info-panel-header">
+        <span><i class="fas fa-leaf"></i> Not Detayları</span>
+        <button id="closeInfoPanel" class="close-panel-btn"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="info-panel-content">
+        <div class="sidebar-info-inner">
+            
+            
+
+            <div class="sidebar-section tags-cloud">
+                <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+                <div class="tags">
+                    
+                    <a href="/etiket/se%C3%A7iciler" class="tag-link">seçiciler</a>
+                    
+                    <a href="/etiket/dizayn" class="tag-link">dizayn</a>
+                    
+                    <a href="/etiket/diller" class="tag-link">diller</a>
+                    
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+                <div class="info-details-box">
+                    <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+                    <p><strong>Tarih:</strong> 18 Kasım 2025</p>
+                    <p><strong>Kategori:</strong> Web Teknolojileri</p>
+                    <p><strong>Okuma Süresi:</strong>
+                        
+                        ~7 dk
+                        
+                    </p>
+                    <p><strong>Seviye:</strong> Başlangıç</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+</div>
+
+        
+    </aside>
+</div>
+        </main>
+
+        <footer class="footer">
+    <div class="container">
+        <p>© 2026 Çalışma Notlarım - Tüm hakları saklıdır</p>
+        <div class="social-links">
+            <a href="https://github.com/SahinMuhammetAbdullah"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/muhammet-abdullah-sahin"><i class="fab fa-linkedin"></i></a>
+            <!-- <a href=""><i class="fab fa-twitter"></i></a> -->
+        </div>
+    </div>
+</footer>
+        <script src="/assets/js/copy-code.js"></script>
+        <script src="/assets/js/toc-builder.js"></script>
+        <script src="/assets/js/hamburger.js"></script>
+        <script src="/assets/js/search.js"></script>
+        <script src="/assets/js/info-builder.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+        <script>
+            lightbox.option({
+                'resizeDuration': 300,
+                'fadeDuration': 300,
+                'imageFadeDuration': 300,
+                'wrapAround': true, // Galerinin sonuna gelince başa döner
+                'albumLabel': "%1 / %2" // "Image 1 of 5" yerine "1 / 5" yazar
+            })
+        </script>
+    </body>
+</html>

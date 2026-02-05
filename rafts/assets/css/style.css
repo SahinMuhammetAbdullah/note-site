@@ -1,0 +1,370 @@
+/* Ana Bileşenler ve Root */
+@import url("root.css");
+@import url("components.css");
+@import url("error.css");
+
+/* Sayfa Yapısı */
+@import url("sidebar.css");
+@import url("toc.css");
+@import url("search-input.css");
+
+/* İçerik ve Notlar */
+@import url("note-article.css");
+@import url("note-content.css");
+@import url("note-navigation.css");
+@import url("notes-journal.css");
+
+/* Mobil Görünüm */
+@import url("moble.css");
+@import url("moble-style.css");
+
+/* Özel Elementler ve Eklentiler */
+@import url("archive-tag.css");
+@import url("btn.css");
+@import url("category.css");
+@import url("category-summary.css");
+@import url("colorful-span.css");
+@import url("feature.css");
+@import url("footnotes.css");
+@import url("highligter-rouge.css");
+@import url("mermaid.css");
+
+@media (max-width: 1441px) {
+    /* Masaüstü Elemanlarını Gizle */
+    .desktop-only {
+        display: none !important;
+    }
+    
+    /* Hamburgeri Göster */
+    .hamburger-btn {
+        display: flex;
+    }
+    
+    .navbar .container {
+        justify-content: space-between;
+    }
+    
+    /* Grid'i Tek Sütuna Çevir */
+    .main-container,
+    .main-container-3-col,
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 3rem;
+        max-width: 100%;
+    }
+    
+    /* Sidebarları Alta Al */
+    .sidebar,
+    .sidebar-left,
+    .sidebar-right {
+        width: 100%;
+        position: static;
+        order: 2;
+        max-width: none;
+    }
+    
+    main,
+    .content-area {
+        width: 100%;
+    }
+    
+    .category-list {
+        display: contents;
+    }
+    
+    .category-main {
+        margin: 0.8rem;
+    }
+    
+    .category-main h3 {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .toc-mobile-btn {
+        display: flex;
+    }
+    
+    .back-to-top-btn { 
+        bottom: 20px; 
+        right: 15px; 
+    }
+    
+    .toc-sidebar {
+        position: fixed;
+        bottom: 85px;
+        left: 20px;
+        width: 280px;
+        max-height: 70vh;
+        z-index: var(--z-index-floating) !important;
+        background: var(--bg-card) !important;
+        overflow-y: auto;
+        transform: scale(0);
+        transform-origin: bottom left;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+    }
+    
+    .toc-sidebar.is-visible {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+}
+
+/* ========================================================================
+   RESPONSIVE TASARIM - MOBİL TELEFONLAR (768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    /* Font Ölçekleme */
+    body {
+        line-height: 1.4;
+    }
+    
+    /* Makale Padding Azaltma */
+    .note-article {
+        max-width: 100% !important;
+        width: 100%;
+        padding: 0.6rem !important;
+        margin: 0;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .note-content {
+        padding: 0.5rem 0.3rem !important;
+    }
+    
+    /* Başlıklar */
+    .note-title {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.8rem;
+    }
+    
+    .note-content h2 {
+        font-size: 1.2rem !important;
+        margin: 0.8rem 0 0.4rem 0;
+    }
+    
+    .note-content h3 {
+        font-size: 1.2rem !important;
+        margin: 0.6rem 0 0.3rem 0;
+    }
+    
+    /* Tablolar - Scrollable */
+    .note-content table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-collapse: collapse;
+        table-layout: auto;
+        margin: 1rem 0;
+        padding: 0;
+        max-inline-size: min-content;
+    }
+    
+    .note-content table td,
+    .note-content table th {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    /* Journal Entry Kartları */
+    .journal-entry {
+        padding: 0.8rem !important;
+    }
+    
+    .journal-entry h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.4rem;
+    }
+    
+    /* Sidebar */
+    .sidebar-section {
+        padding: 0.5rem 0.3rem;
+    }
+    
+    .sidebar-section h3,
+    .sidebar-section a {
+        font-size: 0.85rem !important;
+        line-height: 1.3;
+    }
+    
+    /* Kod Blokları */
+    .highlighter-rouge {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        width: calc(100% + 1rem);
+    }
+    
+    .highlighter-rouge .highlight {
+        font-size: 0.88rem;
+        padding: 0.6rem;
+        line-height: 1.3;
+    }
+    
+    /* Referanslar */
+    .footnotes ol {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        padding-left: 5px !important;
+    }
+    
+    .footnotes li {
+        margin-bottom: 12px !important;
+    }
+    
+    .reversefootnote {
+        margin-left: 5px;
+        display: inline-block;
+    }
+    
+    /* Navigasyon */
+    .note-navigation .nav-title {
+        font-size: 0.8rem;
+    }
+    
+    .note-navigation .nav-label {
+        font-size: 0.6rem;
+    }
+    
+    .note-navigation .nav-note {
+        padding: 0.7rem;
+    }
+    
+    .note-navigation .nav-note i {
+        font-size: 0.9rem;
+        font-weight: 900;
+    }
+    
+    /* Dipnotlar Başlığı Mobilde Küçült */
+    .footnotes::before {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .note-content {
+        font-size: small;
+    }
+        .search-result-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .res-date {
+        margin-top: 5px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Masaüstünde gizle */
+
+@media (max-width: 962px) {
+
+    .info-mobile-btn { display: flex; }
+    
+    /* Masaüstü sidebarını mobilde temizle */
+    .sidebar-section { 
+        margin-bottom: 25px; 
+    }
+    
+    /* Eğer sidebar normal akışta duruyorsa onu gizle */
+    .post-sidebar-desktop { display: none; }
+    
+    /* Buton Ayarları */
+    .info-mobile-btn {
+        display: flex;
+        position: fixed;
+        bottom: 85px; /* TOC butonunun hemen üstünde */
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary);
+        color: var(--text-light);
+        border: none;
+        border-radius: 50%;
+        z-index: 9999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Panel Ayarları (image_307e49.png baz alınarak düzeltildi) */
+    .info-mobile-panel {
+        display: block;
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        background: var(--bg-card);
+        border-top: 3px solid var(--primary);
+        z-index: 100001;
+        transition: bottom 0.4s ease;
+        padding: 20px;
+        border-radius: 20px 20px 0 0;
+        overflow-y: auto;
+    }
+
+    .info-mobile-panel.is-active { bottom: 0; }
+
+    /* LİSTE HATALARINI GİDEREN KRİTİK KISIM */
+    .info-panel-content ul {
+        list-style: none !important; /* Mavi noktaları ve girintileri kaldırır */
+        padding: 0 !important;
+        margin: 0 0 15px 0 !important;
+    }
+
+    .info-panel-content li {
+        margin-bottom: 10px !important;
+        padding-left: 0 !important;
+    }
+
+    .info-panel-content a {
+        color: var(--primary) !important; /* Mavi link yerine altın rengi */
+        text-decoration: none !important;
+        font-weight: bold;
+    }
+
+    /* Etiketlerin yan yana düzgün durması için */
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .sidebar-section h3 {
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    .info-details-box p {
+        margin: 5px 0;
+        line-height: 1.6;
+    }
+    .close-panel-btn {
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .note-meta .note-date, .note-meta .time {display: none;} 
+    .note-tags {display: none;} 
+}

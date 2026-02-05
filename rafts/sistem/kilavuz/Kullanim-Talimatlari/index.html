@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    
+    Sistem Kullanım Talimatları ve Markdown Sözdizimi | Çalışma Notlarım
+    
+</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script src="/assets/js/mermaid-code.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/style.css?v=1770297252">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sistem Kullanım Talimatları ve Markdown Sözdizimi | Çalışma Notlarım</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="Sistem Kullanım Talimatları ve Markdown Sözdizimi">
+<meta name="author" content="{{ site.author_info.name }}">
+<meta property="og:locale" content="tr_TR">
+<meta name="description" content="Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Matter alanlarını ve CSS ile kontrol edilen Admonition (Uyarı Kutusu) yapısını nasıl kullanacağınızı açıklar.">
+<meta property="og:description" content="Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Matter alanlarını ve CSS ile kontrol edilen Admonition (Uyarı Kutusu) yapısını nasıl kullanacağınızı açıklar.">
+<link rel="canonical" href="http://localhost:4000/sistem/kilavuz/Kullanim-Talimatlari/">
+<meta property="og:url" content="http://localhost:4000/sistem/kilavuz/Kullanim-Talimatlari/">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2025-11-17T13:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Sistem Kullanım Talimatları ve Markdown Sözdizimi">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"{{ site.author_info.name }}"},"dateModified":"2025-11-17T13:00:00+03:00","datePublished":"2025-11-17T13:00:00+03:00","description":"Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Matter alanlarını ve CSS ile kontrol edilen Admonition (Uyarı Kutusu) yapısını nasıl kullanacağınızı açıklar.","headline":"Sistem Kullanım Talimatları ve Markdown Sözdizimi","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/sistem/kilavuz/Kullanim-Talimatlari/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/iimagesmg/logo.png"},"name":"{{ site.author_info.name }}"},"url":"http://localhost:4000/sistem/kilavuz/Kullanim-Talimatlari/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<style>
+    /* CSS değişkenleri config dosyasından alınır */
+    :root {
+        --primary: #d4a574;
+        --primary-dark: #b8925f;
+        --bg-dark: #2c2416;
+        --bg-paper: #f4ebe0;
+        --bg-card: #3d3326;
+        --text-light: #f4ebe0;
+        --text-dark: #2c2416;
+        --accent: #8b6f47;
+        --border: #5a4a3a;
+    }
+</style>
+
+
+<link rel="canonical" href="http://localhost:4000/sistem/kilavuz/Kullanim-Talimatlari/">
+
+<meta name="description" content="Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Matter alanlarını ve CSS ile kontrol edilen Admonition (Uyarı Kutusu) yapısını nasıl kullanacağı...">
+
+
+
+
+
+<meta property="og:image" content="">
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:title" content="Sistem Kullanım Talimatları ve Markdown Sözdizimi">
+<meta property="og:description" content="Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Matter alanlarını ve CSS ile kontrol edilen Admonition (Uyarı Kutusu) yapısını nasıl kullanacağı...">
+<meta property="og:url" content="http://localhost:4000/sistem/kilavuz/Kullanim-Talimatlari/">
+<meta property="og:type" content="article">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="manifest" href="/assets/icons/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYZ7X6Y7SZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KYZ7X6Y7SZ');
+</script>
+    </head>
+    <body>
+
+        <nav class="navbar">
+    <div class="container">
+        <!-- LOGO -->
+        <a href="/" class="logo">
+            <i class="fa-solid fa-book-open"></i> Ders Notlarım
+        </a>
+
+        <!-- MASAÜSTÜ MENÜ (Mobilde Gizlenecek) -->
+        <ul class="nav-menu desktop-only">
+            <li><a href="/">Ana Sayfa</a></li>
+            <li><a href="/gunluk/">Günlük</a></li>
+            <li><a href="/arsiv/">Arşiv</a></li>
+            <li><a href="/kategoriler/">Kategoriler</a></li>
+            <li><a href="/etiketler/">Etiketler</a></li>
+            <li><a href="/hakkimda/">Hakkımda</a></li>
+        </ul>
+
+        <!-- ARAMA (Mobilde Gizlenecek) -->
+        <div class="search-box desktop-only">
+            <input type="text" placeholder="Notlarda Ara...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <!-- HAMBURGER BUTONU (Sadece Mobilde Görünecek) -->
+        <div class="hamburger-btn" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- TAM EKRAN MOBİL MENÜ (Sayfa dışında gizli) -->
+<div class="mobile-overlay" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">
+        <i class="fa-solid fa-xmark"></i> <!-- FontAwesome varsa -->
+        <!-- Yoksa sadece: &times; -->
+    </button>
+
+    <div class="mobile-menu-links">
+        <a href="/">Ana Sayfa</a>
+        <a href="/gunluk/">Günlük</a>
+        <a href="/arsiv/">Arşiv</a>
+        <a href="/kategoriler/">Kategoriler</a>
+        <a href="/etiketler/">Etiketler</a>
+        <a href="/hakkimda/">Hakkımda</a>
+    </div>
+
+    <div class="mobile-search">
+        <input type="text" placeholder="Notlarda Ara...">
+    </div>
+</div>
+
+
+
+        <main>
+            
+
+
+
+
+
+
+
+
+<div class="main-container-3-col">
+
+    <aside class="sidebar-left">
+        <button id="toc-mobile-toggle" class="toc-mobile-btn">
+    <i class="fas fa-list"></i>
+</button>
+
+<button id="back-to-top" class="back-to-top-btn">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<div class="sidebar-section toc-sidebar">
+    <h3>
+<i class="fas fa-list"></i> İçindekiler</h3>
+    <div id="dynamic-toc-target" class="toc-placeholder"></div>
+</div>
+
+        
+    </aside>
+
+    <div class="note-content-wrapper">
+        <a href="/gunluk/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Notlara Geri Dön
+        </a>
+
+        <article class="note-article">
+            
+
+            <header class="note-header">
+                <h1 class="note-title">Sistem Kullanım Talimatları ve Markdown Sözdizimi</h1>
+                
+                
+                
+                <h2 class="post-subtitle" style="color: var(--accent); margin-top: -1rem; font-size: 1.3rem;">Jekyll Note Pages projesine içerik ekleme ve özelleştirme rehberi.</h2>
+                
+                
+                
+                
+                <p class="post-excerpt" style="font-style: italic; margin-top: 1rem; color: #4a3f2f;">Bu not, web sayfasının tüm Liquid değişkenlerini, özel Front Matter alanlarını ve CSS ile kontrol edilen Admonition (Uyarı Kutusu) yapısını nasıl kullanacağınızı açıklar.</p>
+                
+            </header>
+            <div class="note-meta">
+                <span class="note-date">
+                    <i class="fas fa-calendar"></i> 17 Kasım 2025
+                </span>
+                <span class="note-info time">
+                    <i class="fas fa-clock"></i> 3 dk
+                </span>
+                <span class="note-info user">
+                    <i class="fas fa-user"></i> Muhammet Abdullah Şahin
+                </span>
+            </div>
+
+            <div class="note-tags">
+                <span class="tag tag-category">
+                    <i class="fas fa-code"></i>
+                    Sistem
+                </span>
+                
+                <span class="tag">markdown</span>
+                
+                <span class="tag">rehber</span>
+                
+                <span class="tag">seo</span>
+                
+                <span class="tag">yapılandırma</span>
+                
+            </div>
+            <div class="note-content">
+                <h2 id="1-merkezi-yapılandırma-ve-meta-veriler">1. Merkezi Yapılandırma ve Meta Veriler</h2>
+
+<p>Sitenin global ayarları ve yazar bilgileri <strong><code class="language-plaintext highlighter-rouge">_config.yml</code></strong> dosyasında tutulur. Postlarınızı oluştururken bu yapıdan yararlanmalısınız.</p>
+
+<h3 id="11-front-matter-alanları-post-metadata">1.1 Front Matter Alanları (Post Metadata)</h3>
+
+<p>Her yazının başında yer alan Front Matter (YAML blok) sitenin ilgili post hakkında bilgi edinmesini sağlar.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Alan Adı</th>
+      <th style="text-align: left">Tip</th>
+      <th style="text-align: left">Zorunluluk</th>
+      <th style="text-align: left">Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">title</code></td>
+      <td style="text-align: left">String</td>
+      <td style="text-align: left">EVET</td>
+      <td style="text-align: left">Yazının ana başlığı.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">subtitle</code></td>
+      <td style="text-align: left">String</td>
+      <td style="text-align: left">HAYIR</td>
+      <td style="text-align: left">Başlık altındaki kısa açıklama.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">excerpt</code></td>
+      <td style="text-align: left">String</td>
+      <td style="text-align: left">EVET</td>
+      <td style="text-align: left">Sosyal medya ve listeler için kullanılan 1-2 cümlelik özet.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">date</code></td>
+      <td style="text-align: left">Tarih</td>
+      <td style="text-align: left">EVET</td>
+      <td style="text-align: left">Yayınlanma tarihi.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">categories</code></td>
+      <td style="text-align: left">Dizi</td>
+      <td style="text-align: left">EVET</td>
+      <td style="text-align: left">Hiyerarşi için kullanılır: <code class="language-plaintext highlighter-rouge">[Ana Kategori, Alt Kategori]</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">tags</code></td>
+      <td style="text-align: left">Dizi</td>
+      <td style="text-align: left">EVET</td>
+      <td style="text-align: left">Etiketler (küçük harfle yazılmalıdır).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">level</code></td>
+      <td style="text-align: left">String</td>
+      <td style="text-align: left">HAYIR</td>
+      <td style="text-align: left">Notun zorluk seviyesi (örn: Başlangıç, İleri).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">related_posts</code></td>
+      <td style="text-align: left">Dizi</td>
+      <td style="text-align: left">HAYIR</td>
+      <td style="text-align: left">Sidebar’da listelenecek ilgili diğer postlar.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="12-otomatik-hesaplanan-bilgiler">1.2 Otomatik Hesaplanan Bilgiler</h3>
+
+<p>Bu bilgiler Layout dosyasında otomatik olarak hesaplanır ve <strong>Front Matter’a yazmanıza gerek yoktur</strong>:</p>
+
+<ul>
+  <li>
+<strong>Yazar:</strong> <code class="language-plaintext highlighter-rouge">_config.yml</code>‘den gelir.</li>
+  <li>
+<strong>Okuma Süresi:</strong> İçerik kelime sayısına göre (<code class="language-plaintext highlighter-rouge">~200 wpm</code> varsayımıyla) dinamik olarak hesaplanır.</li>
+  <li>
+<strong>Kategori Listeleme:</strong> Sayım ve listeler, <code class="language-plaintext highlighter-rouge">categories</code> alanınıza göre otomatik olarak oluşturulur.</li>
+</ul>
+
+<hr>
+
+<h2 id="2-i̇çerik-ve-özel-markdown-yapıları">2. İçerik ve Özel Markdown Yapıları</h2>
+
+<p>Kodun ve özel notların doğru görünmesi için aşağıdaki Markdown formatlarını kullanın.</p>
+
+<h3 id="21-kod-blokları-syntax-highlighting--kopyalama">2.1 Kod Blokları (Syntax Highlighting &amp; Kopyalama)</h3>
+
+<p>Uzun kodları veya çok satırlı yapıları göstermek için üçlü backtick (```) kullanın. Dil adını belirtmek, hem renklendirmeyi hem de başlığı otomatik olarak oluşturur.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby'de bir koşullu ifade örneği</span>
+<span class="k">if</span> <span class="n">hava</span> <span class="o">==</span> <span class="s2">"yağmurlu"</span>
+  <span class="nb">puts</span> <span class="s2">"Şemsiye al."</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Nasıl Çalışır? JavaScript, highlighter-rouge çıktısını yakalar, Ruby etiketini başlığa yerleştirir ve sağ üst köşeye kopyalama butonu ekler.</p>
+
+<h3 id="22-metin-i̇çi-kod-inline-code-ve-kopyalama">2.2 Metin İçi Kod (Inline Code) ve Kopyalama</h3>
+<p>Bir paragraf içinde tek bir komutu veya anahtar kelimeyi vurgulamak için tek backtick ( ) kullanın.</p>
+
+<p>puts kendisine verilen veriyi yazdırır. Bu ifadeye tıkladığınızda, geçici bir geri bildirim ile kopyalama işlemi gerçekleşir.</p>
+
+<p>Nasıl Çalışır? Tüm <code class="language-plaintext highlighter-rouge">&lt;code&gt;</code> elementleri CSS ile stilize edilir ve JavaScript ile tıklanabilir kopyalama özelliği eklenir.</p>
+
+<h3 id="23-özel-uyarı-kutuları-admonitions">2.3 Özel Uyarı Kutuları (Admonitions)</h3>
+<p>Metin içinde görsel olarak dikkat çekmek veya ipucu vermek için &gt; (blockquote) yapısını kullanın ve başlığı büyük harflerle yazın. JavaScript, bu başlık metnini okuyarak yerine renkli bir ikon yerleştirir.</p>
+
+<ol>
+  <li>Kırmızı Tema (Kritik Uyarı/Hata)</li>
+</ol>
+
+<blockquote>
+  <p><strong>DİKKAT!</strong>
+Integer bölme sırasında ondalık kısmı kaybedersiniz. Bu durum hatalı sonuçlara yol açabilir.</p>
+</blockquote>
+
+<ol>
+  <li>Yeşil Tema (İpuçları/Başarı)</li>
+</ol>
+
+<blockquote>
+  <p><strong>İPUCU!</strong>
+Kod okunaklığını artırmak için, kısa koşullu ifadelerde <code class="language-plaintext highlighter-rouge">if</code> ifadesini sona yazın (Modifier Form).</p>
+</blockquote>
+
+<ol>
+  <li>Mavi Tema (Genel Bilgi)</li>
+</ol>
+
+<blockquote>
+  <p><strong>BİLGİ!</strong>
+Jekyll, Ruby ile yazılmış statik bir site üretecidir.</p>
+</blockquote>
+
+<ol>
+  <li>Sarı Tema (Önemli Vurgu)</li>
+</ol>
+
+<blockquote>
+  <p><strong>ÖNEMLİ!</strong>
+‘bundle install’ komutunu çalıştırmadan önce <code class="language-plaintext highlighter-rouge">Gemfile</code> dosyasını kontrol edin.</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Özel Alıntılar (Quote Blocks)</p>
+
+    <p>Kramdown’da alıntıları belirtmek için QUOTE anahtar kelimesini kullanın. CSS, otomatik olarak büyük tırnak ikonu ekler.</p>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>ALINTI</strong> “Basit, karmaşıktan daha iyidir. Karmaşık, içice geçmişten daha iyidir.” - Python Zen’i</p>
+</blockquote>
+
+<h3 id="24-hiyerarşik-şemalar-ve-renklendirme-mermaid">2.4 Hiyerarşik Şemalar ve Renklendirme (Mermaid)</h3>
+
+<p>Sistem mimarilerini veya süreç akışlarını görselleştirmek için Mermaid bloklarını kullanın. CSS dosyasındaki hazır sınıfları (class) kullanarak kutuları anlamlarına göre renklendirebilirsiniz.</p>
+
+<p><strong>Kullanılabilir Renk Sınıfları:</strong></p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">rootNode</code>: Ana başlıklar (Mavi)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">warningNode</code>: Dikkat çekilmesi gereken adımlar (Sarı)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">successNode</code>: Tamamlanan veya onaylanan süreçler (Yeşil)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">errorNode</code>: Hata veya durdurma noktaları (Kırmızı)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">infoNode</code>: Genel bilgilendirme kutuları (Açık Mavi)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">leafNode</code>: Standart detay adımları (Koyu Kahve)</li>
+</ul>
+
+<p><strong>Örnek Uygulama:</strong></p>
+
+<pre><code class="language-mermaid">graph TD
+    A[Sistem Girişi] --&gt; B{Hata Var mı?}
+    B -- Hayır --&gt; C[İşlemi Tamamla]
+    B -- Evet --&gt; D[Hata Günlüğü Tut]
+    D --&gt; E[Sistemi Durdur]
+
+    %% Stil Atamaları
+    class A rootNode
+    class B warningNode
+    class C successNode
+    class D infoNode
+    class E errorNode
+</code></pre>
+<h2 id="3-seo-ve-yapılandırma-i̇puçları">3. SEO ve Yapılandırma İpuçları</h2>
+<p>robots.txt: Sitenizin kökünde mevcuttur ve tüm botlara tarama izni verir.</p>
+
+<p>Sitemap: jekyll-sitemap gem’i ile sitemap.xml otomatik olarak oluşturulur.</p>
+
+<p>Sosyal Medya: excerpt alanını doldurmak, Open Graph (Facebook/LinkedIn) ve Twitter Card önizlemelerinin doğru çalışmasını sağlar.</p>
+
+            </div>
+
+            <nav class="note-navigation">
+    
+    <div></div>
+    
+
+    
+    <div></div>
+    
+</nav>
+        </article>
+    </div>
+
+    <aside class="sidebar-right">
+        <!-- Masaüstü -->
+
+
+
+
+<div class="sidebar-section tags-cloud post-sidebar-desktop">
+    <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+    <div class="tags">
+        
+        <a href="/etiket/markdown" class="tag-link">markdown</a>
+        
+        <a href="/etiket/rehber" class="tag-link">rehber</a>
+        
+        <a href="/etiket/seo" class="tag-link">seo</a>
+        
+        <a href="/etiket/yap%C4%B1land%C4%B1rma" class="tag-link">yapılandırma</a>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="sidebar-section post-sidebar-desktop">
+    <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+    <div style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8;">
+        <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+        <p><strong>Tarih:</strong> 17 Kasım 2025</p>
+        <p><strong>Kategori:</strong> Sistem</p>
+        <p><strong>Okuma Süresi:</strong>
+            
+            ~3 dk
+            
+        </p>
+        <p><strong>Seviye:</strong> Talimatlar</p>
+    </div>
+</div>
+
+<!-- Mobil -->
+
+
+
+
+
+
+
+<button class="info-mobile-btn" id="infoMobileBtn" title="Not Detayları">
+    <i class="fas fa-info"></i>
+</button>
+
+<div class="info-mobile-panel" id="infoMobilePanel">
+    <div class="info-panel-header">
+        <span><i class="fas fa-leaf"></i> Not Detayları</span>
+        <button id="closeInfoPanel" class="close-panel-btn"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="info-panel-content">
+        <div class="sidebar-info-inner">
+            
+            
+
+            <div class="sidebar-section tags-cloud">
+                <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+                <div class="tags">
+                    
+                    <a href="/etiket/markdown" class="tag-link">markdown</a>
+                    
+                    <a href="/etiket/rehber" class="tag-link">rehber</a>
+                    
+                    <a href="/etiket/seo" class="tag-link">seo</a>
+                    
+                    <a href="/etiket/yap%C4%B1land%C4%B1rma" class="tag-link">yapılandırma</a>
+                    
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+                <div class="info-details-box">
+                    <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+                    <p><strong>Tarih:</strong> 17 Kasım 2025</p>
+                    <p><strong>Kategori:</strong> Sistem</p>
+                    <p><strong>Okuma Süresi:</strong>
+                        
+                        ~3 dk
+                        
+                    </p>
+                    <p><strong>Seviye:</strong> Talimatlar</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+</div>
+
+        
+    </aside>
+</div>
+        </main>
+
+        <footer class="footer">
+    <div class="container">
+        <p>© 2026 Çalışma Notlarım - Tüm hakları saklıdır</p>
+        <div class="social-links">
+            <a href="https://github.com/SahinMuhammetAbdullah"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/muhammet-abdullah-sahin"><i class="fab fa-linkedin"></i></a>
+            <!-- <a href=""><i class="fab fa-twitter"></i></a> -->
+        </div>
+    </div>
+</footer>
+        <script src="/assets/js/copy-code.js"></script>
+        <script src="/assets/js/toc-builder.js"></script>
+        <script src="/assets/js/hamburger.js"></script>
+        <script src="/assets/js/search.js"></script>
+        <script src="/assets/js/info-builder.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+        <script>
+            lightbox.option({
+                'resizeDuration': 300,
+                'fadeDuration': 300,
+                'imageFadeDuration': 300,
+                'wrapAround': true, // Galerinin sonuna gelince başa döner
+                'albumLabel': "%1 / %2" // "Image 1 of 5" yerine "1 / 5" yazar
+            })
+        </script>
+    </body>
+</html>

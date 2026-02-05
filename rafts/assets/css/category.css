@@ -1,0 +1,190 @@
+/* --------------------------------------------------------------------------
+   DİNAMİK KATEGORİ LİSTESİ STİLLERİ
+   -------------------------------------------------------------------------- */
+
+.category-group {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    /* Grubu görsel olarak ayırır */
+    border-radius: 8px;
+    background: var(--bg-card);
+    /* Koyu kart arka planı */
+}
+
+.category-main {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: var(--text-light);
+    /* Metin rengi koyu arka planda açık olmalı */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-main i {
+    font-size: 1.5rem;
+    color: var(--accent);
+    /* Ana renk vurgusu */
+    margin-right: 1rem;
+}
+
+.category-main h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.category-main .count {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Alt Kategoriler (Hiyerarşi) */
+.sub-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-category-item a {
+    display: block;
+    padding: 0.75rem 1rem 0.75rem 3.5rem;
+    /* Ana kategori ikonu kadar boşluk */
+    text-decoration: none;
+    color: var(--text-muted);
+    /* Daha yumuşak metin rengi */
+    transition: background 0.2s;
+}
+
+.sub-category-item a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+}
+
+.sub-category-item a i {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-right: 0.5rem;
+}
+
+.sub-category-item .sub-count {
+    float: right;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   KATEGORİ SAYFASI İÇİ HİYERARŞİ STİLLERİ
+   -------------------------------------------------------------------------- */
+
+.category-post-list {
+    padding: 0 1rem 1rem 1rem;
+    /* Dış liste padding'i */
+    list-style: none;
+    margin: 0;
+}
+
+.category-sub-group {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    border: 1px solid var(--accent);
+    /* Alt grubu görsel olarak ayırır */
+    border-radius: 4px;
+    background: rgba(139, 111, 71, 0.05);
+    /* Çok hafif arka plan */
+}
+
+.sub-category-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border);
+}
+
+.sub-category-name i {
+    margin-right: 0.5rem;
+}
+
+.sub-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.sub-post-item a {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.sub-post-date {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+/* Categories Sidebar */
+.categories-sidebar {
+    background: var(--bg-card);
+    border: 3px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.category-list {
+    display: grid;
+
+    /* KRİTİK: Tam olarak 3 eşit sütun oluşturulmasını garanti eder. */
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1.5rem;
+    /* Sütunlar arası boşluk */
+    /* Diğer stilleriniz... */
+}
+
+.category-item {
+    background: rgba(44, 36, 22, 0.6);
+    border-left: 4px solid var(--primary);
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.category-item:hover {
+    background: rgba(139, 111, 71, 0.3);
+    border-left-width: 8px;
+    transform: translateX(5px);
+}
+
+.category-item i {
+    font-size: 1.8rem;
+    color: var(--primary);
+    width: 40px;
+    text-align: center;
+}
+
+.category-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+.category-info .count {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-family: 'Courier Prime', monospace;
+}

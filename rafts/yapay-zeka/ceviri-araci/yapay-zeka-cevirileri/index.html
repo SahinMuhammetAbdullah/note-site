@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    
+    Yapay Zeka ile Çeviri | Çalışma Notlarım
+    
+</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script src="/assets/js/mermaid-code.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/style.css?v=1770297252">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Yapay Zeka ile Çeviri | Çalışma Notlarım</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="Yapay Zeka ile Çeviri">
+<meta name="author" content="{{ site.author_info.name }}">
+<meta property="og:locale" content="tr_TR">
+<meta name="description" content="Üretken yapay zekalar kullanarak farklı dillerde çeviri uygulamaları.">
+<meta property="og:description" content="Üretken yapay zekalar kullanarak farklı dillerde çeviri uygulamaları.">
+<link rel="canonical" href="http://localhost:4000/yapay-zeka/ceviri-araci/yapay-zeka-cevirileri/">
+<meta property="og:url" content="http://localhost:4000/yapay-zeka/ceviri-araci/yapay-zeka-cevirileri/">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2025-12-15T17:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Yapay Zeka ile Çeviri">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"{{ site.author_info.name }}"},"dateModified":"2025-12-15T17:00:00+03:00","datePublished":"2025-12-15T17:00:00+03:00","description":"Üretken yapay zekalar kullanarak farklı dillerde çeviri uygulamaları.","headline":"Yapay Zeka ile Çeviri","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/yapay-zeka/ceviri-araci/yapay-zeka-cevirileri/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/iimagesmg/logo.png"},"name":"{{ site.author_info.name }}"},"url":"http://localhost:4000/yapay-zeka/ceviri-araci/yapay-zeka-cevirileri/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<style>
+    /* CSS değişkenleri config dosyasından alınır */
+    :root {
+        --primary: #d4a574;
+        --primary-dark: #b8925f;
+        --bg-dark: #2c2416;
+        --bg-paper: #f4ebe0;
+        --bg-card: #3d3326;
+        --text-light: #f4ebe0;
+        --text-dark: #2c2416;
+        --accent: #8b6f47;
+        --border: #5a4a3a;
+    }
+</style>
+
+
+<link rel="canonical" href="http://localhost:4000/yapay-zeka/ceviri-araci/yapay-zeka-cevirileri/">
+
+<meta name="description" content="Üretken yapay zekalar kullanarak farklı dillerde çeviri uygulamaları.">
+
+
+
+
+
+<meta property="og:image" content="">
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:title" content="Yapay Zeka ile Çeviri">
+<meta property="og:description" content="Üretken yapay zekalar kullanarak farklı dillerde çeviri uygulamaları.">
+<meta property="og:url" content="http://localhost:4000/yapay-zeka/ceviri-araci/yapay-zeka-cevirileri/">
+<meta property="og:type" content="article">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="manifest" href="/assets/icons/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYZ7X6Y7SZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KYZ7X6Y7SZ');
+</script>
+    </head>
+    <body>
+
+        <nav class="navbar">
+    <div class="container">
+        <!-- LOGO -->
+        <a href="/" class="logo">
+            <i class="fa-solid fa-book-open"></i> Ders Notlarım
+        </a>
+
+        <!-- MASAÜSTÜ MENÜ (Mobilde Gizlenecek) -->
+        <ul class="nav-menu desktop-only">
+            <li><a href="/">Ana Sayfa</a></li>
+            <li><a href="/gunluk/">Günlük</a></li>
+            <li><a href="/arsiv/">Arşiv</a></li>
+            <li><a href="/kategoriler/">Kategoriler</a></li>
+            <li><a href="/etiketler/">Etiketler</a></li>
+            <li><a href="/hakkimda/">Hakkımda</a></li>
+        </ul>
+
+        <!-- ARAMA (Mobilde Gizlenecek) -->
+        <div class="search-box desktop-only">
+            <input type="text" placeholder="Notlarda Ara...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <!-- HAMBURGER BUTONU (Sadece Mobilde Görünecek) -->
+        <div class="hamburger-btn" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- TAM EKRAN MOBİL MENÜ (Sayfa dışında gizli) -->
+<div class="mobile-overlay" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">
+        <i class="fa-solid fa-xmark"></i> <!-- FontAwesome varsa -->
+        <!-- Yoksa sadece: &times; -->
+    </button>
+
+    <div class="mobile-menu-links">
+        <a href="/">Ana Sayfa</a>
+        <a href="/gunluk/">Günlük</a>
+        <a href="/arsiv/">Arşiv</a>
+        <a href="/kategoriler/">Kategoriler</a>
+        <a href="/etiketler/">Etiketler</a>
+        <a href="/hakkimda/">Hakkımda</a>
+    </div>
+
+    <div class="mobile-search">
+        <input type="text" placeholder="Notlarda Ara...">
+    </div>
+</div>
+
+
+
+        <main>
+            
+
+
+
+
+
+
+
+
+<div class="main-container-3-col">
+
+    <aside class="sidebar-left">
+        <button id="toc-mobile-toggle" class="toc-mobile-btn">
+    <i class="fas fa-list"></i>
+</button>
+
+<button id="back-to-top" class="back-to-top-btn">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<div class="sidebar-section toc-sidebar">
+    <h3>
+<i class="fas fa-list"></i> İçindekiler</h3>
+    <div id="dynamic-toc-target" class="toc-placeholder"></div>
+</div>
+
+        
+    </aside>
+
+    <div class="note-content-wrapper">
+        <a href="/gunluk/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Notlara Geri Dön
+        </a>
+
+        <article class="note-article">
+            
+
+            <header class="note-header">
+                <h1 class="note-title">Yapay Zeka ile Çeviri</h1>
+                
+                
+                
+                <h2 class="post-subtitle" style="color: var(--accent); margin-top: -1rem; font-size: 1.3rem;">Yapay zaka kullanarak çeviri yapma</h2>
+                
+                
+                
+                
+                <p class="post-excerpt" style="font-style: italic; margin-top: 1rem; color: #4a3f2f;">Üretken yapay zekalar kullanarak farklı dillerde çeviri uygulamaları.</p>
+                
+            </header>
+            <div class="note-meta">
+                <span class="note-date">
+                    <i class="fas fa-calendar"></i> 15 Aralık 2025
+                </span>
+                <span class="note-info time">
+                    <i class="fas fa-clock"></i> 9 dk
+                </span>
+                <span class="note-info user">
+                    <i class="fas fa-user"></i> Muhammet Abdullah Şahin
+                </span>
+            </div>
+
+            <div class="note-tags">
+                <span class="tag tag-category">
+                    <i class="fas fa-code"></i>
+                    Yapay Zeka
+                </span>
+                
+                <span class="tag">Çeviri</span>
+                
+                <span class="tag">AI</span>
+                
+                <span class="tag">ChatGPT</span>
+                
+                <span class="tag">DeepL</span>
+                
+                <span class="tag">ElevenLabs</span>
+                
+            </div>
+            <div class="note-content">
+                <h2 id="giriş">Giriş</h2>
+
+<p>Bu yazı, BTK akademide bulunan <strong>Üretken Yapay Zekâ ile Tercüme</strong> eğitiminden alınan notlardan oluşmaktadır.</p>
+
+<h2 id="araçlar">Araçlar</h2>
+<p>ChatGPT, DeepL, ElevenLabs gibi yapay zeka araçlarını ve kullanım alanlarını inceleyeceğiz.</p>
+
+<h3 id="chatgpt">ChatGPT</h3>
+
+<h4 id="prompt">Prompt</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bu gün hava çok güzel.
+
+İngilizceye çevir.
+</code></pre></div></div>
+<h4 id="result">Result</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:&gt; The weather is very nice today
+</code></pre></div></div>
+
+<p>Bu şekilde en basit çeviriler yapılabilinmekte. Burada <code class="language-plaintext highlighter-rouge">[Dil]'e çevir</code> dil alanını değiştirerek istediğin her dile çevirisini gerçekleştirebilirsiniz.</p>
+
+<h3 id="deepl">DeepL</h3>
+
+<p><a href="/assets/images/postimages/deepl.png" data-lightbox="post-gallery" data-title="DeepL."><img src="/assets/images/postimages/deepl.png" alt="DeepL."></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> DeepL Kullanımı.</p>
+</blockquote>
+
+<p>Yeşil alan içerisinden giriş dili seçilir ve kırmızı alan içinden ise çıkış dili seçilir. Bu şekilde basit bir çeviri gerçekleştirilebilir.</p>
+
+<p><a href="/assets/images/postimages/deepl-write.png" data-lightbox="post-gallery" data-title="DeepL."><img src="/assets/images/postimages/deepl-write.png" alt="DeepL."></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> DeepL Metin Düzenleme.</p>
+</blockquote>
+
+<p>Yeşil alan içerisindeki yere gidiyoruz ve turuncu alandan bir tarz yada ton seçerek metnimizi yeniden oluşturmasını istiyoruz.</p>
+
+<h2 id="kültürel-uygulamalı-çeviri">Kültürel Uygulamalı Çeviri</h2>
+
+<p>Örneğin: “Break a leg” -&gt; “Bol şans” burada tam çeviri değil anlamsal çeviri uygulanmıştır.</p>
+
+<h3 id="chatgpt-1">ChatGPT</h3>
+
+<h4 id="prompt-1">Prompt</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Break a leg
+
+Türkçe'ye çevir
+</code></pre></div></div>
+<h4 id="result-1">Result</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:&gt; “Break a leg” ifadesinin Türkçe karşılığı:
+:&gt; 
+:&gt; “Bol şans!”
+</code></pre></div></div>
+
+<h4 id="prompt-2">Prompt</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>it's raining cats and dogs
+
+Türkçe'ye çevir
+</code></pre></div></div>
+
+<h4 id="result-2">Result</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:&gt; “It’s raining cats and dogs” ifadesinin Türkçe karşılığı:
+:&gt; 
+:&gt; “Bardaktan boşanırcasına yağmur yağıyor.”
+:&gt; 
+:&gt; Açıklama:
+:&gt; 
+:&gt; Bu bir idiom (deyim)dir; kelimesi kelimesine çevrilmez.
+:&gt; 
+:&gt; Çok şiddetli yağmur yağdığını anlatır.
+:&gt; 
+:&gt; Yakın Türkçe karşılıklar:
+:&gt; 
+:&gt; “Sağanak yağmur yağıyor”
+:&gt; 
+:&gt; “Yağmur sel gibi yağıyor”
+:&gt; 
+:&gt; Örnek:
+:&gt; 
+:&gt; It’s raining cats and dogs outside.
+:&gt; → Dışarıda bardaktan boşanırcasına yağmur yağıyor.
+</code></pre></div></div>
+
+<h3 id="deepl-1">DeepL</h3>
+
+<p><a href="/assets/images/postimages/deepl-bug.png" data-lightbox="post-gallery" data-title="DeepL."><img src="/assets/images/postimages/deepl-bug.png" alt="DeepL."></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> DeepL Kültürel Çeviri.</p>
+</blockquote>
+
+<p>Burada da görüleceği üzerer “bugs” yazılımda hata anlamında kullanıldığı için algılanıp, hata olarak çevirirlirken, bitkiler için ise asıl anlamı olan böcek için çevrilmiştir.</p>
+
+<h2 id="ton-uyarlama-ve-konteks-kontrolü">Ton Uyarlama ve Konteks Kontrolü</h2>
+
+<p>Resmi: <strong>Sayın Müdürüm!</strong>
+Samimi: <strong>Merhabalar!</strong>
+Teknik: <strong>Sistem Parametreleri.</strong></p>
+
+<p>Hedef kitle belirlenmeli, bağlam koruması yapılmalı ve kültürel bağlam korunmalı.</p>
+
+<p>Örneğin Mr. Smith -&gt; “Bay Smith” mi yoksa “Sayın Smith” mi şeklinde olmalı</p>
+
+<p>“as soon as posible”:”asap” bu resmi bir e postada en kısa sürede şeklinde çevbirlebilir ama daah samimi bir yazışmada hemen halledi ver şeklinde çevrilebilir.</p>
+
+<h3 id="chatgpt-2">ChatGPT</h3>
+
+<h4 id="prompt-3">Prompt</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Please send to report ASAP. 
+
+Please send to report ASAP.
+
+Biri patronumla, biri arkadaşımla yazışıyormuşum gibi uygun Türkçe'ye çevir 
+</code></pre></div></div>
+
+<h4 id="result-3">Result</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:&gt; “Lütfen raporu en kısa sürede iletir misiniz?”
+:&gt; veya
+:&gt; “Raporu acilen göndermenizi rica ederim.”
+:&gt; 
+:&gt; “Raporu hemen yolla kanka.”
+:&gt; veya
+:&gt; “Raporu acil atsan süer olur :).”
+</code></pre></div></div>
+
+<h3 id="deepl-2">DeepL</h3>
+
+<p><a href="/assets/images/postimages/deepl-asap.png" data-lightbox="post-gallery" data-title="DeepL."><img src="/assets/images/postimages/deepl-asap.png" alt="DeepL."></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> DeepL ile Farklı Tonlarda Çeviri.</p>
+</blockquote>
+
+<p>Burada akademik ve rahat sitilde ve arkadaşça bir tonda yeiden yazımını gördül.</p>
+
+<h2 id="hatalı-çıktıların-düzenlenmesi">Hatalı Çıktıların Düzenlenmesi</h2>
+
+<p>Yapay zekalar hallüsünasyon görebilir. Bu hallüsünasyonlar sonucu cümleleri veya kelimeleri yanlış çevirebilir. Bunu farklı kaynaklar teyitlemek gerekir.</p>
+
+<h3 id="chatgpt-3">ChatGPT</h3>
+
+<h4 id="prompt-4">Prompt</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let's meet at the bank.
+
+Türkçe'ye çevir 
+</code></pre></div></div>
+
+<h4 id="result-4">Result</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:&gt; “Bankada buluşalım.”
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>DİKKAT!</strong> Burada biz bir para bankasından bahsetmedik. Yani bank kelimes nehir kenarı anlamına da geldiği için düzeltme istemeliyiz.</p>
+</blockquote>
+
+<h4 id="prompt-5">Prompt</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bir para bankası değil bu aslında
+</code></pre></div></div>
+
+<h4 id="result-5">Result</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:&gt; “Nehir kenarında buluşalım.”
+:&gt; 
+:&gt; “Parktaki bankta buluşalım.”
+:&gt; 
+:&gt; “Kıyıda buluşalım.”
+</code></pre></div></div>
+<h2 id="konuşma-ve-diyolog-tabanlı-çeviri-transkript-çevirisi">Konuşma ve Diyolog Tabanlı Çeviri (Transkript Çevirisi)</h2>
+
+<p>Öncelikle yapay zekaya <code class="language-plaintext highlighter-rouge">Şimdi sana vereceğim Türkçe metinleri İngilizce'ye, İngilizce metinleri Türkçe'ye çevirmelisin. Diyolog çevirmeni rolünü üstlen.</code> demeliyiz.</p>
+
+<h3 id="chatgpt-4">ChatGPT</h3>
+
+<ul>
+  <li>“Hi, uh… do you have, like, vegetarian options? Maybe pasta, or„. I don’t know, something light.”</li>
+  <li>
+    <p>:&gt; “Merhaba, şey… vejetaryen seçenekleriniz var mı? Mesela makarna ya da… bilemiyorum, hafif bir şey.”</p>
+  </li>
+  <li>“Evet, tabii ki. Vejetaryen makarnamız ve ayrıca sebzeli pizza var. Hangisini tercih edersiniz?”</li>
+  <li>
+    <p>:&gt; “Yes, of course. We have vegetarian pasta, and we also have a vegetable pizza. Which one would you prefer?”</p>
+  </li>
+  <li>“Hmm… pasta sounds good. But can you make it without cheese?”</li>
+  <li>:&gt; “Hm… makarna kulağa hoş geliyor. Ama peynirsiz yapabilir misiniz?”</li>
+</ul>
+
+<h2 id="video-senaryo-çevirisi">Video Senaryo Çevirisi</h2>
+
+<p>Video senaryo çevirisi yaparken ekranda cümlenin uzunluğu konuşmacının konuştuğu süre sarfı boyunca metin ekranda yer alacağında yan isüre kıusıtları bulunduğunda çok farklı bir bağlamda değerlendirilerek çevrilir.</p>
+
+<p>Konuşmacının cümlerleri “Break a leg” ifadesindeki gibi anlamlar taşıyabilir ve buna dikkat edilmesi gerekmektedir.</p>
+
+<h3 id="chatgpt-5">ChatGPT</h3>
+
+<ul>
+  <li>Don’t forget to like this video and subscribe to our channel for more content! Bunu Türkçe’ye çevir, Türkçe YouTube için bir Call to action - aksiyona çağrı eklemeyi unutma”</li>
+  <li>
+    <p>:&gt; Bu videoyu beğenmeyi ve daha fazla içerik için kanalımıza abone olmayı unutmayın! Ayrıca bildirimleri açarak yeni videolardan anında haberdar olabilirsiniz.</p>
+  </li>
+  <li>Don’t forget to like this video and subscribe to our channel for more content!, bu sefer instegam reals için çevir</li>
+  <li>
+    <p>:&gt; Bu videoyu beğenmeyi ve daha fazla içerik için sayfamızı takip etmeyi unutma! Devamı için bizi takipte kal.</p>
+  </li>
+  <li>#ThrowbackThursday bunu Türkçe’ye lokal trendlere ve kültürel uyuma göre çevir</li>
+  <li>:&gt; #TBT, #AnılaraDönüş, #EskiGünler, #Nostalji, #Maziden</li>
+</ul>
+
+<h2 id="çoklu-ortam-i̇çerikleri">Çoklu Ortam İçerikleri</h2>
+
+<p>Görsel üzerinden metin çevirileri, video ve ses içeriklerinin öevrilmesi ve döküman (pdf, word vb.) üzerinden çevirilerin nasıl gerçekleştirileceği konusuna değinelim. Ayrıca web adresilerinin çevirilmesine de değineceğiz</p>
+
+<h3 id="göresl-üzerindeki-metin-çevirimi">Göresl üzerindeki metin çevirimi</h3>
+
+<p>OCR: Optical Character Recognition (Optik karakter taram, Örneğin; Google Lens)
+OCR ile arkası bulanuk blurlu ve el yazması metinleri çevirmekte zorlanır. Bu sebeten görsel kalitesi yazı tipi ve arka plan önemli faktörlerdir. Seyehatte, iş hayatında en çok da günlük hayatta pratik kullanım sağlar.</p>
+
+<p><a href="https://ares.shiftdelete.net/2019/05/google-ceviri-kamera-ile-kullanilan-dili-algilayacak.jpg" data-lightbox="post-gallery" data-title="Google Lens."><img src="https://ares.shiftdelete.net/2019/05/google-ceviri-kamera-ile-kullanilan-dili-algilayacak.jpg" alt="Google Lens."></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> Google Lens (atf. <a href="https://shiftdelete.net/google-ceviri-kamera-ile-kullanilan-dili-algilayacak">shiftdelete.net</a>).</p>
+</blockquote>
+
+<p>Bu anlık çevri yapacağı için doğru çeviriyi vermekte zorlanabilir. Yani bir bağlam kuramayabilir.</p>
+
+<h3 id="video-ve-ses-kayıtları">Video ve Ses Kayıtları</h3>
+
+<p>ElvenLabs ile profesyonal studiyoların ayarında bir kalite sunabilmekte. YouTube videoları, webinarlar, eğitim içerikleri, sosyal mediya içeriklerinde kolay ve parik çözümler sunmaktadırlar. Çıktıları ise SRT altyazı, metin dosyası, çeviri raporları şekilde olabilmektedir.</p>
+
+<p><a href="https://elevenlabs.io/">ElevenLabs</a> adresinde <a href="https://elevenlabs.io/app/speech-to-text">Speech To Text</a>‘e girerek istediğiniz ses veya video yükleyerek istediğimiz bir formatta çıktısını alarak Üretken yapay zekalar ile metnin dil çevirisini gerçekleştirebiri ve yize ElevenLabs e giderek oradan bu metni <a href="https://elevenlabs.io/app/speech-synthesis/text-to-speech">Text To Speech</a>‘e giderek seslendirmesini gerçekleştirebiliriz.</p>
+
+<h3 id="dökümanlar">Dökümanlar</h3>
+
+<p>Dökümanları ChatGPT, DeepL kullanarak çevirebiliriz. DeepL Docs belgelere özel daha gelişmiş bir AI’dır. Yine de bölümlere ayırıp çevirmesini istemak daha iyi sonuç almamızı sağlamaktadır. ChatGPT kullanırken dokümandan paragrafları bölerek çevirmesini ve davamında atacağınız her paragraf için hedef dile çevirmesini isteyerek daha verimli çalışabilirsiniz. DeepL Docs ile belgeyi tek seferde çevirebileceğiniz gibi paragraflara bölerek çevirmeniz daha faydalı olabilir.</p>
+
+<h3 id="web-sayfaları-ve-uygulama-i̇çerikleri">Web Sayfaları ve Uygulama İçerikleri</h3>
+
+<p>UI &amp; UX gözeterek çevirmek önemlidir. Yani “Login”, “Sing Up” örneklerinde direk çevirmek anlış olabilir. Ayrıca çeviri tamamlandıktan sonrada her dilde UI &amp; UX testleri yaparak her şey yolundamı bakmak gerekir.</p>
+
+<p>Bu süreç sadece bir çeviri değil aynı zamanda bir yereleştirme sürecidir. O dilin hitap ettiği bölgeye özgü UI &amp; UX tasarımlarıda değişebilir.</p>
+
+<p>Örneğin; “Şifremi unuttum” ingilzce genel kullanımda “Forgot password?” şeklindedir. Yani bire bir “I forgot my password.” şeklinde kullanılabilir ama genel kullanıma uygun değildir.</p>
+
+<h2 id="doğruluk-kontrolü-ve-kalite-artırma">Doğruluk Kontrolü ve Kalite Artırma</h2>
+
+<p>Akıcılığı kontrol edilmeli. Bu süreçte farklı AI araçları ile teyitlenmeli. Bunun için insan kontrolüde bu noktada önemlidir. Teknik doğruluk için her türlü imla kuralları doğrulanmalıdır. BLUE skoru, A/B testing yapılabilir.</p>
+
+<h3 id="i̇nce-ayarlar">İnce Ayarlar</h3>
+
+<p>Ham çeviriler dilin yapısına göre düzenlenmeli, kelime sıralamalı dilin düzenine uymalı, özellekle bağlaçlar optimize edilmeli ve doğallığı arttırılmalı robot çeviri hissini ortadan kaldırmalıyız. Örneğin bağlama göre “ethical considerations”, “etik düşünceler” gibi değil de “etik sorumluluklar” olarak düzenlenmeli.</p>
+
+<h3 id="ai--i̇nsan-hibrit-çeviri">AI + İnsan Hibrit Çeviri</h3>
+
+<p>Yapay zeka ile çeviri yapıldıktan sonra tekrardan bir aktif/pasif yani insanın tekrar elinden geçmesi ile çeviri daha kaliteli bir hal alır. insan dokunuşu kütürel uyarlama ve yaratıcılık daha iyi bir hale getirmekte.</p>
+
+<h2 id="pazarlama-metinleri">Pazarlama Metinleri</h2>
+
+<p>Bref analizi yapılır ve amaç belirlenir. Çeviri yaptırılır ve ton uyarlaması, sitil varyantları düzenlerir. karşılaştırmalar yapılır ve kalite değerlendirmesi gerçekleştirilir. Teslim formatı hazırlanmıştır.</p>
+
+<h3 id="bref-analizi">Bref Analizi</h3>
+
+<p>Kime hitab edillmekte, hangi mecra için çevriliyor, mesajın amacı satış mı, bilgilendirme mi, yoksa farkındalık mı bunlar belirlenir. Seçilen mecra ve mesaj türünü hedef kitleye en uygun şekilde uyarlanmalıdır.</p>
+
+<p>Bize verilen kampanya metnini önce başlıklar çevrilerek hedef kitle belirlenmeli.</p>
+
+<h3 id="türkçeye-çeviri">Türkçe’ye Çeviri</h3>
+
+<p>Önce ham çeviri alınır. İnsan editörler elden geçirir ve kültürel uyarlama yaparlar. Yani bu aşamada hibrit çeviri yapılır. Değişiklikler belgelenir.</p>
+
+<h3 id="geri-çeviri">Geri Çeviri</h3>
+
+<p>Değişiklikleri belgelediksen sonra geri çevrilir. bu yöntemle anlam kayması olmuşmu gizli hatalar oluşmuş mu kontrol edilir. Elbette bazı değişiklikler ile karşılaşılabilir ama geri çeviri sonrası tamamen bir anlam değişmesi varsa bunlar düzenlenmelidir. Bura bu kontrol edilir. Burada bire bir geriye dönüş beklenmemelidir.</p>
+
+<h3 id="ton-uyarlaması-ve-stil-varyantları">Ton Uyarlaması ve Stil Varyantları</h3>
+
+<p>Bu naktada resmi, samimi ya da yaratıcı bir dil mi kullanmalıyız onu belirleyerek devam etmeliyiz.</p>
+
+<h3 id="karşılaştırma-ve-kalite-kontrolü">Karşılaştırma ve Kalite Kontrolü</h3>
+
+<p>Bu noktada farklı yapay zeka araçları arasında çeviri yaparak karşılaştırma yapılmalıdır. (Örneğin Gemini vb.)</p>
+
+<h3 id="teslim-formatı">Teslim Formatı</h3>
+
+<p>Burada anadili ve hedef dilinde raporlanmalıdır. formatlar ise yapılan işe göre değişmektedir. Akademik metin, kampanya dökümanları; PDF, WORD, PowerPoint gibi olmalı. Video içerikler için ise SRT(Alt Yazı) gibi formatlarda hazırlanmalıdır. Terim listesi ve stil rehberi bulunmalı. Versiyonlama yapılmalıdır. Orijan metin üzerinden çevirisinde yapılan değişikliklere yorun eklenebilir. Bu şekilde teslim formatımız da hazır olur.</p>
+
+<h2 id="akademik-çeviriler">Akademik Çeviriler</h2>
+
+<p>Bu tarz çeviriler ytapılırken dile genel çerçevede hakim olmak da gerekmektedir. Çevrilecek makale öncelikle özet ile başlanmalı. Yapay zekaya makalenin konu çerçevesi ve genel bilgileri söylenerek çeviriyi en uygun şekilde çevirmesini beklemeliyiz.</p>
+
+<h3 id="terim-hazırlığı-ve-ön-okuma">Terim Hazırlığı ve Ön Okuma</h3>
+
+<p>Çok tekrar eden ve anatar kelimeler önceden çıkarılmalıdır.</p>
+
+<p>Örneğin;</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>terim</th>
+      <th>kısa açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Digital Marketing</td>
+      <td>Dijital ortamda ürün ve hizmet</td>
+    </tr>
+    <tr>
+      <td>Search Engine Optimization (SEO)</td>
+      <td>Arama motoru optimizasyonu</td>
+    </tr>
+    <tr>
+      <td>Scarch Engim Marketing (SEM)</td>
+      <td>Arama motoru pazarlaması</td>
+    </tr>
+    <tr>
+      <td>Content Marketing</td>
+      <td>İçerik pazarlaması</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kavram</th>
+      <th>Bağlamsal Önemi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Traditional Marketing —&gt; Digital Marketing Shift</td>
+      <td>Pazarlamamn dijital dâhiişüm süreci</td>
+    </tr>
+    <tr>
+      <td>Technological Advancement in Marketing</td>
+      <td>Pazarlama teknolojilerinin gelişimi</td>
+    </tr>
+    <tr>
+      <td>Customer-Centric Approach</td>
+      <td>Müşteri miaklı pazılama adayışı</td>
+    </tr>
+    <tr>
+      <td>Online Consumer Behavior</td>
+      <td>Çevrimiçi tüketici davrunşlan</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Bunlar çıkarıldıktan sonra çevirilere başlamak her zaman için daha iyidir. Kavram karmaşası ve anlam kaymnası açısından daha iyi sonuçlar alınacaktır.</p>
+
+<h4 id="chatgpt-6">ChatGPT</h4>
+
+<p>Yeni bir poje başlatıp bu terim ve kavram ların yer aldığı dosya ve çevirisi yapılacak akademik metnin dosyasını vererek çalışmaya başlanılabilir. Bu şekilde yapay zeka çeviri yaparken terim ve kavram listemizi kontrol ederek daha uygun çevirileri verecektir.</p>
+
+<blockquote>
+  <p><strong>BİLGİLENDİRME!</strong> ChatGPT ücretsiz versiyonunda günde 3 belge yükleme limiti vardır.</p>
+</blockquote>
+
+<h3 id="üslup-ve-akıcılık-kontrolü">Üslup ve Akıcılık Kontrolü</h3>
+
+<p>Bu tarz çevirilerde Türkçe’de edilgin dil kullanılmaktadır. Bu çevirileri gözden geçirmek ve dili edilgen hale getirmek gerekmektedir.</p>
+
+<h3 id="kaynak-ve-biçim-uyumu">Kaynak ve Biçim Uyumu</h3>
+
+<p>Bu noktada atıflar doğru yerlere referans gösterilmeli ve kaynakça kısmında uygun formata dönüştürülmelidir.</p>
+
+<h3 id="final-ve-teslim">Final ve Teslim</h3>
+
+<p>Son kez kotrolden geçirilir, gerekli notlar alınır, ve uygun formata çevrilkir. Teslim formatımız artık hazır.</p>
+
+<p>Kapsamlı ve geniş içerikleri, projeler altında yapmak daha iyi olur.</p>
+
+<h2 id="sesli-çevir-projesi">Sesli Çevir Projesi</h2>
+
+<h3 id="amaç">Amaç</h3>
+
+<p>Türkçe ve İngilizce konuşanan iki kişinin GPT sesli sohet aracı ile anlık doğal çeviri örneklenecektir.</p>
+
+<h3 id="araçlar-1">Araçlar</h3>
+
+<p>ChatGPT’nin sesli sohbet özelli kullanılarak uygulanacaktır.</p>
+
+<h4 id="prompt-6">Prompt</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(Sesli İletişimde Kullanıcı): 
+"""Sana söylenen Türkçe cümleleri anlık olarak İngilizce'ye, 
+İngilizce söylenen cümleri anlık Türkçe'ye çevirmeni istiyorum."""
+</code></pre></div></div>
+<p>Bu şekilde söylendiğinde sizin için bir anlık çevermen olarak çalışmaya başlayacaktır.</p>
+
+<p>GPT bu konmuşmaların transkriprii de çıkartığı için geriye dönük takip yapılabilir ve dil öğrenimi süreçlerinde etkili kullanılabliir.</p>
+
+<h2 id="kapanış">Kapanış</h2>
+
+<p>Daha ayrıntılı bilgiler ve uygulamalı öğrenim için <strong>İlgili Notlarda</strong> bulunan bağlantıdan asıl içeriği takip ediniz.</p>
+
+            </div>
+
+            <nav class="note-navigation">
+    
+    <div></div>
+    
+
+    
+    <div></div>
+    
+</nav>
+        </article>
+    </div>
+
+    <aside class="sidebar-right">
+        <!-- Masaüstü -->
+
+
+
+<div class="sidebar-section post-sidebar-desktop">
+    <h3>
+<i class="fas fa-book"></i> İlgili Notlar</h3>
+    <ul class="related-list">
+        
+        <li><a href="https://www.btkakademi.gov.tr/portal/course/uretken-yapay-zeka-ile-tercume-58772" target="_blank">Üretken Yapay Zekâ ile Tercüme</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="sidebar-section tags-cloud post-sidebar-desktop">
+    <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+    <div class="tags">
+        
+        <a href="/etiket/%C3%A7eviri" class="tag-link">çeviri</a>
+        
+        <a href="/etiket/ai" class="tag-link">ai</a>
+        
+        <a href="/etiket/chatgpt" class="tag-link">chatgpt</a>
+        
+        <a href="/etiket/deepl" class="tag-link">deepl</a>
+        
+        <a href="/etiket/elevenlabs" class="tag-link">elevenlabs</a>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="sidebar-section post-sidebar-desktop">
+    <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+    <div style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8;">
+        <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+        <p><strong>Tarih:</strong> 15 Aralık 2025</p>
+        <p><strong>Kategori:</strong> Yapay Zeka</p>
+        <p><strong>Okuma Süresi:</strong>
+            
+            ~9 dk
+            
+        </p>
+        <p><strong>Seviye:</strong> Orta</p>
+    </div>
+</div>
+
+<!-- Mobil -->
+
+
+
+
+
+
+
+<button class="info-mobile-btn" id="infoMobileBtn" title="Not Detayları">
+    <i class="fas fa-info"></i>
+</button>
+
+<div class="info-mobile-panel" id="infoMobilePanel">
+    <div class="info-panel-header">
+        <span><i class="fas fa-leaf"></i> Not Detayları</span>
+        <button id="closeInfoPanel" class="close-panel-btn"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="info-panel-content">
+        <div class="sidebar-info-inner">
+            
+            
+            <div class="sidebar-section">
+                <h3>
+<i class="fas fa-book"></i> İlgili Notlar</h3>
+                <ul class="related-list">
+                    
+                    <li><a href="https://www.btkakademi.gov.tr/portal/course/uretken-yapay-zeka-ile-tercume-58772" target="_blank">Üretken Yapay Zekâ ile Tercüme</a></li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="sidebar-section tags-cloud">
+                <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+                <div class="tags">
+                    
+                    <a href="/etiket/%C3%A7eviri" class="tag-link">çeviri</a>
+                    
+                    <a href="/etiket/ai" class="tag-link">ai</a>
+                    
+                    <a href="/etiket/chatgpt" class="tag-link">chatgpt</a>
+                    
+                    <a href="/etiket/deepl" class="tag-link">deepl</a>
+                    
+                    <a href="/etiket/elevenlabs" class="tag-link">elevenlabs</a>
+                    
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+                <div class="info-details-box">
+                    <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+                    <p><strong>Tarih:</strong> 15 Aralık 2025</p>
+                    <p><strong>Kategori:</strong> Yapay Zeka</p>
+                    <p><strong>Okuma Süresi:</strong>
+                        
+                        ~9 dk
+                        
+                    </p>
+                    <p><strong>Seviye:</strong> Orta</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+</div>
+
+        
+    </aside>
+</div>
+        </main>
+
+        <footer class="footer">
+    <div class="container">
+        <p>© 2026 Çalışma Notlarım - Tüm hakları saklıdır</p>
+        <div class="social-links">
+            <a href="https://github.com/SahinMuhammetAbdullah"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/muhammet-abdullah-sahin"><i class="fab fa-linkedin"></i></a>
+            <!-- <a href=""><i class="fab fa-twitter"></i></a> -->
+        </div>
+    </div>
+</footer>
+        <script src="/assets/js/copy-code.js"></script>
+        <script src="/assets/js/toc-builder.js"></script>
+        <script src="/assets/js/hamburger.js"></script>
+        <script src="/assets/js/search.js"></script>
+        <script src="/assets/js/info-builder.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+        <script>
+            lightbox.option({
+                'resizeDuration': 300,
+                'fadeDuration': 300,
+                'imageFadeDuration': 300,
+                'wrapAround': true, // Galerinin sonuna gelince başa döner
+                'albumLabel': "%1 / %2" // "Image 1 of 5" yerine "1 / 5" yazar
+            })
+        </script>
+    </body>
+</html>

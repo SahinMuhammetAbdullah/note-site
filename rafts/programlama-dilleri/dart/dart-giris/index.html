@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    
+    Dart Bölüm: 1 | Dart'a Giriş | Çalışma Notlarım
+    
+</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script src="/assets/js/mermaid-code.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/style.css?v=1770297252">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Dart Bölüm: 1 Dart’a Giriş | Çalışma Notlarım</title>
+<meta name="generator" content="Jekyll v4.4.1">
+<meta property="og:title" content="Dart Bölüm: 1 Dart’a Giriş">
+<meta name="author" content="{{ site.author_info.name }}">
+<meta property="og:locale" content="tr_TR">
+<meta name="description" content="Dart hakkında temel yapılar.">
+<meta property="og:description" content="Dart hakkında temel yapılar.">
+<link rel="canonical" href="http://localhost:4000/programlama-dilleri/dart/dart-giris/">
+<meta property="og:url" content="http://localhost:4000/programlama-dilleri/dart/dart-giris/">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2025-11-20T17:00:00+03:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Dart Bölüm: 1 Dart’a Giriş">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"{{ site.author_info.name }}"},"dateModified":"2025-11-20T17:00:00+03:00","datePublished":"2025-11-20T17:00:00+03:00","description":"Dart hakkında temel yapılar.","headline":"Dart Bölüm: 1 Dart’a Giriş","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/programlama-dilleri/dart/dart-giris/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/iimagesmg/logo.png"},"name":"{{ site.author_info.name }}"},"url":"http://localhost:4000/programlama-dilleri/dart/dart-giris/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<style>
+    /* CSS değişkenleri config dosyasından alınır */
+    :root {
+        --primary: #d4a574;
+        --primary-dark: #b8925f;
+        --bg-dark: #2c2416;
+        --bg-paper: #f4ebe0;
+        --bg-card: #3d3326;
+        --text-light: #f4ebe0;
+        --text-dark: #2c2416;
+        --accent: #8b6f47;
+        --border: #5a4a3a;
+    }
+</style>
+
+
+<link rel="canonical" href="http://localhost:4000/programlama-dilleri/dart/dart-giris/">
+
+<meta name="description" content="Dart hakkında temel yapılar.">
+
+
+
+
+
+<meta property="og:image" content="">
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Çalışma Notlarım">
+<meta property="og:title" content="Dart Bölüm: 1 | Dart'a Giriş">
+<meta property="og:description" content="Dart hakkında temel yapılar.">
+<meta property="og:url" content="http://localhost:4000/programlama-dilleri/dart/dart-giris/">
+<meta property="og:type" content="article">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="manifest" href="/assets/icons/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYZ7X6Y7SZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KYZ7X6Y7SZ');
+</script>
+    </head>
+    <body>
+
+        <nav class="navbar">
+    <div class="container">
+        <!-- LOGO -->
+        <a href="/" class="logo">
+            <i class="fa-solid fa-book-open"></i> Ders Notlarım
+        </a>
+
+        <!-- MASAÜSTÜ MENÜ (Mobilde Gizlenecek) -->
+        <ul class="nav-menu desktop-only">
+            <li><a href="/">Ana Sayfa</a></li>
+            <li><a href="/gunluk/">Günlük</a></li>
+            <li><a href="/arsiv/">Arşiv</a></li>
+            <li><a href="/kategoriler/">Kategoriler</a></li>
+            <li><a href="/etiketler/">Etiketler</a></li>
+            <li><a href="/hakkimda/">Hakkımda</a></li>
+        </ul>
+
+        <!-- ARAMA (Mobilde Gizlenecek) -->
+        <div class="search-box desktop-only">
+            <input type="text" placeholder="Notlarda Ara...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <!-- HAMBURGER BUTONU (Sadece Mobilde Görünecek) -->
+        <div class="hamburger-btn" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- TAM EKRAN MOBİL MENÜ (Sayfa dışında gizli) -->
+<div class="mobile-overlay" id="mobileMenu">
+    <button class="close-btn" id="closeBtn">
+        <i class="fa-solid fa-xmark"></i> <!-- FontAwesome varsa -->
+        <!-- Yoksa sadece: &times; -->
+    </button>
+
+    <div class="mobile-menu-links">
+        <a href="/">Ana Sayfa</a>
+        <a href="/gunluk/">Günlük</a>
+        <a href="/arsiv/">Arşiv</a>
+        <a href="/kategoriler/">Kategoriler</a>
+        <a href="/etiketler/">Etiketler</a>
+        <a href="/hakkimda/">Hakkımda</a>
+    </div>
+
+    <div class="mobile-search">
+        <input type="text" placeholder="Notlarda Ara...">
+    </div>
+</div>
+
+
+
+        <main>
+            
+
+
+
+
+
+
+
+
+<div class="main-container-3-col">
+
+    <aside class="sidebar-left">
+        <button id="toc-mobile-toggle" class="toc-mobile-btn">
+    <i class="fas fa-list"></i>
+</button>
+
+<button id="back-to-top" class="back-to-top-btn">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<div class="sidebar-section toc-sidebar">
+    <h3>
+<i class="fas fa-list"></i> İçindekiler</h3>
+    <div id="dynamic-toc-target" class="toc-placeholder"></div>
+</div>
+
+        
+    </aside>
+
+    <div class="note-content-wrapper">
+        <a href="/gunluk/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Notlara Geri Dön
+        </a>
+
+        <article class="note-article">
+            
+
+            <header class="note-header">
+                <h1 class="note-title">Dart Bölüm: 1 | Dart'a Giriş</h1>
+                
+                
+                
+                <h2 class="post-subtitle" style="color: var(--accent); margin-top: -1rem; font-size: 1.3rem;">Temel Dart yapıları</h2>
+                
+                
+                
+                
+                <p class="post-excerpt" style="font-style: italic; margin-top: 1rem; color: #4a3f2f;">Dart hakkında temel yapılar.</p>
+                
+            </header>
+            <div class="note-meta">
+                <span class="note-date">
+                    <i class="fas fa-calendar"></i> 20 Kasım 2025
+                </span>
+                <span class="note-info time">
+                    <i class="fas fa-clock"></i> 9 dk
+                </span>
+                <span class="note-info user">
+                    <i class="fas fa-user"></i> Muhammet Abdullah Şahin
+                </span>
+            </div>
+
+            <div class="note-tags">
+                <span class="tag tag-category">
+                    <i class="fas fa-code"></i>
+                    Programlama Dilleri
+                </span>
+                
+                <span class="tag">mobil programala</span>
+                
+                <span class="tag">flutter</span>
+                
+                <span class="tag">diller</span>
+                
+            </div>
+            <div class="note-content">
+                <h2 id="giriş">Giriş</h2>
+
+<p>Dart programlama dili Google tarafdında inşa edilmiş Flutter ile mobil programlama yapabilmek adına bir programlama dilidir.</p>
+
+<p>Bu noktada bir <strong>Hello, World</strong> uygulaması başlatalım:</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'Hello, Woeld!'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Dart bir <code class="language-plaintext highlighter-rouge">main</code> bloğu üzerinde işlevlerini yerine getirir. <strong>main</strong> bizim ana programımızı oluşturur ve bütün yapılar burada çalışmaktadır.</p>
+
+<blockquote>
+  <p><strong>BİLGİ!</strong> <code class="language-plaintext highlighter-rouge">void</code> anahtar kelimesi bu metodun değer dönmeyeceği anlamına gelmektedir. Ana program ise herhangi bir dönğş değeri (int, String… vb.) içermediğinden void ile belirtilmelidir.</p>
+</blockquote>
+
+<h2 id="değişkenler">Değişkenler</h2>
+
+<p>Dart’ta değişken tanımlamak için en temel anahtar kelimemiz <code class="language-plaintext highlighter-rouge">var</code>‘dır. Bu anahtar kelime atanan değere bağlı tipini oluştururu.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">isim</span> <span class="o">=</span> <span class="s">'Abdullah Şahin'</span>                  <span class="c1">// var burada ^String^ değer atranmıştır </span>
+<span class="kd">var</span> <span class="n">yil</span> <span class="o">=</span> <span class="mi">2025</span>                               <span class="c1">// var burada ^int^ tam sayı değer atranmıştır </span>
+<span class="kd">var</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>                                <span class="c1">// var burada ^double^ ondalıklı değer atranmıştır </span>
+<span class="kd">var</span> <span class="n">iller</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Ankara'</span><span class="p">,</span> <span class="s">'İstanbul'</span><span class="p">,</span> <span class="s">'Samsun'</span><span class="p">]</span> <span class="c1">// var burada ^Liste^ değer atranmıştır </span>
+<span class="kd">var</span> <span class="n">iller</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">06</span><span class="o">:</span> <span class="s">'Ankara'</span><span class="p">,</span>                            <span class="c1">// var burada ^Map^ değer atranmıştır</span>
+    <span class="mi">34</span><span class="o">:</span> <span class="s">'İstanbul'</span><span class="p">,</span>                          <span class="c1">// Map buurada key int, value String şeklindedir</span>
+    <span class="mi">55</span><span class="o">:</span> <span class="s">'Samsun'</span><span class="p">,</span>
+<span class="p">}</span>           
+</code></pre></div></div>
+
+<p>Dart bu noktada <em>type-safe</em> (Tip Güvenliği) sağlamaktadır. <strong>var</strong> anahtar kelimemiz oluşturulduğu anda <strong>dynamic</strong> olarak oluşur. Atama gerçekleştiğinde ise tip ataması gerçekleşir.</p>
+
+<p>Bununla beraber tanımlama yapılabilecek anahtar kelimlelerimiz vardır.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Anahtar Kelime</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>int age</td>
+      <td>Tam sayı değeri tutmamızı sağlar</td>
+    </tr>
+    <tr>
+      <td>String name</td>
+      <td>Karakter disizi değerliği tutmamızı sağlar</td>
+    </tr>
+    <tr>
+      <td>double num</td>
+      <td>Ondalıklı değeri tutmamızı sağlar</td>
+    </tr>
+    <tr>
+      <td>bool isValid</td>
+      <td>İlkili (Doğru, Yanlış) değer tutmamızı sağlar</td>
+    </tr>
+    <tr>
+      <td>Object list</td>
+      <td>Bu genellikle bir adresten veri alırken kullanılır</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Farklı veri tiplerimiz de var ama daha sonra deyineceğiz.</p>
+
+<h3 id="null-safety">Null-Safety</h3>
+
+<p>Bu noktadan sonra şunu incelemek lazım Dart’ta <em>Null Safety</em> yani boş değer güvenliği. Dart bu konuda çok hassastır. Eğer bir değerin asla <strong>null</strong> yani boş olmayacağından eminseniz değişken tanımlarken anahtar kelimeye <code class="language-plaintext highlighter-rouge">?</code> burakmanız gerekir.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span><span class="o">?</span> <span class="n">name</span><span class="p">;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">'Dart'</span><span class="p">;</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>DİKKAT!</strong> Bura <code class="language-plaintext highlighter-rouge">?</code> ile bu değere boş da olabilir demek istedik. Bu işlemi yaparrken çok dikkatli olmalıyız.</p>
+</blockquote>
+
+<p>Null-Safety kapsamında bakılabilecek bir anahtar kelimemiz daha bulunmakta <strong>late</strong>. Bu anahtar değişkenin şimdi boş olsada sonradan kesinlikle bir değer alacağını belirtmiş oluruz.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">late</span> <span class="kt">String</span> <span class="n">name</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">'Abdullah'</span><span class="p">;</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>ÖNEMLİ!</strong> Eğer bu noktada <code class="language-plaintext highlighter-rouge">late</code> ile bir değişkene atama başlatamazsak çalışma zamanında hata alırız.</p>
+</blockquote>
+
+<h3 id="const-ve-final">Const ve Final</h3>
+
+<p><code class="language-plaintext highlighter-rouge">const</code> ve <code class="language-plaintext highlighter-rouge">final</code> anahtar kelimeleri bir değerin değişmez olduğunu ifade etmekte kullanılır. Aralarındaki en önemli dark ise biri çalışma zamanında oluşturulurken biri derleme zamanında oluşmasıdır.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">const</code></strong>: Bu anahtar kelime derleme zamanında değer alır ve değiştirilemez. En önemli diğer özelliği ise bu değişken ile bellek üzerinde tek bir örnek yaratılır.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">final</code></strong>: Bu anahrat kelime ise çalışma zamanında değer alır ve değiştirilemez.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">const</span> <span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="n">list1</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>  <span class="c1">// final objeyi değil referansı kilitler</span>
+<span class="n">list2</span><span class="o">.</span><span class="na">add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>  <span class="c1">// const objeye ekleme yapılamaz</span>
+</code></pre></div></div>
+
+<p><a href="/assets/images/postimages/const-final.png" data-lightbox="post-gallery" data-title="Const ve Final"><img src="/assets/images/postimages/const-final.png" alt="Const ve Final"></a></p>
+<blockquote>
+  <p><strong>CAPTION</strong> Const ve Final Bellek Görünümü.</p>
+</blockquote>
+
+<p>Buradaki görselde kısaca şunun çıkarımını yapmalıyız <code class="language-plaintext highlighter-rouge">const</code> ile oluşturulan değişkenler eğer aynı değere sahipse bellekte aynı adresi göstermekte. Bu durumda bize bellek tüketimini azaltığı görülmektedir. Bu kullanım flutter ile daha efektif anlaşılmaktadır. Gerçekleştirilen uygulamalarda statik ve aynı değerlilikte olan değişkenler const anahtarkelimesi vermek bellek yönetimi verimliliğini sağlamaktadır.</p>
+
+<blockquote>
+  <p><strong>DİKKAT!</strong> <code class="language-plaintext highlighter-rouge">const</code> derleme zamanındında sabitlendiği için <code class="language-plaintext highlighter-rouge">DateTime.now();</code> vb. yapılar çalışma zamanında değer alacağı için atama gerçekleştiremez ve hata oluşturur. Bu tarz yapılar <code class="language-plaintext highlighter-rouge">final</code> ile oluşturulması en uygun çözümdür.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>BİLGİ!</strong> Örnek kodlarda gördüğümüz list1 listesine ekleme yapıldığında bellekteki son durumu değişir. Örneğin çalışma zamanında atanan [1, 2, 3] değerleri 1001 de iken ekleme işlemi sonrası [1, 2, 3, 4] listesi ise 1002 numarlı bellekte tululuyor olabilir. Yani son liste oluştuğunda list1’in işaretlediği bellek adresi değişir ve değiştirilemez yapı o andan sonra kurulur. Bu noktada akıllara şu soru gelebilir ‘Peki ya 1001 numaralı bellek içeriğine ne oldu?’. Bu kısımda Dart’da bulunan <code class="language-plaintext highlighter-rouge">garbage collector</code> yapısı devreye girer ve o belleği serbest bırakır. Bu şekilde verimli bellek yönetimi yapılmış olur.</p>
+</blockquote>
+
+<h3 id="joker-değişken--_-">Joker Değişken ( _ )</h3>
+
+<p>Bu değişken var olduğu diğer programlama dilleri gibi Dart’ta da kullanıldığı zaman, ‘Bu değeğişkeni kullanmayacağım, önemsemiyorum!’ anlamı taşır.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">_</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">// burada bir hata alırız</span>
+<span class="n">print</span><span class="p">(</span><span class="n">_</span><span class="p">);</span> <span class="c1">// _ hiç var olmadı ile eş değer</span>
+
+<span class="c1">// liste bitene kadar dön demeye benzer</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="n">_</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<blockquote>
+  <p><strong>BİLGİ!</strong> Kısaca, ‘Bu alana bir şey gelmesi gerekiyor ama bana lazım değil.’ diyouz.</p>
+</blockquote>
+
+<h2 id="operatörler">Operatörler</h2>
+
+<p>Dart’ta kullanabileceğimiz pek çok operatör bulunmaktadır. Bu operatörleri 10 başlık altında inceleyyeceğiz.</p>
+
+<h3 id="aritmatik-operatörler">Aritmatik Operatörler</h3>
+
+<p>Burada matematiksel operatörlere değineceğiz.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operatör</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>Toplama</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>Çıkarma</td>
+    </tr>
+    <tr>
+      <td>-a</td>
+      <td>Negatif</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>Çarpma</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>Bölme</td>
+    </tr>
+    <tr>
+      <td>~/</td>
+      <td>Tam sayı bölme</td>
+    </tr>
+    <tr>
+      <td>%</td>
+      <td>Mod (Bölümden kalan)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">addResult</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">;</span>       <span class="c1">// 11</span>
+<span class="kt">int</span> <span class="n">subResult</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span><span class="p">;</span>       <span class="c1">// 5</span>
+<span class="kt">int</span> <span class="n">negResult</span> <span class="o">=</span> <span class="o">-</span><span class="n">num1</span><span class="p">;</span>             <span class="c1">// -8</span>
+<span class="kt">int</span> <span class="n">mulResult</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">*</span> <span class="n">num2</span><span class="p">;</span>       <span class="c1">// 24</span>
+<span class="kt">double</span> <span class="n">divResult</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span><span class="p">;</span>    <span class="c1">// 6.66</span>
+<span class="kt">int</span> <span class="n">intDivResult</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">~/</span> <span class="n">num2</span><span class="p">;</span>   <span class="c1">// 6</span>
+<span class="kt">int</span> <span class="n">modResult</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">%</span> <span class="n">num2</span><span class="p">;</span>       <span class="c1">// 2</span>
+
+<span class="c1">// divResult değişkenini int olarak tanımlamamızın nedeni,</span>
+<span class="c1">// bölme işlemi ondalıklı değer oluşturabileceği içindir.</span>
+<span class="c1">// (oluşturmayacak olsa bile öyle kabul edilir).</span>
+</code></pre></div></div>
+
+<p>Bunların yanı sıra postfix ve prefix aritmatik operatörlerimiz vardır.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operatör</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>++num</td>
+      <td>Sayıyı arttır ve yaz</td>
+    </tr>
+    <tr>
+      <td>num++</td>
+      <td>Sayıyı yaz ve arttır</td>
+    </tr>
+    <tr>
+      <td>–num</td>
+      <td>Sayıyı azalt ve yaz</td>
+    </tr>
+    <tr>
+      <td>num–</td>
+      <td>Sayıyı yaz ve azalt</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Anlaşılması adına bir örnek verelim.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="kt">num</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">addPreResult</span> <span class="o">=</span> <span class="o">++</span><span class="kt">num</span><span class="p">;</span> <span class="c1">// res 9 num 9</span>
+<span class="n">print</span><span class="p">(</span><span class="s">"addPreResult: "</span> <span class="o">+</span> <span class="n">addPreResult</span><span class="o">.</span><span class="na">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">" num: "</span> <span class="o">+</span> <span class="kt">num</span><span class="o">.</span><span class="na">toString</span><span class="p">());</span>
+<span class="kt">int</span> <span class="n">addPostResult</span> <span class="o">=</span> <span class="kt">num</span><span class="o">++</span><span class="p">;</span> <span class="c1">// res 9 num 10</span>
+<span class="n">print</span><span class="p">(</span><span class="s">"addPostResult: "</span> <span class="o">+</span> <span class="n">addPostResult</span><span class="o">.</span><span class="na">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">" num: "</span> <span class="o">+</span> <span class="kt">num</span><span class="o">.</span><span class="na">toString</span><span class="p">());</span>
+<span class="kt">int</span> <span class="n">subPreResult</span> <span class="o">=</span> <span class="o">--</span><span class="kt">num</span><span class="p">;</span> <span class="c1">// res 9 num 9</span>
+<span class="n">print</span><span class="p">(</span><span class="s">"subPreResult: "</span> <span class="o">+</span> <span class="n">subPreResult</span><span class="o">.</span><span class="na">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">" num: "</span> <span class="o">+</span> <span class="kt">num</span><span class="o">.</span><span class="na">toString</span><span class="p">());</span>
+<span class="kt">int</span> <span class="n">subPostResult</span> <span class="o">=</span> <span class="kt">num</span><span class="o">--</span><span class="p">;</span> <span class="c1">// res 9 num 8</span>
+<span class="n">print</span><span class="p">(</span><span class="s">"subPostResult: "</span> <span class="o">+</span> <span class="n">subPostResult</span><span class="o">.</span><span class="na">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">" num: "</span> <span class="o">+</span> <span class="kt">num</span><span class="o">.</span><span class="na">toString</span><span class="p">());</span>
+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># addPreResult:  9      num: 9</span>
+<span class="c"># addPostResult: 9      num: 10</span>
+<span class="c"># subPreResult:  9      num: 9</span>
+<span class="c"># subPostResult: 9      num: 8</span>
+</code></pre></div></div>
+
+<p>Bu çıktılar sonucunda durum daha net anlaşılabilir.</p>
+
+<h3 id="eşitlik-ve-i̇lişkisel-operatörler">Eşitlik ve İlişkisel Operatörler</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operatör</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>==</td>
+      <td>Eşit mi</td>
+    </tr>
+    <tr>
+      <td>!=</td>
+      <td>Eşit değil mi</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>Büyük mü</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>Küçük mü</td>
+    </tr>
+    <tr>
+      <td>&lt;=</td>
+      <td>Büyük eşit mi</td>
+    </tr>
+    <tr>
+      <td>&gt;=</td>
+      <td>Küçük Eşit mi</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">isEql</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">==</span> <span class="n">num2</span><span class="p">;</span>   <span class="c1">// false</span>
+<span class="kt">bool</span> <span class="n">isEql</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">!=</span> <span class="n">num2</span><span class="p">;</span>   <span class="c1">// true</span>
+<span class="kt">bool</span> <span class="n">isEql</span> <span class="o">=</span> <span class="n">num1</span> <span class="p">&gt;</span> <span class="n">num2</span><span class="p">;</span>    <span class="c1">// false</span>
+<span class="kt">bool</span> <span class="n">isEql</span> <span class="o">=</span> <span class="n">num1</span> <span class="p">&lt;</span> <span class="n">num2</span><span class="p">;</span>    <span class="c1">// true</span>
+<span class="kt">bool</span> <span class="n">isEql</span> <span class="o">=</span> <span class="n">num1</span> <span class="p">&gt;</span><span class="o">=</span> <span class="n">num2</span><span class="p">;</span>   <span class="c1">// false</span>
+<span class="kt">bool</span> <span class="n">isEql</span> <span class="o">=</span> <span class="n">num1</span> <span class="p">&lt;</span><span class="o">=</span> <span class="n">num2</span><span class="p">;</span>   <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>Kısacası bu şekil dedir.</p>
+
+<h3 id="tip-kontrol-operatörleri">Tip Kontrol Operatörleri</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operatör</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as</td>
+      <td>Tip dönüşümü</td>
+    </tr>
+    <tr>
+      <td>is</td>
+      <td>Tip kontrolü</td>
+    </tr>
+    <tr>
+      <td>is!</td>
+      <td>Ters tip kontrolü</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Object</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">// Objeyi int kabül et</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">num1</span> <span class="k">as</span> <span class="kt">int</span><span class="p">;</span>
+
+
+<span class="c1">// ogr1 Ogrenciler sınıfına ait ise isim ata</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ogr1</span> <span class="k">is</span> <span class="n">Ogrenciler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ogr1</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">'Abdullah'</span>
+<span class="p">}</span>
+
+<span class="c1">// ogr1 Ogrenciler sınıfına ait değil ise</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ogr1</span> <span class="k">is</span><span class="o">!</span> <span class="n">Ogrenciler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">'ogr1, Ogrenciler sınıdına ait değil'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="atama-operatörleri">Atama Operatörleri</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Onluk Tabanda</th>
+      <th>Açıklama</th>
+      <th>Bit Bazlı</th>
+      <th>Açıklama</th>
+      <th>Boş değer</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>x += 3</td>
+      <td>x = x +3</td>
+      <td>&lt;&lt;=</td>
+      <td>Bitsel sola kaydır ve ata.</td>
+      <td>b ??= a</td>
+      <td>b boşsa a’daki değer atansın</td>
+    </tr>
+    <tr>
+      <td>x -= 3</td>
+      <td>x = x +3</td>
+      <td>&gt;&gt;=</td>
+      <td>Bitsel sağa kaydır ve ata</td>
+      <td>———</td>
+      <td>—————————-</td>
+    </tr>
+    <tr>
+      <td>x *= 3</td>
+      <td>x = x +3</td>
+      <td>&gt;&gt;&gt;=</td>
+      <td>Unsigned sağ kaydır</td>
+      <td>———</td>
+      <td>—————————-</td>
+    </tr>
+    <tr>
+      <td>x /= 3</td>
+      <td>x = x +3</td>
+      <td>&amp;=</td>
+      <td>Bitsel AND yap ve ata</td>
+      <td>———</td>
+      <td>—————————-</td>
+    </tr>
+    <tr>
+      <td>x ~/= 3</td>
+      <td>x = x +3</td>
+      <td>|=</td>
+      <td>Bitsel OR yap ve ata</td>
+      <td>———</td>
+      <td>—————————-</td>
+    </tr>
+    <tr>
+      <td>x %= 3</td>
+      <td>x = x +3</td>
+      <td>^=</td>
+      <td>Bitsel XOR yap ve ata</td>
+      <td>———</td>
+      <td>—————————-</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="mantıksal-operatörler">Mantıksal Operatörler</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Onluk Tabanda</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>!expr</td>
+      <td>NOT</td>
+    </tr>
+    <tr>
+      <td>&amp;&amp;</td>
+      <td>AND</td>
+    </tr>
+    <tr>
+      <td>||</td>
+      <td>OR</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="bitsel-ve-kayırma-operatörleri">Bitsel ve Kayırma Operatörleri</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bitsel İşlemler</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&amp;</td>
+      <td>AND</td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td>OR</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>XOR</td>
+    </tr>
+    <tr>
+      <td>~expr</td>
+      <td>Ters işater (0000 1111 –&gt; 1111 0000)</td>
+    </tr>
+    <tr>
+      <td>&lt;&lt;</td>
+      <td>Sola kaydırma</td>
+    </tr>
+    <tr>
+      <td>&gt;&gt;</td>
+      <td>Sağa kaydırma</td>
+    </tr>
+    <tr>
+      <td>&gt;&gt;&gt;</td>
+      <td>İşaretsiz Sağa kaydırma(Negatif sayıytı pozitif gibi düşünür)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="n">value</span> <span class="o">=</span> <span class="mh">0x22</span><span class="p">;</span>
+<span class="kd">final</span> <span class="n">bitmask</span> <span class="o">=</span> <span class="mh">0x0f</span><span class="p">;</span>
+
+<span class="k">assert</span><span class="p">((</span><span class="n">value</span> <span class="o">&amp;</span> <span class="n">bitmask</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x02</span><span class="p">);</span> <span class="c1">// AND</span>
+<span class="k">assert</span><span class="p">((</span><span class="n">value</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">bitmask</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x20</span><span class="p">);</span> <span class="c1">// AND NOT</span>
+<span class="k">assert</span><span class="p">((</span><span class="n">value</span> <span class="o">|</span> <span class="n">bitmask</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x2f</span><span class="p">);</span> <span class="c1">// OR</span>
+<span class="k">assert</span><span class="p">((</span><span class="n">value</span> <span class="o">^</span> <span class="n">bitmask</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x2d</span><span class="p">);</span> <span class="c1">// XOR</span>
+
+<span class="k">assert</span><span class="p">((</span><span class="n">value</span> <span class="p">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x220</span><span class="p">);</span> <span class="c1">// sola kaydırma</span>
+<span class="k">assert</span><span class="p">((</span><span class="n">value</span> <span class="p">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x02</span><span class="p">);</span> <span class="c1">// sağa kaydırma</span>
+
+<span class="k">assert</span><span class="p">((</span><span class="o">-</span><span class="n">value</span> <span class="p">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mh">0x03</span><span class="p">);</span>
+
+<span class="k">assert</span><span class="p">((</span><span class="n">value</span> <span class="p">&gt;&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x02</span><span class="p">);</span> <span class="c1">// işaret bitsiz sağa kaydırma</span>
+<span class="k">assert</span><span class="p">((</span><span class="o">-</span><span class="n">value</span> <span class="p">&gt;&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// işaret bitsiz sağa kaydırma</span>
+</code></pre></div></div>
+
+<h3 id="koşul-i̇fadeleri">Koşul İfadeleri</h3>
+
+<p>Dart’ta kısa if blokları diye oluşturabileceğimiz bir takım yapılardır. <code class="language-plaintext highlighter-rouge">?</code>, <code class="language-plaintext highlighter-rouge">??</code> ve <code class="language-plaintext highlighter-rouge">:</code> işaretleri ile kullanılmaktadır.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">num1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">num2</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">prtint</span><span class="p">(</span><span class="s">'if çalıştır!'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">prtint</span><span class="p">(</span><span class="s">'else çalıştır!'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// bu yukarda görünen blokla aynı işlevi yerine getirmektedir</span>
+<span class="p">(</span><span class="n">num2</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">?</span> <span class="n">prtint</span><span class="p">(</span><span class="s">'if çalıştır!'</span><span class="p">)</span> <span class="o">:</span> <span class="n">prtint</span><span class="p">(</span><span class="s">'else çalıştır!'</span><span class="p">)</span>
+
+<span class="n">num1</span> <span class="o">??=</span> <span class="n">num2</span><span class="p">;</span>
+<span class="n">print</span><span class="p">(</span><span class="n">num1</span><span class="p">);</span> <span class="c1">// # 2</span>
+
+<span class="n">num1</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">num1</span> <span class="o">??=</span> <span class="n">num2</span><span class="p">;</span>
+<span class="n">print</span><span class="p">(</span><span class="n">num1</span><span class="p">);</span> <span class="c1">// # 4</span>
+
+<span class="c1">// name null ise 'isimsiz' değerini dönür</span>
+<span class="kt">String</span><span class="o">?</span> <span class="n">name</span><span class="p">;</span>
+<span class="n">print</span><span class="p">(</span><span class="n">name</span> <span class="o">??</span> <span class="s">'isimsiz'</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">puan</span> <span class="o">=</span> <span class="mi">82</span><span class="p">;</span>
+
+<span class="kt">String</span> <span class="n">durum</span> <span class="o">=</span> <span class="p">(</span><span class="n">puan</span> <span class="p">&gt;</span><span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
+    <span class="o">?</span> <span class="s">"AA"</span>
+    <span class="o">:</span> <span class="p">(</span><span class="n">puan</span> <span class="p">&gt;</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+        <span class="o">?</span> <span class="s">"BA"</span>
+        <span class="o">:</span> <span class="p">(</span><span class="n">puan</span> <span class="p">&gt;</span><span class="o">=</span> <span class="mi">70</span><span class="p">)</span>
+            <span class="o">?</span> <span class="s">"BB"</span>
+            <span class="o">:</span> <span class="s">"CC"</span><span class="p">;</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">durum</span><span class="p">);</span> <span class="c1">// BA</span>
+
+</code></pre></div></div>
+
+<h3 id="cascade-operatörü">Cascade Operatörü</h3>
+
+<p>Cascade operatörü bir sınıfın verilerini tanımlarken işimizi kolaylaştırmaya ve kod okunabilirliği ve takranından kaçınarak üretmemizi sağlar.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Bir Personal() sınıfımız olsun</span>
+<span class="kd">var</span> <span class="n">personal1</span> <span class="o">=</span> <span class="n">Personal</span><span class="p">();</span>
+<span class="n">personal1</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">'Abdullah'</span><span class="p">;</span>
+<span class="n">personal1</span><span class="o">.</span><span class="na">salary</span> <span class="o">=</span> <span class="mi">22000</span><span class="p">;</span>
+
+<span class="c1">// Birde şu şekilde yapılır</span>
+<span class="kd">var</span> <span class="n">personal2</span> <span class="o">=</span> <span class="n">Personal</span><span class="p">()</span>
+    <span class="p">.</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">'Can'</span>
+    <span class="p">.</span><span class="o">.</span><span class="na">salary</span> <span class="o">=</span> <span class="mi">22400</span><span class="p">;</span>
+<span class="c1">// bu iki işlemde de doğrudur.</span>
+<span class="c1">// buna ek olarak name String ve </span>
+<span class="c1">// salary int olarak tanımlandı ve </span>
+<span class="c1">// nullable tanımlandıysa bu kontrolde</span>
+
+<span class="kd">var</span> <span class="n">personal3</span> <span class="o">=</span> <span class="n">Personal</span><span class="p">()</span>
+    <span class="o">?</span><span class="p">.</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">'Can'</span>
+    <span class="p">.</span><span class="o">.</span><span class="na">salary</span> <span class="o">=</span> <span class="mi">22400</span><span class="p">;</span>
+<span class="c1">// bu şekilde atama başarılı bir şekilde</span>
+<span class="c1">// gerçekleştirilmiş olur</span>
+<span class="c1">// bu işlemler personal1 içinde </span>
+<span class="c1">// personal1?.name = 'Abdullah';</span>
+<span class="c1">// şeklinde tanımlanabilir.</span>
+</code></pre></div></div>
+
+<h3 id="spread-operatörü">Spread Operatörü</h3>
+
+<p>Bu operatör ise bir listeyilist, set veya map yapısındaki verileri başka bir koleksiyona açarak atamasını yapar.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="n">baseList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">var</span> <span class="n">newList</span> <span class="o">=</span> <span class="p">[</span>
+<span class="mi">0</span><span class="p">,</span>
+<span class="p">..</span><span class="o">.</span><span class="na">baseList</span><span class="p">,</span>
+<span class="mi">4</span>
+<span class="p">];</span>
+<span class="c1">// baseList parçalanır ve tek tek newList'e eklenir</span>
+<span class="n">print</span><span class="p">(</span><span class="n">newList</span><span class="p">);</span> <span class="c1">// [0, 1, 2, 3, 4]</span>
+
+<span class="kt">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="o">?</span> <span class="n">nums</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="p">[</span>
+<span class="mi">1</span><span class="p">,</span>
+<span class="p">...</span><span class="o">?</span><span class="n">nums</span><span class="p">,</span>  <span class="c1">// nums null → yok sayılır</span>
+<span class="mi">2</span>
+<span class="p">];</span>
+<span class="c1">// ...? ile hatadan kaçınmış oluruz</span>
+<span class="c1">// eğer ? olamsaydı hata alacak ve </span>
+<span class="c1">// komutlar çalışmayacaktı bu şekilde</span>
+<span class="c1">// boş listeyi yok sayatak devam edebildik</span>
+<span class="n">print</span><span class="p">(</span><span class="n">result</span><span class="p">);</span> <span class="c1">// [1, 2]</span>
+</code></pre></div></div>
+
+<h3 id="diğer-operatörler">Diğer operatörler</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>()</td>
+      <td>Fonksiyon çağrısı</td>
+      <td>Fonksiyonu çalıştırır</td>
+    </tr>
+    <tr>
+      <td>[]</td>
+      <td>Liste/harita erişimi</td>
+      <td>İndex ile elemana erişir</td>
+    </tr>
+    <tr>
+      <td>?[]</td>
+      <td>Koşullu erişim</td>
+      <td>Nulldeğilse elemana erişir, null ise null döner</td>
+    </tr>
+    <tr>
+      <td>.</td>
+      <td>Üye erişimi</td>
+      <td>Nesnenin özelliğine erişir</td>
+    </tr>
+    <tr>
+      <td>?.</td>
+      <td>Koşullu üye erişimi</td>
+      <td>Null değilse özelliğe erişir, null ise null döner</td>
+    </tr>
+    <tr>
+      <td>!</td>
+      <td>Null değil doğrulaması</td>
+      <td>Null olamayacağını garanti eder, null ise hata fırlatır</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="yorum-satırları">Yorum Satırları</h2>
+
+<p>Dart’ta 3 tip yorum satırı vardır.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Bu tek satırda bir yorum satırı örneği</span>
+
+<span class="cm">/*
+    * Bu ise 
+    çok satırda
+    yorum satırı
+    örneği
+*/</span>
+
+<span class="c1">/// Burada üç tane '/'</span>
+<span class="c1">/// ifadesi ise</span>
+<span class="c1">/// dökümantasyonların</span>
+<span class="c1">/// açıklamalarında </span>
+<span class="c1">/// kullanılan yorum</span>
+<span class="c1">/// satırı örneğidir</span>
+</code></pre></div></div>
+
+            </div>
+
+            <nav class="note-navigation">
+    
+    <div></div>
+    
+
+    
+    <a href="/programlama-dilleri/dart/dart-types/" class="nav-note next-note">
+        <div class="nav-content">
+            <span class="nav-label">Sonraki Not</span>
+            <span class="nav-title">Dart Bölüm: 2 | Yerleşik Tipler</span>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+    </a>
+    
+</nav>
+        </article>
+    </div>
+
+    <aside class="sidebar-right">
+        <!-- Masaüstü -->
+
+
+
+<div class="sidebar-section post-sidebar-desktop">
+    <h3>
+<i class="fas fa-book"></i> İlgili Notlar</h3>
+    <ul class="related-list">
+        
+        <li><a href="https://www.btkakademi.gov.tr/portal/course/dart-programlama-dili-29014" target="_blank">BTK Dart Eğitimi</a></li>
+        
+        <li><a href="https://dart.dev/language/variables" target="_blank">Dart Değişkenler</a></li>
+        
+        <li><a href="https://dart.dev/language/operators" target="_blank">Dart Operatörler</a></li>
+        
+        <li><a href="https://dart.dev/language/comments" target="_blank">Dart Yorum Satırları</a></li>
+        
+    </ul>
+</div>
+
+
+<div class="sidebar-section tags-cloud post-sidebar-desktop">
+    <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+    <div class="tags">
+        
+        <a href="/etiket/mobil-programala" class="tag-link">mobil programala</a>
+        
+        <a href="/etiket/flutter" class="tag-link">flutter</a>
+        
+        <a href="/etiket/diller" class="tag-link">diller</a>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="sidebar-section post-sidebar-desktop">
+    <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+    <div style="color: var(--text-light); font-size: 0.9rem; line-height: 1.8;">
+        <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+        <p><strong>Tarih:</strong> 20 Kasım 2025</p>
+        <p><strong>Kategori:</strong> Programlama Dilleri</p>
+        <p><strong>Okuma Süresi:</strong>
+            
+            ~9 dk
+            
+        </p>
+        <p><strong>Seviye:</strong> Başlangıç</p>
+    </div>
+</div>
+
+<!-- Mobil -->
+
+
+
+
+
+
+
+<button class="info-mobile-btn" id="infoMobileBtn" title="Not Detayları">
+    <i class="fas fa-info"></i>
+</button>
+
+<div class="info-mobile-panel" id="infoMobilePanel">
+    <div class="info-panel-header">
+        <span><i class="fas fa-leaf"></i> Not Detayları</span>
+        <button id="closeInfoPanel" class="close-panel-btn"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="info-panel-content">
+        <div class="sidebar-info-inner">
+            
+            
+            <div class="sidebar-section">
+                <h3>
+<i class="fas fa-book"></i> İlgili Notlar</h3>
+                <ul class="related-list">
+                    
+                    <li><a href="https://www.btkakademi.gov.tr/portal/course/dart-programlama-dili-29014" target="_blank">BTK Dart Eğitimi</a></li>
+                    
+                    <li><a href="https://dart.dev/language/variables" target="_blank">Dart Değişkenler</a></li>
+                    
+                    <li><a href="https://dart.dev/language/operators" target="_blank">Dart Operatörler</a></li>
+                    
+                    <li><a href="https://dart.dev/language/comments" target="_blank">Dart Yorum Satırları</a></li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="sidebar-section tags-cloud">
+                <h3>
+<i class="fas fa-tags"></i> Etiketler</h3>
+                <div class="tags">
+                    
+                    <a href="/etiket/mobil-programala" class="tag-link">mobil programala</a>
+                    
+                    <a href="/etiket/flutter" class="tag-link">flutter</a>
+                    
+                    <a href="/etiket/diller" class="tag-link">diller</a>
+                    
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>
+<i class="fas fa-info-circle"></i> Not Bilgileri</h3>
+                <div class="info-details-box">
+                    <p><strong>Yazar:</strong> Muhammet Abdullah Şahin</p>
+                    <p><strong>Tarih:</strong> 20 Kasım 2025</p>
+                    <p><strong>Kategori:</strong> Programlama Dilleri</p>
+                    <p><strong>Okuma Süresi:</strong>
+                        
+                        ~9 dk
+                        
+                    </p>
+                    <p><strong>Seviye:</strong> Başlangıç</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+</div>
+
+        
+    </aside>
+</div>
+        </main>
+
+        <footer class="footer">
+    <div class="container">
+        <p>© 2026 Çalışma Notlarım - Tüm hakları saklıdır</p>
+        <div class="social-links">
+            <a href="https://github.com/SahinMuhammetAbdullah"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/muhammet-abdullah-sahin"><i class="fab fa-linkedin"></i></a>
+            <!-- <a href=""><i class="fab fa-twitter"></i></a> -->
+        </div>
+    </div>
+</footer>
+        <script src="/assets/js/copy-code.js"></script>
+        <script src="/assets/js/toc-builder.js"></script>
+        <script src="/assets/js/hamburger.js"></script>
+        <script src="/assets/js/search.js"></script>
+        <script src="/assets/js/info-builder.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+        <script>
+            lightbox.option({
+                'resizeDuration': 300,
+                'fadeDuration': 300,
+                'imageFadeDuration': 300,
+                'wrapAround': true, // Galerinin sonuna gelince başa döner
+                'albumLabel': "%1 / %2" // "Image 1 of 5" yerine "1 / 5" yazar
+            })
+        </script>
+    </body>
+</html>

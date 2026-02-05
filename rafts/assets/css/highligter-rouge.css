@@ -1,0 +1,343 @@
+/* --------------------------------------------------------------------------
+   PLAINTEXT BAŞLIKLARINI VE GEREKSİZ BUTONLARI GİZLEME
+   -------------------------------------------------------------------------- */
+
+/* 1. Hatalı Plaintext Kutusunun Başlıklarını Gizle */
+/* Rouge/Kramdown tarafından eklenen başlık çubuklarını kesin olarak yok say */
+.highlighter-rouge.language-plaintext::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* 2. Statik Başlık Elementlerini Gizle (Farklı tarayıcılarda farklı olabilir) */
+.highlighter-rouge.language-plaintext figcaption,
+.highlighter-rouge.language-plaintext .highlight>span {
+    display: none !important;
+}
+
+/* 3. Plaintext Kutusunun İçindeki Gömülü Kopyala Butonunu Gizle */
+
+
+/* 4. Metin elementlerini zorla akışa geri getirme (Önceki çözümden) */
+.highlighter-rouge.language-plaintext {
+    /* Bu, metin akışını bozan kutunun kendisini görsel olarak sıfırlar */
+    display: inline !important;
+    /* Metin akışına kat */
+    visibility: visible !important;
+    /* Görünür yap */
+
+    /* ESTETİK DOKUNUŞ: Arka plandan hafif ayrım */
+    background: rgba(139, 111, 71, 0.05) !important;
+    /* Çok hafif kahvemsi bir ton */
+    border: 1px dashed var(--accent);
+    /* Yumuşak kesikli kenarlık */
+    border-radius: 4px;
+
+    /* İç/Dış Boşlukları Sıfırlama ve Kontrol */
+    padding: 0.2rem 0.4rem !important;
+    /* Hafif iç boşluk */
+    margin: 0.2rem 0 !important;
+    /* Hafif dikey boşluk */
+
+    box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   DİNAMİK KOD BLOKLARI STİLİ (HIGHLIGHTER ROUGE)
+   -------------------------------------------------------------------------- */
+
+.highlighter-rouge {
+    /* Dış Kapsayıcı: Gölge, Kenarlık, Yuvarlak Köşeler */
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    /* İçeriğin köşeleri aşmamasını sağlar */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--border);
+    position: relative;
+    background: var(--bg-dark);
+    /* Varsayılan koyu arka plan */
+}
+
+/* Başlık Çubuğu: Dil Adını Gösterir (JS'in eklediği data-lang niteliği kullanılır) */
+.highlighter-rouge::before {
+    content: attr(data-lang);
+    /* JS tarafından atanan dil adını alır */
+    display: block;
+    background: rgba(44, 36, 22, 0.8);
+    /* Başlık çubuğu arka planı */
+    padding: 0.8rem 1.5rem;
+    color: var(--primary);
+    /* Başlık metin rengi */
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+    /* Alt kenarlık */
+}
+
+
+/* Kod içeriği (pre ve code etiketleri) */
+.highlight pre {
+    padding: 1.5rem;
+    margin: 0;
+    /* Tarayıcı varsayılan margin'i sıfırlar */
+    overflow-x: auto;
+    /* Yatay kaydırma çubuğu gerekiyorsa */
+    background: none;
+    /* Arka planı dış kapsayıcıdan alır */
+}
+
+.highlight pre code {
+    font-family: 'Courier Prime', monospace;
+    color: #e8dcc8;
+    font-size: 0.95rem;
+    line-height: 1.8;
+
+    /* YENİ EKLEME: Kod içeriğinin blok element gibi davranmasını sağlar */
+    display: block;
+
+    /* Gerekirse, soldan boşluğu zorla sıfırlar */
+    padding-left: 0 !important;
+}
+
+.highlight code {
+    font-family: 'Courier Prime', monospace;
+    /* Monospace yazı tipi */
+    color: #e8dcc8;
+    /* Açık terminal metin rengi */
+    font-size: 0.95rem;
+    line-height: 1.8;
+    /* Satır aralığı */
+}
+
+/* Dil Bazlı Özelleştirme (Örn: Ruby, Python için farklı arka plan) */
+.highlighter-rouge[data-lang="Ruby"] pre {
+    background: #1a1a1a;
+}
+
+.highlighter-rouge[data-lang="Python"] pre {
+    background: #252e33;
+}
+
+/* --------------------------------------------------------------------------
+   ROUGE SYNTAX HIGHLIGHTING TEMASI (Renklendirme)
+   -------------------------------------------------------------------------- */
+.highlight pre [class*="s"],
+/* Stringler (s, s1, s2, sc vb.) */
+.highlight pre [class*="n"],
+/* İsimler (n, nb, nf, nv vb.) */
+.highlight pre [class*="m"],
+/* Sayılar */
+.highlight pre .k,
+/* Anahtar kelimeler */
+.highlight pre .o,
+/* Operatörler */
+.highlight pre .p,
+/* Noktalama işaretleri */
+.highlight pre .c,
+/* Yorumlar */
+.highlight pre .w
+
+/* Boşluklar */
+    {
+    background-color: transparent !important;
+    /* Tüm arka plan vurgularını sıfırla */
+    box-shadow: none !important;
+
+}
+
+/* Yorumlar: Yorum satırının tamamını kapsayan bir arka planı varsa kaldır */
+.highlight .c {
+    background-color: transparent !important;
+}
+
+.highlight .cm {
+    background-color: transparent !important;
+}
+
+.highlight .c1 {
+    background-color: transparent !important;
+}
+
+/* Vurgulanmış satırların rengi hafif kalabilir (isteğe bağlı) */
+/* Satır vurgusu */
+.highlight .hll {
+    background-color: rgba(255, 255, 204, 0.1);
+}
+
+/* Yorumlar */
+.highlight .c,
+.highlight .cm,
+.highlight .c1 {
+    color: #6a9955;
+    font-style: italic;
+}
+
+.highlight .cp {
+    color: #008080;
+    font-weight: bold;
+}
+
+/* comment special */
+.highlight .cs {
+    color: #008000;
+    font-weight: bold;
+}
+
+/* Hatalar */
+.highlight .err {
+    color: #f44747;
+    background-color: #ffecec;
+}
+
+/* Anahtar kelimeler */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kr {
+    color: #569cd6;
+    font-weight: bold;
+}
+
+.highlight .kp {
+    color: #569cd6;
+}
+
+/* Operatörler */
+.highlight .o {
+    color: #d4d4d4;
+}
+
+/* Sabitler ve tipler */
+.highlight .kt {
+    color: #4ec9b0;
+    font-weight: bold;
+}
+
+.highlight .no,
+.highlight .ni {
+    color: #b5cea8;
+}
+
+/* Sayılar */
+.highlight .m,
+.highlight .mi,
+.highlight .mf,
+.highlight .mb,
+.highlight .il {
+    color: #b5cea8;
+}
+
+/* Stringler */
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss {
+    color: #d69d85;
+}
+
+/* Fonksiyon ve sınıf isimleri */
+.highlight .nf,
+.highlight .nc,
+.highlight .nd,
+.highlight .nl,
+.highlight .nn {
+    color: #4ec9b0;
+    font-weight: bold;
+}
+
+/* Değişkenler */
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .bp {
+    color: #9cdcfe;
+}
+
+/* Etiketler (HTML, XML) */
+.highlight .nt {
+    color: #569cd6;
+    font-weight: bold;
+}
+
+.highlight .na {
+    color: #9cdcfe;
+}
+
+.highlight .nt,
+.highlight .ne {
+    color: #b5cea8;
+}
+
+/* Genel stil */
+.highlight .ge {
+    font-style: italic;
+}
+
+.highlight .go {
+    color: #808080;
+}
+
+.highlight .gp {
+    color: #c0c0c0;
+}
+
+.highlight .gs {
+    font-weight: bold;
+}
+
+.highlight .gr {
+    color: #f44747;
+}
+
+.highlight .gu {
+    color: #4ec9b0;
+    font-weight: bold;
+}
+
+.highlight .si {
+    color: aliceblue;
+}
+
+/* --- DİL ÖĞRENME BLOKLARI: GİRİNTİ VE BOŞLUĞU SIFIRLAMA --- */
+
+/* 1. Tüm kod bloklarının girintisini zorla sıfırla */
+.highlighter-rouge, 
+.highlighter-rouge pre, 
+.highlighter-rouge code,
+.note-content .highlighter-rouge pre {
+    text-indent: 0 !important;   /* Paragraf başı boşluğunu kaldırır */
+   /* padding-left: 0 !important;  /* Eğer soldan padding varsa sıfırlar */
+}
+
+/* 2. İngilizce (eng) özel kutusu için hizalama */
+.highlighter-rouge[data-lang="eng"] pre.highlight {
+    padding: 1rem 1.2rem !important; /* İçeriği kutuya nizami yerleştirir */
+    text-indent: 0 !important;
+    background: rgba(212, 165, 116, 0.08) !important;
+    border-left: 5px solid var(--primary) !important;
+    display: block !important;
+}
+
+.highlighter-rouge[data-lang="eng"] code {
+    display: block !important;
+    text-indent: 0 !important;
+    font-family: 'Merriweather', serif !important;
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    color: var(--text-dark) !important;
+    white-space: pre-wrap !important; /* Uzun cümleleri alt satıra kaydırır ama girinti yapmaz */
+}

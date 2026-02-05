@@ -1,0 +1,264 @@
+/* İçerik Temelleri */
+.note-content {
+    font-size: 1.1rem;
+    line-height: 2;
+}
+
+.note-content h1, 
+.note-content h2, 
+.note-content h3, 
+.note-content h4, 
+.note-content h5, 
+.note-content h6 {
+    color: var(--text-dark);
+    font-family: 'Merriweather', Georgia, serif;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-top: 2.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left; /* Paragraflar justify ise başlıklar sola yaslı kalmalı */
+}
+
+/* H1 ve H2 genellikle çok büyüktür */
+.note-content h2 { font-size: 1.85rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.3rem; }
+.note-content h3 { font-size: 1.55rem; }
+.note-content h4 { font-size: 1.3rem; }
+
+/* H5: p etiketinden (genelde 1rem/1.1rem) daha büyük ve kalın */
+.note-content h5 {
+    font-size: 1.2rem !important; /* p etiketinden kesinlikle büyük */
+    font-weight: 800 !important;   /* Ekstra kalın yaparak metinden ayır */
+    color: #2c2416;               /* Koyu tema vurgusu */
+    margin-top: 1.5rem;
+}
+
+/* H6: En küçük başlık (p ile aynı boyda ama stil farkıyla ayrışır) */
+.note-content h6 {
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 1.2rem;
+}
+
+.note-content p {
+    margin-bottom: 1.5rem;
+    color: #4a3f2f;
+    text-align: justify;
+    text-indent: 1em;
+}
+
+.note-content ul,
+.note-content ol {
+    margin: 1.5rem 0 1.5rem 2rem;
+    line-height: 2;
+}
+
+.note-content li {
+    margin-bottom: 0.8rem;
+    color: #4a3f2f;
+}
+
+.note-content strong {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+/* Metin İçi Kod */
+.note-content code {
+    display: inline;
+    visibility: visible;
+    font-family: 'Courier Prime', monospace;
+    padding: 0.1rem; /* Padding'i biraz küçülttük */
+    border-radius: 3px;
+    color: var(--accent);
+    cursor: copy;
+    margin: 0;
+    line-height: normal;
+}
+
+/* --------------------------------------------------------------------------
+   GÖRSEL ÇERÇEVE VE ALTYAZI BİRLEŞTİRME STİLİ
+   -------------------------------------------------------------------------- */
+
+/* 1. GÖRSEL KAPSAYICISI (Üst Çerçeve - Alt Kenarsız) */
+.note-content p:has(img) {
+    /* Markdown'dan gelen resim kapsayıcısını hedef al */
+    margin: 2rem auto 0 !important;
+    /* Alt marjini sıfırla */
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    /* KRİTİK: Çerçevenin alt kenarını kaldırır */
+    border-radius: 8px;
+    /* Sadece üst köşeleri yuvarla */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Gölge (üst kısım) */
+    background-color: var(--bg-card);
+    display: block;
+    text-align: center;
+    max-width: 90%;
+}
+
+/* 2. ALTYAZI PARAGRAFI (Başlık Çubuğu - Alt Parça) */
+/* Resim kapsayıcısından hemen sonra gelen ilk paragrafı hedefle */
+.note-content blockquote.admonition-caption {
+    margin: 1rem auto 2rem;
+    /* Daha az üst boşluk */
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    /* Hiçbir arka plan olmasın */
+    box-shadow: none;
+    text-align: center;
+    font-style: italic;
+    color: var(--accent);
+    /* Metin rengi */
+    font-size: 0.95rem;
+}
+
+/* Caption başlığını gizlediğimiz için, içeriği normal hale getir */
+.note-content blockquote.admonition-caption>p {
+    margin: 0;
+    padding: 0;
+    color: var(--accent);
+    text-align: center;
+
+    /* Metin rengi */
+}
+
+/* Ek Stil: Resim (içerideki img) */
+.note-content p:has(img) img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   ADMONITIONS (UYARI BLOKLARI) - KOYU TEMA / İKON TEMİZLİĞİ
+   -------------------------------------------------------------------------- */
+
+/* Temel Ayarlar: Koyu Tema Kontrastı */
+.note-content blockquote {
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-left: 6px solid;
+    background: var(--bg-card);
+    /* KOYU ARKA PLAN */
+}
+
+/* Kutu İçindeki Tüm Metin (İçerik) Stili */
+.note-content blockquote>p {
+    margin-top: 1rem;
+    /* Başlık ile metin arasına boşluk ekler */
+    margin-bottom: 0;
+    color: var(--text-light);
+    /* Metin rengi BEYAZ/AÇIK olur */
+}
+
+/* Başlık Çubuğu Stili (İkon ve Kutu Adı) */
+.note-content blockquote strong:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Başlık altı çizgisi */
+}
+
+.note-content blockquote.admonition-data-quote {
+    --color: #fff;
+    border-left-color: var(--color);
+}
+
+.note-content blockquote.admonition-data-quote strong:first-child {
+    color: var(--color);
+}
+
+/* İkon Stili */
+.note-content blockquote strong:first-child i {
+    font-size: 1.3rem;
+    width: 25px;
+    /* İkonun sabit durmasını sağlar */
+    text-align: center;
+}
+
+/* 1. KIRMIZI TEMİZ: DİKKAT! (Kırmızı) */
+.note-content blockquote.admonition-warning {
+    --color: #ff5e5e;
+    border-left-color: var(--color);
+}
+
+.note-content blockquote.admonition-warning strong:first-child {
+    color: var(--color);
+}
+
+/* 2. YEŞİL TEMİZ: İPUCU! (Yeşil) */
+.note-content blockquote.admonition-tip {
+    --color: #38c172;
+    border-left-color: var(--color);
+}
+
+.note-content blockquote.admonition-tip strong:first-child {
+    color: var(--color);
+}
+
+/* 3. MAVİ TEMİZ: BİLGİ! (Mavi) */
+.note-content blockquote.admonition-bilgi {
+    --color: #3490dc;
+    border-left-color: var(--color);
+}
+
+.note-content blockquote.admonition-bilgi strong:first-child {
+    color: var(--color);
+}
+
+/* 4. SARI TEMİZ: ÖNEMLİ! (Amber) */
+.note-content blockquote.admonition-onemli {
+    --color: #f6993f;
+    border-left-color: var(--color);
+}
+
+.note-content blockquote.admonition-onemli strong:first-child {
+    color: var(--color);
+}
+/* --------------------------------------------------------------------------
+   ÖZEL ALINTI (QUOTE BLOCK) STİLİ
+   -------------------------------------------------------------------------- */
+
+/* Alıntı kutusunu hedefle (QUOTE anahtar kelimesiyle başlayan) */
+.note-content blockquote:has(strong:first-child:is([data-quote="true"])) {
+    border-left: 4px solid var(--primary);
+    /* Temel renk kenarlığı */
+    background: rgba(244, 235, 224, 1);
+    /* Çok açık kağıt benzeri arka plan */
+    color: var(--text-dark);
+    /* Koyu metin */
+    font-style: italic;
+    /* İtalik metin */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* İkonu ve Tırnak İşaretini Ekleyen CSS */
+.note-content blockquote:has(strong:first-child:is([data-quote="true"]))>p::before {
+    /* Font Awesome Tırnak İşareti */
+    content: "\f10d";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
+
+/* Başlık metnini (QUOTE) gizle (Sadece ikon ve içerik kalsın) */
+.note-content blockquote:has(strong:first-child:is([data-quote="true"])) strong:first-child {
+    display: none;
+}
