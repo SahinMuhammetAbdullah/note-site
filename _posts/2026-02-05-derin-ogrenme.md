@@ -13,8 +13,8 @@ level: Başlangıç
 
 prev_note: AI Giriş Bölüm 2 | Yapay Zeka'ya Giriş
 prev_note_link: /yapay-zeka/ai-giris/makine-ogrenimi/
-# next_note:
-# next_note_link:
+next_note: AI Giriş Bölüm 4 | Doğal Dil İşleme
+next_note_link: /yapay-zeka/ai-giris/dogal-dil-isleme/
 related_posts:
   - title: BTK Yapay Zekaya Giriş Eğitimi
     url: https://www.btkakademi.gov.tr/portal/course/yapay-zekaya-giris-29193
