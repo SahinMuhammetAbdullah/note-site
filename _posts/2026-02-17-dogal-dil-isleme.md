@@ -13,8 +13,8 @@ level: Başlangıç
 
 prev_note: AI Giriş Bölüm 3 | Derin Öğrenme
 prev_note_link: /yapay-zeka/ai-giris/derin-ogrenme/
-# next_note:
-# next_note_link: 
+next_note: AI Giriş Bölüm 5 | Üretken Yapay Zeka
+next_note_link: /yapay-zeka/ai-giris/uretken-yapay-zeka/
 related_posts:
   - title: BTK Yapay Zekaya Giriş Eğitimi
     url: https://www.btkakademi.gov.tr/portal/course/yapay-zekaya-giris-29193

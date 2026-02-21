@@ -8,7 +8,7 @@ description_preview: Dart diline giriş ve temel yapılar.
 date: 2025-11-20 17:00:00 +0300
 
 categories: [Programlama Dilleri, Dart]
-tags: [mobil programala, flutter, diller]
+tags: [mobil programala, flutter, Programlama Dilleri]
 level: Başlangıç
 
 # prev_note:

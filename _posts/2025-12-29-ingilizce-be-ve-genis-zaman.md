@@ -6,7 +6,7 @@ description_preview: BTK Akademide yer alan "A1 Seviye Ä°ngilizce" dersi notlarÄ
 date: 2025-12-29 23:59:00 +0300
 
 categories: [Language, English]
-tags: [grammar, tenses, learning, beginner]
+tags: [grammar, tenses]
 level: A1
 
 # prev_note:

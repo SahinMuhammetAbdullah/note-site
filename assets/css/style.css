@@ -364,6 +364,6 @@
         cursor: pointer;
     }
 
-    .note-meta .note-date, .note-meta .time {display: none;} 
+    /* .note-meta .note-date, .note-meta .time {display: none;}  */
     .note-tags {display: none;} 
 }

@@ -6,7 +6,7 @@ description_preview: BTK Akademide yer alan "A1 Seviye İngilizce" dersi notlar�
 date: 2025-12-30 00:00:00 +0300
 
 categories: [Language, English]
-tags: [grammar, tenses, learning, beginner]
+tags: [grammar, tenses]
 level: A1
 
 prev_note: İngilizce Bölüm 1 | "Be" Fiili ve Geniş Zaman

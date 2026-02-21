@@ -8,7 +8,7 @@ description_preview: Dart'ta records yapısı üzerine yapılan çalışmamın n
 date: 2025-12-13 21:00:00 +0300
 
 categories: [Programlama Dilleri, Dart]
-tags: [mobil programala, flutter, diller, types, records]
+tags: [mobil programala, flutter, Programlama Dilleri, types, records]
 level: Orta
 
 prev_note: "Dart Bölüm: 2 | Yerleşik Tipler"

@@ -77,63 +77,174 @@
     line-height: normal;
 }
 
-/* --------------------------------------------------------------------------
-   GÖRSEL ÇERÇEVE VE ALTYAZI BİRLEŞTİRME STİLİ
-   -------------------------------------------------------------------------- */
+/* =============================================================================
+   GÖRSEL + ALTYAZI BİLEŞENİ
+   Stil: Karartılmış zemin + vignette (içten parlayan köşeler)
+   ============================================================================= */
 
-/* 1. GÖRSEL KAPSAYICISI (Üst Çerçeve - Alt Kenarsız) */
+/* Otomatik numaralandırma sayacı */
+.note-content {
+  counter-reset: figure-counter;
+}
+
+/* -----------------------------------------------------------------------------
+   1. GÖRSEL KAPSAYICISI — vignette kart
+   ----------------------------------------------------------------------------- */
 .note-content p:has(img) {
-    /* Markdown'dan gelen resim kapsayıcısını hedef al */
-    margin: 2rem auto 0 !important;
-    /* Alt marjini sıfırla */
-    padding: 1rem;
-    border: 1px solid var(--border);
-    border-bottom: none;
-    /* KRİTİK: Çerçevenin alt kenarını kaldırır */
-    border-radius: 8px;
-    /* Sadece üst köşeleri yuvarla */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    /* Gölge (üst kısım) */
-    background-color: var(--bg-card);
-    display: block;
-    text-align: center;
-    max-width: 90%;
+  display: block;
+  margin: 2.5rem auto 0 !important;
+  padding: 1.25rem;
+  max-width: 90%;
+  position: relative;
+
+  /* Koyu zemin — temadan biraz daha derin */
+  background:
+    radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 75%),
+    var(--bg-card, #1a1410);
+
+  /* Vignette: köşeler karartılmış, ortası hafif açık */
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.55),   /* İçten karartma */
+    inset 0 0 0 1px rgba(200, 145, 74, 0.18), /* İnce accent kenarlık */
+    0 6px 24px rgba(0, 0, 0, 0.40);        /* Dış gölge */
+
+  border: none;
+  border-radius: 6px 6px 0 0;
+
+  text-align: center;
+  counter-increment: figure-counter;
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* 2. ALTYAZI PARAGRAFI (Başlık Çubuğu - Alt Parça) */
-/* Resim kapsayıcısından hemen sonra gelen ilk paragrafı hedefle */
-.note-content blockquote.admonition-caption {
-    margin: 1rem auto 2rem;
-    /* Daha az üst boşluk */
-    padding: 0.5rem 1rem;
-    border: none;
-    background: none;
-    /* Hiçbir arka plan olmasın */
-    box-shadow: none;
-    text-align: center;
-    font-style: italic;
-    color: var(--accent);
-    /* Metin rengi */
-    font-size: 0.95rem;
+.note-content p:has(img):hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(200, 145, 74, 0.35),
+    0 10px 32px rgba(0, 0, 0, 0.50);
 }
 
-/* Caption başlığını gizlediğimiz için, içeriği normal hale getir */
-.note-content blockquote.admonition-caption>p {
-    margin: 0;
-    padding: 0;
-    color: var(--accent);
-    text-align: center;
-
-    /* Metin rengi */
+/* Köşelerde hafif accent parıltısı — pseudo element */
+.note-content p:has(img)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px 6px 0 0;
+  background:
+    radial-gradient(ellipse at top left,  rgba(200, 145, 74, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, rgba(200, 145, 74, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-/* Ek Stil: Resim (içerideki img) */
+/* -----------------------------------------------------------------------------
+   2. GÖRSEL (img elementi)
+   ----------------------------------------------------------------------------- */
 .note-content p:has(img) img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 3px;
+  vertical-align: middle;
+  position: relative; /* ::before'un üstünde kalsın */
+  z-index: 1;
+}
+
+/* -----------------------------------------------------------------------------
+   3. ALTYAZI — vignette karartmasının devamı
+   ----------------------------------------------------------------------------- */
+.note-content blockquote.admonition-caption {
+  margin: 0 auto 2.5rem;
+  max-width: 90%;
+  padding: 0.55rem 1.25rem 0.7rem;
+
+  background: var(--bg-card, #1a1410);
+
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.50),
+    inset 0 0 0 1px rgba(200, 145, 74, 0.18),
+    inset 0 1px 0 rgba(200, 145, 74, 0.12), /* Görsel ile ayırıcı */
+    0 6px 20px rgba(0, 0, 0, 0.35);
+
+  border: none;
+  border-radius: 0 0 6px 6px;
+
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--accent, #c8914a);
+  text-align: center;
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.note-content p:has(img):hover + blockquote.admonition-caption {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.40),
+    inset 0 0 0 1px rgba(200, 145, 74, 0.35),
+    inset 0 1px 0 rgba(200, 145, 74, 0.20),
+    0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.note-content blockquote.admonition-caption > p {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-align: center;
+}
+
+/* "Görsel 1 — " öneki */
+.note-content blockquote.admonition-caption > p::before {
+  content: "Görsel " counter(figure-counter) " \2014  ";
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  opacity: 0.8;
+}
+
+/* -----------------------------------------------------------------------------
+   4. AÇIK TEMA — vignette daha hafif
+   ----------------------------------------------------------------------------- */
+@media (prefers-color-scheme: light) {
+  .note-content p:has(img) {
+    background:
+      radial-gradient(ellipse at center, rgba(255,255,255,0.6) 0%, transparent 75%),
+      var(--bg-card, #f5f0e8);
+    box-shadow:
+      inset 0 0 50px rgba(0, 0, 0, 0.10),
+      inset 0 0 0 1px rgba(200, 145, 74, 0.25),
+      0 4px 16px rgba(0, 0, 0, 0.10);
+  }
+
+  .note-content p:has(img)::before {
+    background:
+      radial-gradient(ellipse at top left,  rgba(200, 145, 74, 0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at top right, rgba(200, 145, 74, 0.07) 0%, transparent 50%);
+  }
+
+  .note-content blockquote.admonition-caption {
+    background: var(--bg-card, #f5f0e8);
+    box-shadow:
+      inset 0 0 30px rgba(0, 0, 0, 0.06),
+      inset 0 0 0 1px rgba(200, 145, 74, 0.25),
+      inset 0 1px 0 rgba(200, 145, 74, 0.15),
+      0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   5. MOBİL UYUMLULUK
+   ----------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .note-content p:has(img),
+  .note-content blockquote.admonition-caption {
     max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 4px;
+  }
+
+  .note-content blockquote.admonition-caption {
+    font-size: 0.82rem;
+  }
 }
 
 /* --------------------------------------------------------------------------

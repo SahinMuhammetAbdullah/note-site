@@ -8,7 +8,7 @@ description_preview: BTK Akademide yer alan Yapay Zeka'ya Giriş dersi notları.
 date: 2025-12-28 23:00:00 +0300
 
 categories: [Yapay Zeka, AI-Giriş]
-tags: [AI, Makine Öğrenimi, AI Tools ]
+tags: [AI, Makine Öğrenimi, AI Araçları ]
 level: Başlangıç
 
 prev_note: AI Giriş Bölüm 1 | Yapay Zeka'ya Giriş
